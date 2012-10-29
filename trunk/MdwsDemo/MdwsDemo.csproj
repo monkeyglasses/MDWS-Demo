@@ -144,7 +144,7 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="src\dao\soap\MhvDao.cs" />
+    <Compile Include="src\dao\soap\SchedulingDao.cs" />
     <Compile Include="src\dao\soap\VistaDao.cs" />
     <Compile Include="src\MySession.cs" />
     <Compile Include="Web References\mdws\Reference.cs">
@@ -153,6 +153,11 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\mhv\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\scheduling\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -169,10 +174,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:8734/MhvService.asmx%3fWSDL">
+    <WebReferenceUrl Include="http://mdws.vistaehr.com/mdws2/MhvService.asmx%3fWSDL">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\mhv\</RelPath>
-      <UpdateFromURL>http://localhost:8734/MhvService.asmx%3fWSDL</UpdateFromURL>
+      <UpdateFromURL>http://mdws.vistaehr.com/mdws2/MhvService.asmx%3fWSDL</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -190,6 +195,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>MdwsDemo_mdws_EmrSvc</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\scheduling\</RelPath>
+      <UpdateFromURL>http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>MdwsDemo_scheduling_SchedulingSvc</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
@@ -340,6 +356,12 @@
     <None Include="Web References\mhv\AllergyTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\mhv\AttachmentTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mhv\DataSourceArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\mhv\LabResultTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -350,9 +372,15 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mhv\MhvService.wsdl" />
+    <None Include="Web References\mhv\PatientMedicalRecordTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\mhv\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\mhv\RegionArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mhv\SecureMessageThreadsTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -381,10 +409,16 @@
     <None Include="Web References\mhv\TaggedMedicationArray.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\mhv\TaggedMedicationArrays.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\mhv\TaggedPatientArrays.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mhv\TaggedText.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mhv\TaggedTextArray.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mhv\TextArray.datasource">
@@ -393,7 +427,60 @@
     <None Include="Web References\mhv\TextTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\mhv\ThreadTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\mhv\TriageGroupsTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mhv\UserTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\AppointmentTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\AppointmentTypeArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\DataSourceArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\HospitalLocationTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\PatientArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\scheduling\RegionArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\SchedulingSvc.wsdl" />
+    <None Include="Web References\scheduling\SiteArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\SiteTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\TaggedAppointmentArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\TaggedHospitalLocationArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\TaggedTextArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\TextArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\TextTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\UserTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
   </ItemGroup>

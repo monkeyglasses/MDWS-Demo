@@ -1,0 +1,9 @@
+C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\bin\Release\MdwsDemo-Test.dll
+C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\bin\Release\MdwsDemo-Test.pdb
+C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\bin\Release\MdwsDemo.dll
+C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\bin\Release\nunit.framework.dll
+C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\bin\Release\MdwsDemo.pdb
+C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\bin\Release\MdwsDemo.XmlSerializers.dll
+C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\obj\Release\ResolveAssemblyReference.cache
+C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\obj\Release\MdwsDemo-Test.dll
+C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\obj\Release\MdwsDemo-Test.pdb
