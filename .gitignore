@@ -1,0 +1,4 @@
+*.dll
+*.pdb
+trunk/MdwsDemo/bin
+trunk/MdwsDemo/obj
