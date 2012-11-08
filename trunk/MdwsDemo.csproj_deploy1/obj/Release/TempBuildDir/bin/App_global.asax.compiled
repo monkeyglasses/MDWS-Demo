@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="8" virtualPath="/MdwsDemo.csproj/global.asax" hash="ffffffffb26fdc83" filehash="ffffd4481929787f" flags="150000" assembly="MdwsDemo.csproj_deploy1" type="ASP.global_asax">
+  <filedeps>
+    <filedep name="/MdwsDemo.csproj/global.asax" />
+  </filedeps>
+</preserve>

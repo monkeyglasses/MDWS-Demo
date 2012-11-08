@@ -60,7 +60,7 @@ namespace MdwsDemo
             }
             catch (System.Threading.ThreadAbortException)
             {
-                // ugh... stupid MS... this exception is thrown by the Response.Redirect function - we just catch it and continue normally
+                // ugh... MS... this exception is thrown by the Response.Redirect function - we just catch it and continue normally
             }
             catch (Exception exc)
             {
@@ -84,18 +84,17 @@ namespace MdwsDemo
             dropDownSite.DataTextField = "name";
             dropDownSite.DataValueField = "sitecode";
             dropDownSite.DataBind();
-
-            // we only have one site in our test sites file so we just automatically connect
-            if (dropDownSite.Items.Count == 1)
-            {
-                selectSite(dropDownSite, e);
-            }
+            dropDownSite.Items.Insert(0, "== Select Your Site ==");
         }
 
         protected void selectSite(Object sender, EventArgs e)
         {
-            _mySession.SelectedSite = (sender as DropDownList).SelectedValue;
-
+            string selectedSite = (sender as DropDownList).SelectedValue;
+            if (String.IsNullOrEmpty(selectedSite) || String.Equals(selectedSite, "== Select Your Site =="))
+            {
+                return;
+            }
+            _mySession.SelectedSite = selectedSite;
             string welcomeMsg = _mySession.VistaDao.connect(_mySession.SelectedSite);
             welcomeMsg = welcomeMsg.Replace("\n", "<br />");
             literalWelcomeMsg.Text = "<p>" + welcomeMsg + "</p>";
