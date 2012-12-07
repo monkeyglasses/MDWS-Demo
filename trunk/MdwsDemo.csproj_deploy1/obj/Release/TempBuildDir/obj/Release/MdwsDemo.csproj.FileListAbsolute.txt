@@ -1,7 +1,0 @@
-C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo\obj\Release\ResolveAssemblyReference.cache
-C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo\bin\MdwsDemo.dll
-C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo\bin\MdwsDemo.XmlSerializers.dll
-C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo\bin\MdwsDemo.pdb
-C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo\obj\Release\MdwsDemo.dll
-C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo\obj\Release\MdwsDemo.pdb
-C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo\obj\Release\MdwsDemo.XmlSerializers.dll
