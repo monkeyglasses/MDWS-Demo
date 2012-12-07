@@ -1,11 +1,8 @@
 *.dll
 *.pdb
 *.suo
-trunk/MdwsDemo/bin*
-trunk/MdwsDemo/obj*
-trunk/MdwsDemo-Test/bin*
-trunk/MdwsDemo-Test/obj*
-trunk/MdwsDemo.csproj_deploy1/Release*
-trunk/MdwsDemo.csproj_deploy1/Debug*
-trunk/MdwsDemo.csproj_deploy1/obj*
-trunk/MdwsDemo.csproj_deploy1/bin*
+[Bb]in/
+[Oo]bj/
+[Rr]elease/
+[Dd]ebug/
+*.cache
