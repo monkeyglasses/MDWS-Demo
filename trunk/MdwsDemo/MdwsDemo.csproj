@@ -33,6 +33,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\Documents and Settings\vhaannmewtoj\Desktop\Json45r11\Bin\Net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -144,6 +147,9 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="src\dao\ISchedulingDao.cs" />
+    <Compile Include="src\dao\rest\SchedulingDao.cs" />
+    <Compile Include="src\dao\soap\ISchedulingDao.cs" />
     <Compile Include="src\dao\soap\SchedulingDao.cs" />
     <Compile Include="src\dao\soap\VistaDao.cs" />
     <Compile Include="src\MySession.cs" />
@@ -174,10 +180,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://mdws.vistaehr.com/mdws2/MhvService.asmx%3fWSDL">
+    <WebReferenceUrl Include="http://mdws.vainnovation.us/mdws2/MhvService.asmx%3fWSDL">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\mhv\</RelPath>
-      <UpdateFromURL>http://mdws.vistaehr.com/mdws2/MhvService.asmx%3fWSDL</UpdateFromURL>
+      <UpdateFromURL>http://mdws.vainnovation.us/mdws2/MhvService.asmx%3fWSDL</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -196,10 +202,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>MdwsDemo_mdws_EmrSvc</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx%3fWSDL">
+    <WebReferenceUrl Include="http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx%3fWSDL">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\scheduling\</RelPath>
-      <UpdateFromURL>http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx%3fWSDL</UpdateFromURL>
+      <UpdateFromURL>http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx%3fWSDL</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -217,6 +223,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mdws\DataSourceArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mdws\DomainArray.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mdws\EmrSvc.wsdl" />
@@ -281,6 +290,9 @@
     <None Include="Web References\mdws\TaggedCytologyRptArrays.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\mdws\TaggedHealthSummaryArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\mdws\TaggedHospitalLocationArray.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -290,10 +302,16 @@
     <None Include="Web References\mdws\TaggedInpatientStayArray.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\mdws\TaggedLabTestArrays.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\mdws\TaggedMedicationArrays.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mdws\TaggedMentalHealthInstrumentAdministrationArrays.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mdws\TaggedMentalHealthResultSetArray.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mdws\TaggedMicrobiologyRptArrays.datasource">
@@ -309,6 +327,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mdws\TaggedPatientArrays.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mdws\TaggedPatientAssociateArrays.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mdws\TaggedProblemArrays.datasource">
@@ -357,6 +378,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mhv\AttachmentTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mhv\BoolTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mhv\DataSourceArray.datasource">

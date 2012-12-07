@@ -25,4 +25,8 @@
 
         <br /><br /><br /><br /><br />
         <asp:Button ID="buttonDownloadSource" Text="Like This? Download Source!" OnClick="DownloadSource" runat="server" />
+
+        <p>
+        Need some same A/V codes? <a href="http://sandbox.vainnovation.us/groups/innovationvista/wiki/60417/Access_and_Verify_Codes_for_VISN_0__Innovation_VistA.html">Click here!</a>
+        </p>
 </asp:Content>

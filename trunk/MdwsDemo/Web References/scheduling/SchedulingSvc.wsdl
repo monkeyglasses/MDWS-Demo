@@ -366,6 +366,10 @@
         <s:complexContent mixed="false">
           <s:extension base="tns:PersonTO">
             <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="occupation" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="employmentStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="employerName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="relationships" type="tns:PersonArray" />
               <s:element minOccurs="0" maxOccurs="1" name="patientName" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="mpiPid" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="mpiChecksum" type="s:string" />
@@ -402,6 +406,9 @@
         <s:complexContent mixed="false">
           <s:extension base="tns:AbstractTO">
             <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="birthPlace" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="religion" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="ssn" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="gender" type="s:string" />
@@ -421,6 +428,7 @@
         <s:complexContent mixed="false">
           <s:extension base="tns:AbstractTO">
             <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="streetAddress1" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="streetAddress2" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="streetAddress3" type="s:string" />
@@ -428,6 +436,7 @@
               <s:element minOccurs="0" maxOccurs="1" name="county" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="zipcode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -436,6 +445,7 @@
         <s:complexContent mixed="false">
           <s:extension base="tns:AbstractTO">
             <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="areaCode" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="exchange" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="number" type="s:string" />
@@ -466,6 +476,20 @@
       <s:complexType name="ArrayOfPhoneNumTO">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="PhoneNumTO" nillable="true" type="tns:PhoneNumTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PersonArray">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="persons" type="tns:ArrayOfPersonTO" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfPersonTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PersonTO" nillable="true" type="tns:PersonTO" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="TaggedTextArray">
@@ -1806,16 +1830,16 @@
   </wsdl:binding>
   <wsdl:service name="SchedulingSvc">
     <wsdl:port name="SchedulingSvcSoap" binding="tns:SchedulingSvcSoap">
-      <soap:address location="http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx" />
+      <soap:address location="http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx" />
     </wsdl:port>
     <wsdl:port name="SchedulingSvcSoap12" binding="tns:SchedulingSvcSoap12">
-      <soap12:address location="http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx" />
+      <soap12:address location="http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx" />
     </wsdl:port>
     <wsdl:port name="SchedulingSvcHttpGet" binding="tns:SchedulingSvcHttpGet">
-      <http:address location="http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx" />
+      <http:address location="http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx" />
     </wsdl:port>
     <wsdl:port name="SchedulingSvcHttpPost" binding="tns:SchedulingSvcHttpPost">
-      <http:address location="http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx" />
+      <http:address location="http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

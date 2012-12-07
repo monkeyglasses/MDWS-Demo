@@ -17,7 +17,9 @@ namespace MdwsDemo.dao.soap
         [TestFixtureSetUp]
         public void testFixtureSetUp()
         {
-            _dao = new SchedulingDao();
+            VistaDao dao = new VistaDao();
+            dao.addDataSource("100", "Dewdrop", "172.19.100.199", "9100", "1");
+            _dao = new SchedulingDao(dao.EmrSvcSession); // copy session from VistaDao
         }
 
         [TestFixtureTearDown]

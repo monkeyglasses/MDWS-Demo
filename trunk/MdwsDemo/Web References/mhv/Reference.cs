@@ -30,6 +30,10 @@ namespace MdwsDemo.mhv {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AbstractTO))]
     public partial class MhvService : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback getIdProofingStatusOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback updateIdProofingStatusOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getPrescriptionsHL7OperationCompleted;
         
         private System.Threading.SendOrPostCallback refillPrescriptionOperationCompleted;
@@ -151,6 +155,12 @@ namespace MdwsDemo.mhv {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
+        
+        /// <remarks/>
+        public event getIdProofingStatusCompletedEventHandler getIdProofingStatusCompleted;
+        
+        /// <remarks/>
+        public event updateIdProofingStatusCompletedEventHandler updateIdProofingStatusCompleted;
         
         /// <remarks/>
         public event getPrescriptionsHL7CompletedEventHandler getPrescriptionsHL7Completed;
@@ -277,6 +287,72 @@ namespace MdwsDemo.mhv {
         
         /// <remarks/>
         public event disconnectCompletedEventHandler disconnectCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://mdws.med.va.gov/mhv/MhvService/getIdProofingStatus", RequestNamespace="http://mdws.med.va.gov/mhv/MhvService", ResponseNamespace="http://mdws.med.va.gov/mhv/MhvService", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public BoolTO getIdProofingStatus(string patientId, string patientName, string patientDOB) {
+            object[] results = this.Invoke("getIdProofingStatus", new object[] {
+                        patientId,
+                        patientName,
+                        patientDOB});
+            return ((BoolTO)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getIdProofingStatusAsync(string patientId, string patientName, string patientDOB) {
+            this.getIdProofingStatusAsync(patientId, patientName, patientDOB, null);
+        }
+        
+        /// <remarks/>
+        public void getIdProofingStatusAsync(string patientId, string patientName, string patientDOB, object userState) {
+            if ((this.getIdProofingStatusOperationCompleted == null)) {
+                this.getIdProofingStatusOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetIdProofingStatusOperationCompleted);
+            }
+            this.InvokeAsync("getIdProofingStatus", new object[] {
+                        patientId,
+                        patientName,
+                        patientDOB}, this.getIdProofingStatusOperationCompleted, userState);
+        }
+        
+        private void OngetIdProofingStatusOperationCompleted(object arg) {
+            if ((this.getIdProofingStatusCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getIdProofingStatusCompleted(this, new getIdProofingStatusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://mdws.med.va.gov/mhv/MhvService/updateIdProofingStatus", RequestNamespace="http://mdws.med.va.gov/mhv/MhvService", ResponseNamespace="http://mdws.med.va.gov/mhv/MhvService", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public TaggedTextArray updateIdProofingStatus(string patientId, string patientName, string patientDOB) {
+            object[] results = this.Invoke("updateIdProofingStatus", new object[] {
+                        patientId,
+                        patientName,
+                        patientDOB});
+            return ((TaggedTextArray)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void updateIdProofingStatusAsync(string patientId, string patientName, string patientDOB) {
+            this.updateIdProofingStatusAsync(patientId, patientName, patientDOB, null);
+        }
+        
+        /// <remarks/>
+        public void updateIdProofingStatusAsync(string patientId, string patientName, string patientDOB, object userState) {
+            if ((this.updateIdProofingStatusOperationCompleted == null)) {
+                this.updateIdProofingStatusOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateIdProofingStatusOperationCompleted);
+            }
+            this.InvokeAsync("updateIdProofingStatus", new object[] {
+                        patientId,
+                        patientName,
+                        patientDOB}, this.updateIdProofingStatusOperationCompleted, userState);
+        }
+        
+        private void OnupdateIdProofingStatusOperationCompleted(object arg) {
+            if ((this.updateIdProofingStatusCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.updateIdProofingStatusCompleted(this, new updateIdProofingStatusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://mdws.med.va.gov/mhv/MhvService/getPrescriptionsHL7", RequestNamespace="http://mdws.med.va.gov/mhv/MhvService", ResponseNamespace="http://mdws.med.va.gov/mhv/MhvService", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1709,572 +1785,17 @@ namespace MdwsDemo.mhv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TaggedMedicationArrays : AbstractArrayTO {
+    public partial class BoolTO : AbstractTO {
         
-        private TaggedMedicationArray[] arraysField;
-        
-        /// <remarks/>
-        public TaggedMedicationArray[] arrays {
-            get {
-                return this.arraysField;
-            }
-            set {
-                this.arraysField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TaggedMedicationArray : AbstractTaggedArrayTO {
-        
-        private MedicationTO[] medsField;
+        private bool trueOrFalseField;
         
         /// <remarks/>
-        public MedicationTO[] meds {
+        public bool trueOrFalse {
             get {
-                return this.medsField;
+                return this.trueOrFalseField;
             }
             set {
-                this.medsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class MedicationTO : AbstractTO {
-        
-        private string idField;
-        
-        private string nameField;
-        
-        private string rxNumField;
-        
-        private string quantityField;
-        
-        private string expirationDateField;
-        
-        private string issueDateField;
-        
-        private string startDateField;
-        
-        private string stopDateField;
-        
-        private string orderIdField;
-        
-        private string statusField;
-        
-        private string refillsField;
-        
-        private bool isOutpatientField;
-        
-        private bool isInpatientField;
-        
-        private bool isIVField;
-        
-        private bool isUnitDoseField;
-        
-        private bool isNonVAField;
-        
-        private bool isImoField;
-        
-        private string lastFillDateField;
-        
-        private string remainingField;
-        
-        private TaggedText facilityField;
-        
-        private AuthorTO providerField;
-        
-        private string costField;
-        
-        private string sigField;
-        
-        private string typeField;
-        
-        private string additivesField;
-        
-        private string solutionField;
-        
-        private string rateField;
-        
-        private string routeField;
-        
-        private string doseField;
-        
-        private string instructionField;
-        
-        private string commentField;
-        
-        private string dateDocumentedField;
-        
-        private AuthorTO documentorField;
-        
-        private string detailField;
-        
-        private string scheduleField;
-        
-        private string daysSupplyField;
-        
-        private TaggedText hospitalField;
-        
-        private TaggedText drugField;
-        
-        private bool isSupplyField;
-        
-        /// <remarks/>
-        public string id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string rxNum {
-            get {
-                return this.rxNumField;
-            }
-            set {
-                this.rxNumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string quantity {
-            get {
-                return this.quantityField;
-            }
-            set {
-                this.quantityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string expirationDate {
-            get {
-                return this.expirationDateField;
-            }
-            set {
-                this.expirationDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string issueDate {
-            get {
-                return this.issueDateField;
-            }
-            set {
-                this.issueDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string startDate {
-            get {
-                return this.startDateField;
-            }
-            set {
-                this.startDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string stopDate {
-            get {
-                return this.stopDateField;
-            }
-            set {
-                this.stopDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string orderId {
-            get {
-                return this.orderIdField;
-            }
-            set {
-                this.orderIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string refills {
-            get {
-                return this.refillsField;
-            }
-            set {
-                this.refillsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool isOutpatient {
-            get {
-                return this.isOutpatientField;
-            }
-            set {
-                this.isOutpatientField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool isInpatient {
-            get {
-                return this.isInpatientField;
-            }
-            set {
-                this.isInpatientField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool isIV {
-            get {
-                return this.isIVField;
-            }
-            set {
-                this.isIVField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool isUnitDose {
-            get {
-                return this.isUnitDoseField;
-            }
-            set {
-                this.isUnitDoseField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool isNonVA {
-            get {
-                return this.isNonVAField;
-            }
-            set {
-                this.isNonVAField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool isImo {
-            get {
-                return this.isImoField;
-            }
-            set {
-                this.isImoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string lastFillDate {
-            get {
-                return this.lastFillDateField;
-            }
-            set {
-                this.lastFillDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string remaining {
-            get {
-                return this.remainingField;
-            }
-            set {
-                this.remainingField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedText facility {
-            get {
-                return this.facilityField;
-            }
-            set {
-                this.facilityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public AuthorTO provider {
-            get {
-                return this.providerField;
-            }
-            set {
-                this.providerField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string cost {
-            get {
-                return this.costField;
-            }
-            set {
-                this.costField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string sig {
-            get {
-                return this.sigField;
-            }
-            set {
-                this.sigField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string additives {
-            get {
-                return this.additivesField;
-            }
-            set {
-                this.additivesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string solution {
-            get {
-                return this.solutionField;
-            }
-            set {
-                this.solutionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string rate {
-            get {
-                return this.rateField;
-            }
-            set {
-                this.rateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string route {
-            get {
-                return this.routeField;
-            }
-            set {
-                this.routeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string dose {
-            get {
-                return this.doseField;
-            }
-            set {
-                this.doseField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string instruction {
-            get {
-                return this.instructionField;
-            }
-            set {
-                this.instructionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string comment {
-            get {
-                return this.commentField;
-            }
-            set {
-                this.commentField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string dateDocumented {
-            get {
-                return this.dateDocumentedField;
-            }
-            set {
-                this.dateDocumentedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public AuthorTO documentor {
-            get {
-                return this.documentorField;
-            }
-            set {
-                this.documentorField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string detail {
-            get {
-                return this.detailField;
-            }
-            set {
-                this.detailField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string schedule {
-            get {
-                return this.scheduleField;
-            }
-            set {
-                this.scheduleField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string daysSupply {
-            get {
-                return this.daysSupplyField;
-            }
-            set {
-                this.daysSupplyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedText hospital {
-            get {
-                return this.hospitalField;
-            }
-            set {
-                this.hospitalField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedText drug {
-            get {
-                return this.drugField;
-            }
-            set {
-                this.drugField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool isSupply {
-            get {
-                return this.isSupplyField;
-            }
-            set {
-                this.isSupplyField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TaggedText : AbstractTO {
-        
-        private string tagField;
-        
-        private string textField;
-        
-        private string[] textArrayField;
-        
-        private TaggedText[] taggedResultsField;
-        
-        /// <remarks/>
-        public string tag {
-            get {
-                return this.tagField;
-            }
-            set {
-                this.tagField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string text {
-            get {
-                return this.textField;
-            }
-            set {
-                this.textField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string[] textArray {
-            get {
-                return this.textArrayField;
-            }
-            set {
-                this.textArrayField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedText[] taggedResults {
-            get {
-                return this.taggedResultsField;
-            }
-            set {
-                this.taggedResultsField = value;
+                this.trueOrFalseField = value;
             }
         }
     }
@@ -2296,65 +1817,73 @@ namespace MdwsDemo.mhv {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TriageGroupTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SmUserTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RegionTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TeamTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PhoneNumTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AddressTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PersonTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PatientTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChemHemRpt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ClinicalProcedureTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RadiologyReportTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(OrderTypeTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(OrderTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(VisitTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(UserTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ImmunizationTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(VitalSignTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SurgeryReportTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RadiologyReportTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ProblemTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MicrobiologyRpt))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LabTestTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LabResultTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LabSpecimenTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChemHemRpt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(NoteTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AppointmentTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SymptomTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ObservationTypeTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AllergyTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TeamTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(HospitalLocationTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PhoneNumTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AddressTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PersonTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PatientTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DataSourceTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SiteTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(HospitalLocationTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AllergyTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LabSpecimenTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LabResultTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LabTestTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LabReportTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AuthorTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedText))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(MedicationTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedText))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AbstractArrayTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RegionArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TextArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedPatientArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedChemHemRptArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedClinicalProcedureArrays))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImmunizationArrays))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedVitalSignArrays))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedSurgeryReportArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedRadiologyReportArrays))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedProblemArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedMicrobiologyRptArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedChemHemRptArrays))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedNoteArrays))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAppointmentArrays))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAllergyArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedTextArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedPatientArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedLabReportArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PersonArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SiteArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DataSourceArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LabTestArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AbstractTaggedArrayTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedPatientArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedChemHemRptArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedClinicalProcedureArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImagingExamArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImagingExamArrays))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImmunizationArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedVitalSignArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedSurgeryReportArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedRadiologyReportArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedProblemArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedMicrobiologyRptArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedChemHemRptArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedNoteArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAppointmentArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAllergyArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedPatientArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedLabReportArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedMedicationArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedMedicationArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedTextArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BoolTO))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2528,897 +2057,91 @@ namespace MdwsDemo.mhv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class DemographicSetTO {
+    public partial class ImagingExamTO {
         
-        private string tagField;
+        private string accessionNumField;
         
-        private AddressTO[] addressesField;
+        private string casenumField;
         
-        private PhoneNumTO[] phonesField;
+        private string encounterIdField;
         
-        private string[] emailAddressesField;
+        private SiteTO facilityField;
         
-        private string[] namesField;
-        
-        /// <remarks/>
-        public string tag {
-            get {
-                return this.tagField;
-            }
-            set {
-                this.tagField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public AddressTO[] addresses {
-            get {
-                return this.addressesField;
-            }
-            set {
-                this.addressesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public PhoneNumTO[] phones {
-            get {
-                return this.phonesField;
-            }
-            set {
-                this.phonesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string[] emailAddresses {
-            get {
-                return this.emailAddressesField;
-            }
-            set {
-                this.emailAddressesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string[] names {
-            get {
-                return this.namesField;
-            }
-            set {
-                this.namesField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class AddressTO : AbstractTO {
-        
-        private string streetAddress1Field;
-        
-        private string streetAddress2Field;
-        
-        private string streetAddress3Field;
-        
-        private string cityField;
-        
-        private string countyField;
-        
-        private string stateField;
-        
-        private string zipcodeField;
-        
-        /// <remarks/>
-        public string streetAddress1 {
-            get {
-                return this.streetAddress1Field;
-            }
-            set {
-                this.streetAddress1Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string streetAddress2 {
-            get {
-                return this.streetAddress2Field;
-            }
-            set {
-                this.streetAddress2Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string streetAddress3 {
-            get {
-                return this.streetAddress3Field;
-            }
-            set {
-                this.streetAddress3Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string city {
-            get {
-                return this.cityField;
-            }
-            set {
-                this.cityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string county {
-            get {
-                return this.countyField;
-            }
-            set {
-                this.countyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string state {
-            get {
-                return this.stateField;
-            }
-            set {
-                this.stateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string zipcode {
-            get {
-                return this.zipcodeField;
-            }
-            set {
-                this.zipcodeField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class PhoneNumTO : AbstractTO {
-        
-        private string areaCodeField;
-        
-        private string exchangeField;
-        
-        private string numberField;
-        
-        private string descriptionField;
-        
-        /// <remarks/>
-        public string areaCode {
-            get {
-                return this.areaCodeField;
-            }
-            set {
-                this.areaCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string exchange {
-            get {
-                return this.exchangeField;
-            }
-            set {
-                this.exchangeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string number {
-            get {
-                return this.numberField;
-            }
-            set {
-                this.numberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class CptCodeTO {
+        private bool hasImagesField;
         
         private string idField;
         
-        private string nameField;
+        private string imagingTypeField;
         
-        /// <remarks/>
-        public string id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
+        private string interpretationField;
         
-        /// <remarks/>
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TextTO : AbstractTO {
+        private HospitalLocationTO imagingLocationField;
         
-        private string textField;
-        
-        /// <remarks/>
-        public string text {
-            get {
-                return this.textField;
-            }
-            set {
-                this.textField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class PatientMedicalRecordTO : AbstractTO {
-        
-        private TaggedFaultArray faultArrayField;
-        
-        private PatientTO patientField;
-        
-        private TaggedMedicationArrays medsField;
-        
-        private TaggedAllergyArrays allergiesField;
-        
-        private TaggedAppointmentArrays appointmentsField;
-        
-        private TaggedNoteArrays notesField;
-        
-        private TaggedChemHemRptArrays chemHemReportsField;
-        
-        private TaggedMicrobiologyRptArrays microReportsField;
-        
-        private TaggedProblemArrays problemsField;
-        
-        private TaggedRadiologyReportArrays radiologyReportsField;
-        
-        private TaggedSurgeryReportArrays surgeryReportsField;
-        
-        private TaggedVitalSignArrays vitalsField;
-        
-        private TaggedImmunizationArrays immunizationsField;
-        
-        /// <remarks/>
-        public TaggedFaultArray FaultArray {
-            get {
-                return this.faultArrayField;
-            }
-            set {
-                this.faultArrayField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public PatientTO Patient {
-            get {
-                return this.patientField;
-            }
-            set {
-                this.patientField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedMedicationArrays Meds {
-            get {
-                return this.medsField;
-            }
-            set {
-                this.medsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedAllergyArrays Allergies {
-            get {
-                return this.allergiesField;
-            }
-            set {
-                this.allergiesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedAppointmentArrays Appointments {
-            get {
-                return this.appointmentsField;
-            }
-            set {
-                this.appointmentsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedNoteArrays Notes {
-            get {
-                return this.notesField;
-            }
-            set {
-                this.notesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedChemHemRptArrays ChemHemReports {
-            get {
-                return this.chemHemReportsField;
-            }
-            set {
-                this.chemHemReportsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedMicrobiologyRptArrays MicroReports {
-            get {
-                return this.microReportsField;
-            }
-            set {
-                this.microReportsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedProblemArrays Problems {
-            get {
-                return this.problemsField;
-            }
-            set {
-                this.problemsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedRadiologyReportArrays RadiologyReports {
-            get {
-                return this.radiologyReportsField;
-            }
-            set {
-                this.radiologyReportsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedSurgeryReportArrays SurgeryReports {
-            get {
-                return this.surgeryReportsField;
-            }
-            set {
-                this.surgeryReportsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedVitalSignArrays Vitals {
-            get {
-                return this.vitalsField;
-            }
-            set {
-                this.vitalsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedImmunizationArrays Immunizations {
-            get {
-                return this.immunizationsField;
-            }
-            set {
-                this.immunizationsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class PatientTO : PersonTO {
-        
-        private string patientNameField;
-        
-        private string mpiPidField;
-        
-        private string mpiChecksumField;
-        
-        private string localPidField;
-        
-        private TaggedTextArray sitePidsField;
-        
-        private string vendorPidField;
-        
-        private HospitalLocationTO locationField;
-        
-        private string cwadField;
-        
-        private bool restrictedField;
-        
-        private string admitTimestampField;
-        
-        private bool serviceConnectedField;
-        
-        private int scPercentField;
-        
-        private bool inpatientField;
-        
-        private string deceasedDateField;
-        
-        private TaggedText confidentialityField;
-        
-        private bool needsMeansTestField;
-        
-        private TaggedTextArray patientFlagsField;
-        
-        private string cmorSiteIdField;
-        
-        private string activeInsuranceField;
-        
-        private bool isTestPatientField;
-        
-        private string currentMeansStatusField;
-        
-        private bool hasInsuranceField;
-        
-        private TaggedText preferredFacilityField;
-        
-        private string patientTypeField;
-        
-        private bool isVeteranField;
-        
-        private bool isLocallyAssignedMpiPidField;
-        
-        private SiteArray sitesField;
-        
-        private TeamTO teamField;
-        
-        /// <remarks/>
-        public string patientName {
-            get {
-                return this.patientNameField;
-            }
-            set {
-                this.patientNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string mpiPid {
-            get {
-                return this.mpiPidField;
-            }
-            set {
-                this.mpiPidField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string mpiChecksum {
-            get {
-                return this.mpiChecksumField;
-            }
-            set {
-                this.mpiChecksumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string localPid {
-            get {
-                return this.localPidField;
-            }
-            set {
-                this.localPidField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedTextArray sitePids {
-            get {
-                return this.sitePidsField;
-            }
-            set {
-                this.sitePidsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string vendorPid {
-            get {
-                return this.vendorPidField;
-            }
-            set {
-                this.vendorPidField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public HospitalLocationTO location {
-            get {
-                return this.locationField;
-            }
-            set {
-                this.locationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string cwad {
-            get {
-                return this.cwadField;
-            }
-            set {
-                this.cwadField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool restricted {
-            get {
-                return this.restrictedField;
-            }
-            set {
-                this.restrictedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string admitTimestamp {
-            get {
-                return this.admitTimestampField;
-            }
-            set {
-                this.admitTimestampField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool serviceConnected {
-            get {
-                return this.serviceConnectedField;
-            }
-            set {
-                this.serviceConnectedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int scPercent {
-            get {
-                return this.scPercentField;
-            }
-            set {
-                this.scPercentField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool inpatient {
-            get {
-                return this.inpatientField;
-            }
-            set {
-                this.inpatientField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string deceasedDate {
-            get {
-                return this.deceasedDateField;
-            }
-            set {
-                this.deceasedDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedText confidentiality {
-            get {
-                return this.confidentialityField;
-            }
-            set {
-                this.confidentialityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool needsMeansTest {
-            get {
-                return this.needsMeansTestField;
-            }
-            set {
-                this.needsMeansTestField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedTextArray patientFlags {
-            get {
-                return this.patientFlagsField;
-            }
-            set {
-                this.patientFlagsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string cmorSiteId {
-            get {
-                return this.cmorSiteIdField;
-            }
-            set {
-                this.cmorSiteIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string activeInsurance {
-            get {
-                return this.activeInsuranceField;
-            }
-            set {
-                this.activeInsuranceField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool isTestPatient {
-            get {
-                return this.isTestPatientField;
-            }
-            set {
-                this.isTestPatientField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string currentMeansStatus {
-            get {
-                return this.currentMeansStatusField;
-            }
-            set {
-                this.currentMeansStatusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool hasInsurance {
-            get {
-                return this.hasInsuranceField;
-            }
-            set {
-                this.hasInsuranceField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedText preferredFacility {
-            get {
-                return this.preferredFacilityField;
-            }
-            set {
-                this.preferredFacilityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string patientType {
-            get {
-                return this.patientTypeField;
-            }
-            set {
-                this.patientTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool isVeteran {
-            get {
-                return this.isVeteranField;
-            }
-            set {
-                this.isVeteranField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool isLocallyAssignedMpiPid {
-            get {
-                return this.isLocallyAssignedMpiPidField;
-            }
-            set {
-                this.isLocallyAssignedMpiPidField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public SiteArray sites {
-            get {
-                return this.sitesField;
-            }
-            set {
-                this.sitesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TeamTO team {
-            get {
-                return this.teamField;
-            }
-            set {
-                this.teamField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TaggedTextArray : AbstractArrayTO {
-        
-        private TaggedText[] resultsField;
-        
-        /// <remarks/>
-        public TaggedText[] results {
-            get {
-                return this.resultsField;
-            }
-            set {
-                this.resultsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RegionArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TextArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedPatientArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImmunizationArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedVitalSignArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedSurgeryReportArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedRadiologyReportArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedProblemArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedMicrobiologyRptArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedChemHemRptArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedNoteArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAppointmentArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAllergyArrays))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedTextArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SiteArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(DataSourceArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AbstractTaggedArrayTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedPatientArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImmunizationArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedVitalSignArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedSurgeryReportArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedRadiologyReportArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedProblemArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedMicrobiologyRptArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedChemHemRptArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedNoteArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAppointmentArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAllergyArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedMedicationArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedMedicationArrays))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class AbstractArrayTO : AbstractTO {
-        
-        private int countField;
-        
-        /// <remarks/>
-        public int count {
-            get {
-                return this.countField;
-            }
-            set {
-                this.countField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class RegionArray : AbstractArrayTO {
-        
-        private RegionTO[] regionsField;
-        
-        /// <remarks/>
-        public RegionTO[] regions {
-            get {
-                return this.regionsField;
-            }
-            set {
-                this.regionsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class RegionTO : AbstractTO {
+        private CptCodeTO[] modifiersField;
         
         private string nameField;
         
-        private string idField;
+        private OrderTO orderField;
         
-        private SiteArray sitesField;
+        private UserTO providerField;
+        
+        private RadiologyReportTO[] reportsField;
+        
+        private string reportIdField;
+        
+        private string statusField;
+        
+        private string timestampField;
+        
+        private CptCodeTO typeField;
         
         /// <remarks/>
-        public string name {
+        public string accessionNum {
             get {
-                return this.nameField;
+                return this.accessionNumField;
             }
             set {
-                this.nameField = value;
+                this.accessionNumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string casenum {
+            get {
+                return this.casenumField;
+            }
+            set {
+                this.casenumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string encounterId {
+            get {
+                return this.encounterIdField;
+            }
+            set {
+                this.encounterIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public SiteTO facility {
+            get {
+                return this.facilityField;
+            }
+            set {
+                this.facilityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool hasImages {
+            get {
+                return this.hasImagesField;
+            }
+            set {
+                this.hasImagesField = value;
             }
         }
         
@@ -3433,33 +2156,122 @@ namespace MdwsDemo.mhv {
         }
         
         /// <remarks/>
-        public SiteArray sites {
+        public string imagingType {
             get {
-                return this.sitesField;
+                return this.imagingTypeField;
             }
             set {
-                this.sitesField = value;
+                this.imagingTypeField = value;
             }
         }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class SiteArray : AbstractArrayTO {
-        
-        private SiteTO[] sitesField;
         
         /// <remarks/>
-        public SiteTO[] sites {
+        public string interpretation {
             get {
-                return this.sitesField;
+                return this.interpretationField;
             }
             set {
-                this.sitesField = value;
+                this.interpretationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public HospitalLocationTO imagingLocation {
+            get {
+                return this.imagingLocationField;
+            }
+            set {
+                this.imagingLocationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public CptCodeTO[] modifiers {
+            get {
+                return this.modifiersField;
+            }
+            set {
+                this.modifiersField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public OrderTO order {
+            get {
+                return this.orderField;
+            }
+            set {
+                this.orderField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public UserTO provider {
+            get {
+                return this.providerField;
+            }
+            set {
+                this.providerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public RadiologyReportTO[] reports {
+            get {
+                return this.reportsField;
+            }
+            set {
+                this.reportsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string reportId {
+            get {
+                return this.reportIdField;
+            }
+            set {
+                this.reportIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string timestamp {
+            get {
+                return this.timestampField;
+            }
+            set {
+                this.timestampField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public CptCodeTO type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
             }
         }
     }
@@ -3869,6 +2681,205 @@ namespace MdwsDemo.mhv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TaggedText : AbstractTO {
+        
+        private string tagField;
+        
+        private string textField;
+        
+        private string[] textArrayField;
+        
+        private TaggedText[] taggedResultsField;
+        
+        /// <remarks/>
+        public string tag {
+            get {
+                return this.tagField;
+            }
+            set {
+                this.tagField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string[] textArray {
+            get {
+                return this.textArrayField;
+            }
+            set {
+                this.textArrayField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedText[] taggedResults {
+            get {
+                return this.taggedResultsField;
+            }
+            set {
+                this.taggedResultsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RegionArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TextArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedChemHemRptArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedClinicalProcedureArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImmunizationArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedVitalSignArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedSurgeryReportArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedProblemArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedNoteArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAppointmentArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAllergyArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedPatientArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedLabReportArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PersonArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SiteArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(DataSourceArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LabTestArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AbstractTaggedArrayTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedChemHemRptArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedClinicalProcedureArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImagingExamArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImagingExamArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImmunizationArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedVitalSignArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedSurgeryReportArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedProblemArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedNoteArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAppointmentArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAllergyArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedPatientArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedLabReportArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedMedicationArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedMedicationArrays))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedTextArray))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class AbstractArrayTO : AbstractTO {
+        
+        private int countField;
+        
+        /// <remarks/>
+        public int count {
+            get {
+                return this.countField;
+            }
+            set {
+                this.countField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class RegionArray : AbstractArrayTO {
+        
+        private RegionTO[] regionsField;
+        
+        /// <remarks/>
+        public RegionTO[] regions {
+            get {
+                return this.regionsField;
+            }
+            set {
+                this.regionsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class RegionTO : AbstractTO {
+        
+        private string nameField;
+        
+        private string idField;
+        
+        private SiteArray sitesField;
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public SiteArray sites {
+            get {
+                return this.sitesField;
+            }
+            set {
+                this.sitesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class SiteArray : AbstractArrayTO {
+        
+        private SiteTO[] sitesField;
+        
+        /// <remarks/>
+        public SiteTO[] sites {
+            get {
+                return this.sitesField;
+            }
+            set {
+                this.sitesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
     public partial class TextArray : AbstractArrayTO {
         
         private string[] textField;
@@ -3890,12 +2901,12 @@ namespace MdwsDemo.mhv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TaggedPatientArrays : AbstractArrayTO {
+    public partial class TaggedChemHemRptArrays : AbstractArrayTO {
         
-        private TaggedPatientArray[] arraysField;
+        private TaggedChemHemRptArray[] arraysField;
         
         /// <remarks/>
-        public TaggedPatientArray[] arrays {
+        public TaggedChemHemRptArray[] arrays {
             get {
                 return this.arraysField;
             }
@@ -3911,33 +2922,500 @@ namespace MdwsDemo.mhv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TaggedPatientArray : AbstractTaggedArrayTO {
+    public partial class TaggedChemHemRptArray : AbstractTaggedArrayTO {
         
-        private PatientTO[] patientsField;
+        private ChemHemRpt[] rptsField;
         
         /// <remarks/>
-        public PatientTO[] patients {
+        public ChemHemRpt[] rpts {
             get {
-                return this.patientsField;
+                return this.rptsField;
             }
             set {
-                this.patientsField = value;
+                this.rptsField = value;
             }
         }
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedPatientArray))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class ChemHemRpt : AbstractTO {
+        
+        private string idField;
+        
+        private string titleField;
+        
+        private string timestampField;
+        
+        private AuthorTO authorField;
+        
+        private TaggedText facilityField;
+        
+        private LabSpecimenTO specimenField;
+        
+        private string commentField;
+        
+        private LabResultTO[] resultsField;
+        
+        private SiteTO[] labSitesField;
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string title {
+            get {
+                return this.titleField;
+            }
+            set {
+                this.titleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string timestamp {
+            get {
+                return this.timestampField;
+            }
+            set {
+                this.timestampField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public AuthorTO author {
+            get {
+                return this.authorField;
+            }
+            set {
+                this.authorField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedText facility {
+            get {
+                return this.facilityField;
+            }
+            set {
+                this.facilityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public LabSpecimenTO specimen {
+            get {
+                return this.specimenField;
+            }
+            set {
+                this.specimenField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string comment {
+            get {
+                return this.commentField;
+            }
+            set {
+                this.commentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public LabResultTO[] results {
+            get {
+                return this.resultsField;
+            }
+            set {
+                this.resultsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public SiteTO[] labSites {
+            get {
+                return this.labSitesField;
+            }
+            set {
+                this.labSitesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class AuthorTO : AbstractTO {
+        
+        private string idField;
+        
+        private string nameField;
+        
+        private string signatureField;
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string signature {
+            get {
+                return this.signatureField;
+            }
+            set {
+                this.signatureField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class LabSpecimenTO : AbstractTO {
+        
+        private string idField;
+        
+        private string nameField;
+        
+        private string collectionDateField;
+        
+        private string accessionNumField;
+        
+        private string siteField;
+        
+        private TaggedText facilityField;
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string collectionDate {
+            get {
+                return this.collectionDateField;
+            }
+            set {
+                this.collectionDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string accessionNum {
+            get {
+                return this.accessionNumField;
+            }
+            set {
+                this.accessionNumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string site {
+            get {
+                return this.siteField;
+            }
+            set {
+                this.siteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedText facility {
+            get {
+                return this.facilityField;
+            }
+            set {
+                this.facilityField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class LabResultTO : AbstractTO {
+        
+        private string timestampField;
+        
+        private LabTestTO testField;
+        
+        private string specimenTypeField;
+        
+        private string commentField;
+        
+        private string valueField;
+        
+        private string boundaryStatusField;
+        
+        private string labSiteIdField;
+        
+        /// <remarks/>
+        public string timestamp {
+            get {
+                return this.timestampField;
+            }
+            set {
+                this.timestampField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public LabTestTO test {
+            get {
+                return this.testField;
+            }
+            set {
+                this.testField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string specimenType {
+            get {
+                return this.specimenTypeField;
+            }
+            set {
+                this.specimenTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string comment {
+            get {
+                return this.commentField;
+            }
+            set {
+                this.commentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string boundaryStatus {
+            get {
+                return this.boundaryStatusField;
+            }
+            set {
+                this.boundaryStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string labSiteId {
+            get {
+                return this.labSiteIdField;
+            }
+            set {
+                this.labSiteIdField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class LabTestTO : AbstractTO {
+        
+        private LabResultTO resultField;
+        
+        private LabSpecimenTO specimenField;
+        
+        private string idField;
+        
+        private string nameField;
+        
+        private string categoryField;
+        
+        private string unitsField;
+        
+        private string lowRefField;
+        
+        private string hiRefField;
+        
+        private string refRangeField;
+        
+        private string loincField;
+        
+        /// <remarks/>
+        public LabResultTO result {
+            get {
+                return this.resultField;
+            }
+            set {
+                this.resultField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public LabSpecimenTO specimen {
+            get {
+                return this.specimenField;
+            }
+            set {
+                this.specimenField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string category {
+            get {
+                return this.categoryField;
+            }
+            set {
+                this.categoryField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string units {
+            get {
+                return this.unitsField;
+            }
+            set {
+                this.unitsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string lowRef {
+            get {
+                return this.lowRefField;
+            }
+            set {
+                this.lowRefField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string hiRef {
+            get {
+                return this.hiRefField;
+            }
+            set {
+                this.hiRefField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string refRange {
+            get {
+                return this.refRangeField;
+            }
+            set {
+                this.refRangeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string loinc {
+            get {
+                return this.loincField;
+            }
+            set {
+                this.loincField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedChemHemRptArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedClinicalProcedureArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImagingExamArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImagingExamArrays))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedImmunizationArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedVitalSignArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedSurgeryReportArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedRadiologyReportArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedProblemArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedMicrobiologyRptArray))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedChemHemRptArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedNoteArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAppointmentArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedAllergyArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedPatientArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedLabReportArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedMedicationArray))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
     [System.SerializableAttribute()]
@@ -3955,6 +3433,636 @@ namespace MdwsDemo.mhv {
             }
             set {
                 this.tagField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TaggedClinicalProcedureArray : AbstractTaggedArrayTO {
+        
+        private ClinicalProcedureTO[] arrayField;
+        
+        /// <remarks/>
+        public ClinicalProcedureTO[] array {
+            get {
+                return this.arrayField;
+            }
+            set {
+                this.arrayField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class ClinicalProcedureTO : AbstractTO {
+        
+        private SiteTO facilityField;
+        
+        private string nameField;
+        
+        private string timestampField;
+        
+        private NoteTO noteField;
+        
+        private string idField;
+        
+        private string reportField;
+        
+        /// <remarks/>
+        public SiteTO facility {
+            get {
+                return this.facilityField;
+            }
+            set {
+                this.facilityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string timestamp {
+            get {
+                return this.timestampField;
+            }
+            set {
+                this.timestampField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public NoteTO note {
+            get {
+                return this.noteField;
+            }
+            set {
+                this.noteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string report {
+            get {
+                return this.reportField;
+            }
+            set {
+                this.reportField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class NoteTO : AbstractTO {
+        
+        private string idField;
+        
+        private string timestampField;
+        
+        private string admitTimestampField;
+        
+        private string dischargeTimestampField;
+        
+        private string serviceCategoryField;
+        
+        private string localTitleField;
+        
+        private string standardTitleField;
+        
+        private AuthorTO authorField;
+        
+        private HospitalLocationTO locationField;
+        
+        private string textField;
+        
+        private bool hasAddendumField;
+        
+        private bool isAddendumField;
+        
+        private string originalNoteIDField;
+        
+        private bool hasImagesField;
+        
+        private string itemIdField;
+        
+        private AuthorTO approvedByField;
+        
+        private string statusField;
+        
+        private string typeField;
+        
+        private string signatureTimestampField;
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string timestamp {
+            get {
+                return this.timestampField;
+            }
+            set {
+                this.timestampField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string admitTimestamp {
+            get {
+                return this.admitTimestampField;
+            }
+            set {
+                this.admitTimestampField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string dischargeTimestamp {
+            get {
+                return this.dischargeTimestampField;
+            }
+            set {
+                this.dischargeTimestampField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string serviceCategory {
+            get {
+                return this.serviceCategoryField;
+            }
+            set {
+                this.serviceCategoryField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string localTitle {
+            get {
+                return this.localTitleField;
+            }
+            set {
+                this.localTitleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string standardTitle {
+            get {
+                return this.standardTitleField;
+            }
+            set {
+                this.standardTitleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public AuthorTO author {
+            get {
+                return this.authorField;
+            }
+            set {
+                this.authorField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public HospitalLocationTO location {
+            get {
+                return this.locationField;
+            }
+            set {
+                this.locationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool hasAddendum {
+            get {
+                return this.hasAddendumField;
+            }
+            set {
+                this.hasAddendumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool isAddendum {
+            get {
+                return this.isAddendumField;
+            }
+            set {
+                this.isAddendumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string originalNoteID {
+            get {
+                return this.originalNoteIDField;
+            }
+            set {
+                this.originalNoteIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool hasImages {
+            get {
+                return this.hasImagesField;
+            }
+            set {
+                this.hasImagesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string itemId {
+            get {
+                return this.itemIdField;
+            }
+            set {
+                this.itemIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public AuthorTO approvedBy {
+            get {
+                return this.approvedByField;
+            }
+            set {
+                this.approvedByField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string signatureTimestamp {
+            get {
+                return this.signatureTimestampField;
+            }
+            set {
+                this.signatureTimestampField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class HospitalLocationTO : AbstractTO {
+        
+        private string idField;
+        
+        private string nameField;
+        
+        private TaggedText departmentField;
+        
+        private TaggedText serviceField;
+        
+        private TaggedText specialtyField;
+        
+        private SiteTO facilityField;
+        
+        private string buildingField;
+        
+        private string floorField;
+        
+        private string roomField;
+        
+        private string bedField;
+        
+        private string statusField;
+        
+        private string phoneField;
+        
+        private string appointmentTimestampField;
+        
+        private string typeField;
+        
+        private string physicalLocationField;
+        
+        private bool askForCheckInField;
+        
+        private string appointmentLengthField;
+        
+        private string clinicDisplayStartTimeField;
+        
+        private string displayIncrementsField;
+        
+        private string availabilityField;
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedText department {
+            get {
+                return this.departmentField;
+            }
+            set {
+                this.departmentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedText service {
+            get {
+                return this.serviceField;
+            }
+            set {
+                this.serviceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedText specialty {
+            get {
+                return this.specialtyField;
+            }
+            set {
+                this.specialtyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public SiteTO facility {
+            get {
+                return this.facilityField;
+            }
+            set {
+                this.facilityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string building {
+            get {
+                return this.buildingField;
+            }
+            set {
+                this.buildingField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string floor {
+            get {
+                return this.floorField;
+            }
+            set {
+                this.floorField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string room {
+            get {
+                return this.roomField;
+            }
+            set {
+                this.roomField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string bed {
+            get {
+                return this.bedField;
+            }
+            set {
+                this.bedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string phone {
+            get {
+                return this.phoneField;
+            }
+            set {
+                this.phoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string appointmentTimestamp {
+            get {
+                return this.appointmentTimestampField;
+            }
+            set {
+                this.appointmentTimestampField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string physicalLocation {
+            get {
+                return this.physicalLocationField;
+            }
+            set {
+                this.physicalLocationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool askForCheckIn {
+            get {
+                return this.askForCheckInField;
+            }
+            set {
+                this.askForCheckInField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string appointmentLength {
+            get {
+                return this.appointmentLengthField;
+            }
+            set {
+                this.appointmentLengthField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string clinicDisplayStartTime {
+            get {
+                return this.clinicDisplayStartTimeField;
+            }
+            set {
+                this.clinicDisplayStartTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string displayIncrements {
+            get {
+                return this.displayIncrementsField;
+            }
+            set {
+                this.displayIncrementsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string availability {
+            get {
+                return this.availabilityField;
+            }
+            set {
+                this.availabilityField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TaggedImagingExamArray : AbstractTaggedArrayTO {
+        
+        private ImagingExamTO[] imagingExamsField;
+        
+        /// <remarks/>
+        public ImagingExamTO[] imagingExams {
+            get {
+                return this.imagingExamsField;
+            }
+            set {
+                this.imagingExamsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TaggedImagingExamArrays : AbstractTaggedArrayTO {
+        
+        private TaggedImagingExamArray[] arraysField;
+        
+        /// <remarks/>
+        public TaggedImagingExamArray[] arrays {
+            get {
+                return this.arraysField;
+            }
+            set {
+                this.arraysField = value;
             }
         }
     }
@@ -4352,6 +4460,60 @@ namespace MdwsDemo.mhv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TaggedTextArray : AbstractArrayTO {
+        
+        private TaggedText[] resultsField;
+        
+        /// <remarks/>
+        public TaggedText[] results {
+            get {
+                return this.resultsField;
+            }
+            set {
+                this.resultsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class CptCodeTO {
+        
+        private string idField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
     public partial class VisitTO : AbstractTO {
         
         private string idField;
@@ -4505,47 +4667,862 @@ namespace MdwsDemo.mhv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class HospitalLocationTO : AbstractTO {
+    public partial class PatientTO : PersonTO {
+        
+        private string occupationField;
+        
+        private string employmentStatusField;
+        
+        private string employerNameField;
+        
+        private PersonArray relationshipsField;
+        
+        private string patientNameField;
+        
+        private string mpiPidField;
+        
+        private string mpiChecksumField;
+        
+        private string localPidField;
+        
+        private TaggedTextArray sitePidsField;
+        
+        private string vendorPidField;
+        
+        private HospitalLocationTO locationField;
+        
+        private string cwadField;
+        
+        private bool restrictedField;
+        
+        private string admitTimestampField;
+        
+        private bool serviceConnectedField;
+        
+        private int scPercentField;
+        
+        private bool inpatientField;
+        
+        private string deceasedDateField;
+        
+        private TaggedText confidentialityField;
+        
+        private bool needsMeansTestField;
+        
+        private TaggedTextArray patientFlagsField;
+        
+        private string cmorSiteIdField;
+        
+        private string activeInsuranceField;
+        
+        private bool isTestPatientField;
+        
+        private string currentMeansStatusField;
+        
+        private bool hasInsuranceField;
+        
+        private TaggedText preferredFacilityField;
+        
+        private string patientTypeField;
+        
+        private bool isVeteranField;
+        
+        private bool isLocallyAssignedMpiPidField;
+        
+        private SiteArray sitesField;
+        
+        private TeamTO teamField;
+        
+        /// <remarks/>
+        public string occupation {
+            get {
+                return this.occupationField;
+            }
+            set {
+                this.occupationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string employmentStatus {
+            get {
+                return this.employmentStatusField;
+            }
+            set {
+                this.employmentStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string employerName {
+            get {
+                return this.employerNameField;
+            }
+            set {
+                this.employerNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PersonArray relationships {
+            get {
+                return this.relationshipsField;
+            }
+            set {
+                this.relationshipsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string patientName {
+            get {
+                return this.patientNameField;
+            }
+            set {
+                this.patientNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string mpiPid {
+            get {
+                return this.mpiPidField;
+            }
+            set {
+                this.mpiPidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string mpiChecksum {
+            get {
+                return this.mpiChecksumField;
+            }
+            set {
+                this.mpiChecksumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string localPid {
+            get {
+                return this.localPidField;
+            }
+            set {
+                this.localPidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedTextArray sitePids {
+            get {
+                return this.sitePidsField;
+            }
+            set {
+                this.sitePidsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string vendorPid {
+            get {
+                return this.vendorPidField;
+            }
+            set {
+                this.vendorPidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public HospitalLocationTO location {
+            get {
+                return this.locationField;
+            }
+            set {
+                this.locationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string cwad {
+            get {
+                return this.cwadField;
+            }
+            set {
+                this.cwadField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool restricted {
+            get {
+                return this.restrictedField;
+            }
+            set {
+                this.restrictedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string admitTimestamp {
+            get {
+                return this.admitTimestampField;
+            }
+            set {
+                this.admitTimestampField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool serviceConnected {
+            get {
+                return this.serviceConnectedField;
+            }
+            set {
+                this.serviceConnectedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int scPercent {
+            get {
+                return this.scPercentField;
+            }
+            set {
+                this.scPercentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool inpatient {
+            get {
+                return this.inpatientField;
+            }
+            set {
+                this.inpatientField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string deceasedDate {
+            get {
+                return this.deceasedDateField;
+            }
+            set {
+                this.deceasedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedText confidentiality {
+            get {
+                return this.confidentialityField;
+            }
+            set {
+                this.confidentialityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool needsMeansTest {
+            get {
+                return this.needsMeansTestField;
+            }
+            set {
+                this.needsMeansTestField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedTextArray patientFlags {
+            get {
+                return this.patientFlagsField;
+            }
+            set {
+                this.patientFlagsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string cmorSiteId {
+            get {
+                return this.cmorSiteIdField;
+            }
+            set {
+                this.cmorSiteIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string activeInsurance {
+            get {
+                return this.activeInsuranceField;
+            }
+            set {
+                this.activeInsuranceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool isTestPatient {
+            get {
+                return this.isTestPatientField;
+            }
+            set {
+                this.isTestPatientField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string currentMeansStatus {
+            get {
+                return this.currentMeansStatusField;
+            }
+            set {
+                this.currentMeansStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool hasInsurance {
+            get {
+                return this.hasInsuranceField;
+            }
+            set {
+                this.hasInsuranceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedText preferredFacility {
+            get {
+                return this.preferredFacilityField;
+            }
+            set {
+                this.preferredFacilityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string patientType {
+            get {
+                return this.patientTypeField;
+            }
+            set {
+                this.patientTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool isVeteran {
+            get {
+                return this.isVeteranField;
+            }
+            set {
+                this.isVeteranField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool isLocallyAssignedMpiPid {
+            get {
+                return this.isLocallyAssignedMpiPidField;
+            }
+            set {
+                this.isLocallyAssignedMpiPidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public SiteArray sites {
+            get {
+                return this.sitesField;
+            }
+            set {
+                this.sitesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TeamTO team {
+            get {
+                return this.teamField;
+            }
+            set {
+                this.teamField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class PersonArray : AbstractArrayTO {
+        
+        private PersonTO[] personsField;
+        
+        /// <remarks/>
+        public PersonTO[] persons {
+            get {
+                return this.personsField;
+            }
+            set {
+                this.personsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PatientTO))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class PersonTO : AbstractTO {
+        
+        private string typeField;
+        
+        private string birthPlaceField;
+        
+        private string religionField;
+        
+        private string nameField;
+        
+        private string ssnField;
+        
+        private string genderField;
+        
+        private string dobField;
+        
+        private string ethnicityField;
+        
+        private int ageField;
+        
+        private string maritalStatusField;
+        
+        private AddressTO homeAddressField;
+        
+        private PhoneNumTO homePhoneField;
+        
+        private PhoneNumTO cellPhoneField;
+        
+        private DemographicSetTO[] demographicsField;
+        
+        /// <remarks/>
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string birthPlace {
+            get {
+                return this.birthPlaceField;
+            }
+            set {
+                this.birthPlaceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string religion {
+            get {
+                return this.religionField;
+            }
+            set {
+                this.religionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ssn {
+            get {
+                return this.ssnField;
+            }
+            set {
+                this.ssnField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string gender {
+            get {
+                return this.genderField;
+            }
+            set {
+                this.genderField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string dob {
+            get {
+                return this.dobField;
+            }
+            set {
+                this.dobField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ethnicity {
+            get {
+                return this.ethnicityField;
+            }
+            set {
+                this.ethnicityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int age {
+            get {
+                return this.ageField;
+            }
+            set {
+                this.ageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string maritalStatus {
+            get {
+                return this.maritalStatusField;
+            }
+            set {
+                this.maritalStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public AddressTO homeAddress {
+            get {
+                return this.homeAddressField;
+            }
+            set {
+                this.homeAddressField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PhoneNumTO homePhone {
+            get {
+                return this.homePhoneField;
+            }
+            set {
+                this.homePhoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PhoneNumTO cellPhone {
+            get {
+                return this.cellPhoneField;
+            }
+            set {
+                this.cellPhoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public DemographicSetTO[] demographics {
+            get {
+                return this.demographicsField;
+            }
+            set {
+                this.demographicsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class AddressTO : AbstractTO {
+        
+        private string typeField;
+        
+        private string streetAddress1Field;
+        
+        private string streetAddress2Field;
+        
+        private string streetAddress3Field;
+        
+        private string cityField;
+        
+        private string countyField;
+        
+        private string stateField;
+        
+        private string zipcodeField;
+        
+        private string countryField;
+        
+        /// <remarks/>
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string streetAddress1 {
+            get {
+                return this.streetAddress1Field;
+            }
+            set {
+                this.streetAddress1Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string streetAddress2 {
+            get {
+                return this.streetAddress2Field;
+            }
+            set {
+                this.streetAddress2Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string streetAddress3 {
+            get {
+                return this.streetAddress3Field;
+            }
+            set {
+                this.streetAddress3Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string city {
+            get {
+                return this.cityField;
+            }
+            set {
+                this.cityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string county {
+            get {
+                return this.countyField;
+            }
+            set {
+                this.countyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string state {
+            get {
+                return this.stateField;
+            }
+            set {
+                this.stateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string zipcode {
+            get {
+                return this.zipcodeField;
+            }
+            set {
+                this.zipcodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string country {
+            get {
+                return this.countryField;
+            }
+            set {
+                this.countryField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class PhoneNumTO : AbstractTO {
+        
+        private string typeField;
+        
+        private string areaCodeField;
+        
+        private string exchangeField;
+        
+        private string numberField;
+        
+        private string descriptionField;
+        
+        /// <remarks/>
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string areaCode {
+            get {
+                return this.areaCodeField;
+            }
+            set {
+                this.areaCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string exchange {
+            get {
+                return this.exchangeField;
+            }
+            set {
+                this.exchangeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string number {
+            get {
+                return this.numberField;
+            }
+            set {
+                this.numberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class DemographicSetTO {
+        
+        private string tagField;
+        
+        private AddressTO[] addressesField;
+        
+        private PhoneNumTO[] phonesField;
+        
+        private string[] emailAddressesField;
+        
+        private string[] namesField;
+        
+        /// <remarks/>
+        public string tag {
+            get {
+                return this.tagField;
+            }
+            set {
+                this.tagField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public AddressTO[] addresses {
+            get {
+                return this.addressesField;
+            }
+            set {
+                this.addressesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PhoneNumTO[] phones {
+            get {
+                return this.phonesField;
+            }
+            set {
+                this.phonesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string[] emailAddresses {
+            get {
+                return this.emailAddressesField;
+            }
+            set {
+                this.emailAddressesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string[] names {
+            get {
+                return this.namesField;
+            }
+            set {
+                this.namesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TeamTO : AbstractTO {
         
         private string idField;
         
         private string nameField;
         
-        private TaggedText departmentField;
+        private string pcpNameField;
         
-        private TaggedText serviceField;
-        
-        private TaggedText specialtyField;
-        
-        private SiteTO facilityField;
-        
-        private string buildingField;
-        
-        private string floorField;
-        
-        private string roomField;
-        
-        private string bedField;
-        
-        private string statusField;
-        
-        private string phoneField;
-        
-        private string appointmentTimestampField;
-        
-        private string typeField;
-        
-        private string physicalLocationField;
-        
-        private bool askForCheckInField;
-        
-        private string appointmentLengthField;
-        
-        private string clinicDisplayStartTimeField;
-        
-        private string displayIncrementsField;
-        
-        private string availabilityField;
+        private string attendingNameField;
         
         /// <remarks/>
         public string id {
@@ -4568,182 +5545,22 @@ namespace MdwsDemo.mhv {
         }
         
         /// <remarks/>
-        public TaggedText department {
+        public string pcpName {
             get {
-                return this.departmentField;
+                return this.pcpNameField;
             }
             set {
-                this.departmentField = value;
+                this.pcpNameField = value;
             }
         }
         
         /// <remarks/>
-        public TaggedText service {
+        public string attendingName {
             get {
-                return this.serviceField;
+                return this.attendingNameField;
             }
             set {
-                this.serviceField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedText specialty {
-            get {
-                return this.specialtyField;
-            }
-            set {
-                this.specialtyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public SiteTO facility {
-            get {
-                return this.facilityField;
-            }
-            set {
-                this.facilityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string building {
-            get {
-                return this.buildingField;
-            }
-            set {
-                this.buildingField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string floor {
-            get {
-                return this.floorField;
-            }
-            set {
-                this.floorField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string room {
-            get {
-                return this.roomField;
-            }
-            set {
-                this.roomField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string bed {
-            get {
-                return this.bedField;
-            }
-            set {
-                this.bedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string phone {
-            get {
-                return this.phoneField;
-            }
-            set {
-                this.phoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string appointmentTimestamp {
-            get {
-                return this.appointmentTimestampField;
-            }
-            set {
-                this.appointmentTimestampField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string physicalLocation {
-            get {
-                return this.physicalLocationField;
-            }
-            set {
-                this.physicalLocationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool askForCheckIn {
-            get {
-                return this.askForCheckInField;
-            }
-            set {
-                this.askForCheckInField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string appointmentLength {
-            get {
-                return this.appointmentLengthField;
-            }
-            set {
-                this.appointmentLengthField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string clinicDisplayStartTime {
-            get {
-                return this.clinicDisplayStartTimeField;
-            }
-            set {
-                this.clinicDisplayStartTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string displayIncrements {
-            get {
-                return this.displayIncrementsField;
-            }
-            set {
-                this.displayIncrementsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string availability {
-            get {
-                return this.availabilityField;
-            }
-            set {
-                this.availabilityField = value;
+                this.attendingNameField = value;
             }
         }
     }
@@ -4777,6 +5594,8 @@ namespace MdwsDemo.mhv {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
     public partial class VitalSignTO : AbstractTO {
         
+        private string idField;
+        
         private ObservationTypeTO typeField;
         
         private string value1Field;
@@ -4798,6 +5617,16 @@ namespace MdwsDemo.mhv {
         private string unitsField;
         
         private string qualifiersField;
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
         
         /// <remarks/>
         public ObservationTypeTO type {
@@ -5009,51 +5838,6 @@ namespace MdwsDemo.mhv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class AuthorTO : AbstractTO {
-        
-        private string idField;
-        
-        private string nameField;
-        
-        private string signatureField;
-        
-        /// <remarks/>
-        public string id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string signature {
-            get {
-                return this.signatureField;
-            }
-            set {
-                this.signatureField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
     public partial class TaggedSurgeryReportArray : AbstractTaggedArrayTO {
         
         private SurgeryReportTO[] rptsField;
@@ -5240,180 +6024,6 @@ namespace MdwsDemo.mhv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TaggedRadiologyReportArray : AbstractTaggedArrayTO {
-        
-        private RadiologyReportTO[] rptsField;
-        
-        /// <remarks/>
-        public RadiologyReportTO[] rpts {
-            get {
-                return this.rptsField;
-            }
-            set {
-                this.rptsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class RadiologyReportTO : AbstractTO {
-        
-        private string accessionNumberField;
-        
-        private string caseNumberField;
-        
-        private string idField;
-        
-        private string titleField;
-        
-        private string timestampField;
-        
-        private AuthorTO authorField;
-        
-        private string textField;
-        
-        private TaggedText facilityField;
-        
-        private string statusField;
-        
-        private string cptCodeField;
-        
-        private string clinicalHxField;
-        
-        private string impressionField;
-        
-        /// <remarks/>
-        public string accessionNumber {
-            get {
-                return this.accessionNumberField;
-            }
-            set {
-                this.accessionNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string caseNumber {
-            get {
-                return this.caseNumberField;
-            }
-            set {
-                this.caseNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string title {
-            get {
-                return this.titleField;
-            }
-            set {
-                this.titleField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string timestamp {
-            get {
-                return this.timestampField;
-            }
-            set {
-                this.timestampField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public AuthorTO author {
-            get {
-                return this.authorField;
-            }
-            set {
-                this.authorField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string text {
-            get {
-                return this.textField;
-            }
-            set {
-                this.textField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedText facility {
-            get {
-                return this.facilityField;
-            }
-            set {
-                this.facilityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string cptCode {
-            get {
-                return this.cptCodeField;
-            }
-            set {
-                this.cptCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string clinicalHx {
-            get {
-                return this.clinicalHxField;
-            }
-            set {
-                this.clinicalHxField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string impression {
-            get {
-                return this.impressionField;
-            }
-            set {
-                this.impressionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
     public partial class TaggedProblemArray : AbstractTaggedArrayTO {
         
         private ProblemTO[] problemsField;
@@ -5437,8 +6047,6 @@ namespace MdwsDemo.mhv {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
     public partial class ProblemTO : AbstractTO {
         
-        private string resolvedDateField;
-        
         private bool removedField;
         
         private bool verifiedField;
@@ -5457,9 +6065,13 @@ namespace MdwsDemo.mhv {
         
         private string modifiedDateField;
         
+        private string resolvedDateField;
+        
         private string exposuresField;
         
         private string noteNarrativeField;
+        
+        private string priorityField;
         
         private AuthorTO observerField;
         
@@ -5471,15 +6083,7 @@ namespace MdwsDemo.mhv {
         
         private TaggedTextArray organizationalPropertiesField;
         
-        /// <remarks/>
-        public string resolvedDate {
-            get {
-                return this.resolvedDateField;
-            }
-            set {
-                this.resolvedDateField = value;
-            }
-        }
+        private string timestampField;
         
         /// <remarks/>
         public bool removed {
@@ -5572,6 +6176,16 @@ namespace MdwsDemo.mhv {
         }
         
         /// <remarks/>
+        public string resolvedDate {
+            get {
+                return this.resolvedDateField;
+            }
+            set {
+                this.resolvedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
         public string exposures {
             get {
                 return this.exposuresField;
@@ -5588,6 +6202,16 @@ namespace MdwsDemo.mhv {
             }
             set {
                 this.noteNarrativeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string priority {
+            get {
+                return this.priorityField;
+            }
+            set {
+                this.priorityField = value;
             }
         }
         
@@ -5640,6 +6264,16 @@ namespace MdwsDemo.mhv {
                 this.organizationalPropertiesField = value;
             }
         }
+        
+        /// <remarks/>
+        public string timestamp {
+            get {
+                return this.timestampField;
+            }
+            set {
+                this.timestampField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -5659,762 +6293,6 @@ namespace MdwsDemo.mhv {
             }
             set {
                 this.notesField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class NoteTO : AbstractTO {
-        
-        private string idField;
-        
-        private string timestampField;
-        
-        private string admitTimestampField;
-        
-        private string dischargeTimestampField;
-        
-        private string serviceCategoryField;
-        
-        private string localTitleField;
-        
-        private string standardTitleField;
-        
-        private AuthorTO authorField;
-        
-        private HospitalLocationTO locationField;
-        
-        private string textField;
-        
-        private bool hasAddendumField;
-        
-        private bool isAddendumField;
-        
-        private string originalNoteIDField;
-        
-        private bool hasImagesField;
-        
-        private string itemIdField;
-        
-        private AuthorTO approvedByField;
-        
-        private string statusField;
-        
-        /// <remarks/>
-        public string id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string timestamp {
-            get {
-                return this.timestampField;
-            }
-            set {
-                this.timestampField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string admitTimestamp {
-            get {
-                return this.admitTimestampField;
-            }
-            set {
-                this.admitTimestampField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string dischargeTimestamp {
-            get {
-                return this.dischargeTimestampField;
-            }
-            set {
-                this.dischargeTimestampField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string serviceCategory {
-            get {
-                return this.serviceCategoryField;
-            }
-            set {
-                this.serviceCategoryField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string localTitle {
-            get {
-                return this.localTitleField;
-            }
-            set {
-                this.localTitleField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string standardTitle {
-            get {
-                return this.standardTitleField;
-            }
-            set {
-                this.standardTitleField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public AuthorTO author {
-            get {
-                return this.authorField;
-            }
-            set {
-                this.authorField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public HospitalLocationTO location {
-            get {
-                return this.locationField;
-            }
-            set {
-                this.locationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string text {
-            get {
-                return this.textField;
-            }
-            set {
-                this.textField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool hasAddendum {
-            get {
-                return this.hasAddendumField;
-            }
-            set {
-                this.hasAddendumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool isAddendum {
-            get {
-                return this.isAddendumField;
-            }
-            set {
-                this.isAddendumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string originalNoteID {
-            get {
-                return this.originalNoteIDField;
-            }
-            set {
-                this.originalNoteIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool hasImages {
-            get {
-                return this.hasImagesField;
-            }
-            set {
-                this.hasImagesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string itemId {
-            get {
-                return this.itemIdField;
-            }
-            set {
-                this.itemIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public AuthorTO approvedBy {
-            get {
-                return this.approvedByField;
-            }
-            set {
-                this.approvedByField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TaggedMicrobiologyRptArray : AbstractTaggedArrayTO {
-        
-        private MicrobiologyRpt[] rptsField;
-        
-        /// <remarks/>
-        public MicrobiologyRpt[] rpts {
-            get {
-                return this.rptsField;
-            }
-            set {
-                this.rptsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class MicrobiologyRpt : AbstractTO {
-        
-        private string idField;
-        
-        private string titleField;
-        
-        private string timestampField;
-        
-        private AuthorTO authorField;
-        
-        private TaggedText facilityField;
-        
-        private LabSpecimenTO specimenField;
-        
-        private string commentField;
-        
-        private string sampleField;
-        
-        private string textField;
-        
-        /// <remarks/>
-        public string id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string title {
-            get {
-                return this.titleField;
-            }
-            set {
-                this.titleField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string timestamp {
-            get {
-                return this.timestampField;
-            }
-            set {
-                this.timestampField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public AuthorTO author {
-            get {
-                return this.authorField;
-            }
-            set {
-                this.authorField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedText facility {
-            get {
-                return this.facilityField;
-            }
-            set {
-                this.facilityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public LabSpecimenTO specimen {
-            get {
-                return this.specimenField;
-            }
-            set {
-                this.specimenField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string comment {
-            get {
-                return this.commentField;
-            }
-            set {
-                this.commentField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string sample {
-            get {
-                return this.sampleField;
-            }
-            set {
-                this.sampleField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string text {
-            get {
-                return this.textField;
-            }
-            set {
-                this.textField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class LabSpecimenTO : AbstractTO {
-        
-        private string idField;
-        
-        private string nameField;
-        
-        private string collectionDateField;
-        
-        private string accessionNumField;
-        
-        private string siteField;
-        
-        private TaggedText facilityField;
-        
-        /// <remarks/>
-        public string id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string collectionDate {
-            get {
-                return this.collectionDateField;
-            }
-            set {
-                this.collectionDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string accessionNum {
-            get {
-                return this.accessionNumField;
-            }
-            set {
-                this.accessionNumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string site {
-            get {
-                return this.siteField;
-            }
-            set {
-                this.siteField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedText facility {
-            get {
-                return this.facilityField;
-            }
-            set {
-                this.facilityField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TaggedChemHemRptArray : AbstractTaggedArrayTO {
-        
-        private ChemHemRpt[] rptsField;
-        
-        /// <remarks/>
-        public ChemHemRpt[] rpts {
-            get {
-                return this.rptsField;
-            }
-            set {
-                this.rptsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class ChemHemRpt : AbstractTO {
-        
-        private string idField;
-        
-        private string titleField;
-        
-        private string timestampField;
-        
-        private AuthorTO authorField;
-        
-        private TaggedText facilityField;
-        
-        private LabSpecimenTO specimenField;
-        
-        private string commentField;
-        
-        private LabResultTO[] resultsField;
-        
-        private SiteTO[] labSitesField;
-        
-        /// <remarks/>
-        public string id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string title {
-            get {
-                return this.titleField;
-            }
-            set {
-                this.titleField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string timestamp {
-            get {
-                return this.timestampField;
-            }
-            set {
-                this.timestampField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public AuthorTO author {
-            get {
-                return this.authorField;
-            }
-            set {
-                this.authorField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public TaggedText facility {
-            get {
-                return this.facilityField;
-            }
-            set {
-                this.facilityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public LabSpecimenTO specimen {
-            get {
-                return this.specimenField;
-            }
-            set {
-                this.specimenField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string comment {
-            get {
-                return this.commentField;
-            }
-            set {
-                this.commentField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public LabResultTO[] results {
-            get {
-                return this.resultsField;
-            }
-            set {
-                this.resultsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public SiteTO[] labSites {
-            get {
-                return this.labSitesField;
-            }
-            set {
-                this.labSitesField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class LabResultTO : AbstractTO {
-        
-        private LabTestTO testField;
-        
-        private string specimenTypeField;
-        
-        private string commentField;
-        
-        private string valueField;
-        
-        private string boundaryStatusField;
-        
-        private string labSiteIdField;
-        
-        /// <remarks/>
-        public LabTestTO test {
-            get {
-                return this.testField;
-            }
-            set {
-                this.testField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string specimenType {
-            get {
-                return this.specimenTypeField;
-            }
-            set {
-                this.specimenTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string comment {
-            get {
-                return this.commentField;
-            }
-            set {
-                this.commentField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string boundaryStatus {
-            get {
-                return this.boundaryStatusField;
-            }
-            set {
-                this.boundaryStatusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string labSiteId {
-            get {
-                return this.labSiteIdField;
-            }
-            set {
-                this.labSiteIdField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class LabTestTO : AbstractTO {
-        
-        private string idField;
-        
-        private string nameField;
-        
-        private string categoryField;
-        
-        private string unitsField;
-        
-        private string lowRefField;
-        
-        private string hiRefField;
-        
-        private string refRangeField;
-        
-        private string loincField;
-        
-        /// <remarks/>
-        public string id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string category {
-            get {
-                return this.categoryField;
-            }
-            set {
-                this.categoryField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string units {
-            get {
-                return this.unitsField;
-            }
-            set {
-                this.unitsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string lowRef {
-            get {
-                return this.lowRefField;
-            }
-            set {
-                this.lowRefField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string hiRef {
-            get {
-                return this.hiRefField;
-            }
-            set {
-                this.hiRefField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string refRange {
-            get {
-                return this.refRangeField;
-            }
-            set {
-                this.refRangeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string loinc {
-            get {
-                return this.loincField;
-            }
-            set {
-                this.loincField = value;
             }
         }
     }
@@ -6926,6 +6804,729 @@ namespace MdwsDemo.mhv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TaggedPatientArray : AbstractTaggedArrayTO {
+        
+        private PatientTO[] patientsField;
+        
+        /// <remarks/>
+        public PatientTO[] patients {
+            get {
+                return this.patientsField;
+            }
+            set {
+                this.patientsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TaggedLabReportArray : AbstractTaggedArrayTO {
+        
+        private LabReportTO[] arraysField;
+        
+        /// <remarks/>
+        public LabReportTO[] arrays {
+            get {
+                return this.arraysField;
+            }
+            set {
+                this.arraysField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class LabReportTO : AbstractTO {
+        
+        private LabTestArray testsField;
+        
+        private AuthorTO authorField;
+        
+        private string caseNumberField;
+        
+        private string commentField;
+        
+        private SiteTO facilityField;
+        
+        private string idField;
+        
+        private LabSpecimenTO specimenField;
+        
+        private string timestampField;
+        
+        private string titleField;
+        
+        private string textField;
+        
+        private string typeField;
+        
+        /// <remarks/>
+        public LabTestArray tests {
+            get {
+                return this.testsField;
+            }
+            set {
+                this.testsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public AuthorTO author {
+            get {
+                return this.authorField;
+            }
+            set {
+                this.authorField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string caseNumber {
+            get {
+                return this.caseNumberField;
+            }
+            set {
+                this.caseNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string comment {
+            get {
+                return this.commentField;
+            }
+            set {
+                this.commentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public SiteTO facility {
+            get {
+                return this.facilityField;
+            }
+            set {
+                this.facilityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public LabSpecimenTO specimen {
+            get {
+                return this.specimenField;
+            }
+            set {
+                this.specimenField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string timestamp {
+            get {
+                return this.timestampField;
+            }
+            set {
+                this.timestampField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string title {
+            get {
+                return this.titleField;
+            }
+            set {
+                this.titleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class LabTestArray : AbstractArrayTO {
+        
+        private LabTestTO[] testsField;
+        
+        /// <remarks/>
+        public LabTestTO[] tests {
+            get {
+                return this.testsField;
+            }
+            set {
+                this.testsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TaggedMedicationArray : AbstractTaggedArrayTO {
+        
+        private MedicationTO[] medsField;
+        
+        /// <remarks/>
+        public MedicationTO[] meds {
+            get {
+                return this.medsField;
+            }
+            set {
+                this.medsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class MedicationTO : AbstractTO {
+        
+        private string idField;
+        
+        private string nameField;
+        
+        private string rxNumField;
+        
+        private string quantityField;
+        
+        private string expirationDateField;
+        
+        private string issueDateField;
+        
+        private string startDateField;
+        
+        private string stopDateField;
+        
+        private string orderIdField;
+        
+        private string statusField;
+        
+        private string refillsField;
+        
+        private bool isOutpatientField;
+        
+        private bool isInpatientField;
+        
+        private bool isIVField;
+        
+        private bool isUnitDoseField;
+        
+        private bool isNonVAField;
+        
+        private bool isImoField;
+        
+        private string lastFillDateField;
+        
+        private string remainingField;
+        
+        private TaggedText facilityField;
+        
+        private AuthorTO providerField;
+        
+        private string costField;
+        
+        private string sigField;
+        
+        private string typeField;
+        
+        private string additivesField;
+        
+        private string solutionField;
+        
+        private string rateField;
+        
+        private string routeField;
+        
+        private string doseField;
+        
+        private string instructionField;
+        
+        private string commentField;
+        
+        private string dateDocumentedField;
+        
+        private AuthorTO documentorField;
+        
+        private string detailField;
+        
+        private string scheduleField;
+        
+        private string daysSupplyField;
+        
+        private TaggedText hospitalField;
+        
+        private TaggedText drugField;
+        
+        private bool isSupplyField;
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string rxNum {
+            get {
+                return this.rxNumField;
+            }
+            set {
+                this.rxNumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string quantity {
+            get {
+                return this.quantityField;
+            }
+            set {
+                this.quantityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string expirationDate {
+            get {
+                return this.expirationDateField;
+            }
+            set {
+                this.expirationDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string issueDate {
+            get {
+                return this.issueDateField;
+            }
+            set {
+                this.issueDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string startDate {
+            get {
+                return this.startDateField;
+            }
+            set {
+                this.startDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string stopDate {
+            get {
+                return this.stopDateField;
+            }
+            set {
+                this.stopDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string orderId {
+            get {
+                return this.orderIdField;
+            }
+            set {
+                this.orderIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string refills {
+            get {
+                return this.refillsField;
+            }
+            set {
+                this.refillsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool isOutpatient {
+            get {
+                return this.isOutpatientField;
+            }
+            set {
+                this.isOutpatientField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool isInpatient {
+            get {
+                return this.isInpatientField;
+            }
+            set {
+                this.isInpatientField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool isIV {
+            get {
+                return this.isIVField;
+            }
+            set {
+                this.isIVField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool isUnitDose {
+            get {
+                return this.isUnitDoseField;
+            }
+            set {
+                this.isUnitDoseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool isNonVA {
+            get {
+                return this.isNonVAField;
+            }
+            set {
+                this.isNonVAField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool isImo {
+            get {
+                return this.isImoField;
+            }
+            set {
+                this.isImoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string lastFillDate {
+            get {
+                return this.lastFillDateField;
+            }
+            set {
+                this.lastFillDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string remaining {
+            get {
+                return this.remainingField;
+            }
+            set {
+                this.remainingField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedText facility {
+            get {
+                return this.facilityField;
+            }
+            set {
+                this.facilityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public AuthorTO provider {
+            get {
+                return this.providerField;
+            }
+            set {
+                this.providerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string cost {
+            get {
+                return this.costField;
+            }
+            set {
+                this.costField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string sig {
+            get {
+                return this.sigField;
+            }
+            set {
+                this.sigField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string additives {
+            get {
+                return this.additivesField;
+            }
+            set {
+                this.additivesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string solution {
+            get {
+                return this.solutionField;
+            }
+            set {
+                this.solutionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string rate {
+            get {
+                return this.rateField;
+            }
+            set {
+                this.rateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string route {
+            get {
+                return this.routeField;
+            }
+            set {
+                this.routeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string dose {
+            get {
+                return this.doseField;
+            }
+            set {
+                this.doseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string instruction {
+            get {
+                return this.instructionField;
+            }
+            set {
+                this.instructionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string comment {
+            get {
+                return this.commentField;
+            }
+            set {
+                this.commentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string dateDocumented {
+            get {
+                return this.dateDocumentedField;
+            }
+            set {
+                this.dateDocumentedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public AuthorTO documentor {
+            get {
+                return this.documentorField;
+            }
+            set {
+                this.documentorField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string detail {
+            get {
+                return this.detailField;
+            }
+            set {
+                this.detailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string schedule {
+            get {
+                return this.scheduleField;
+            }
+            set {
+                this.scheduleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string daysSupply {
+            get {
+                return this.daysSupplyField;
+            }
+            set {
+                this.daysSupplyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedText hospital {
+            get {
+                return this.hospitalField;
+            }
+            set {
+                this.hospitalField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedText drug {
+            get {
+                return this.drugField;
+            }
+            set {
+                this.drugField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool isSupply {
+            get {
+                return this.isSupplyField;
+            }
+            set {
+                this.isSupplyField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TaggedClinicalProcedureArrays : AbstractArrayTO {
+        
+        private TaggedClinicalProcedureArray[] arraysField;
+        
+        /// <remarks/>
+        public TaggedClinicalProcedureArray[] arrays {
+            get {
+                return this.arraysField;
+            }
+            set {
+                this.arraysField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
     public partial class TaggedImmunizationArrays : AbstractArrayTO {
         
         private TaggedImmunizationArray[] arraysField;
@@ -6989,75 +7590,12 @@ namespace MdwsDemo.mhv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TaggedRadiologyReportArrays : AbstractArrayTO {
-        
-        private TaggedRadiologyReportArray[] arraysField;
-        
-        /// <remarks/>
-        public TaggedRadiologyReportArray[] arrays {
-            get {
-                return this.arraysField;
-            }
-            set {
-                this.arraysField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
     public partial class TaggedProblemArrays : AbstractArrayTO {
         
         private TaggedProblemArray[] arraysField;
         
         /// <remarks/>
         public TaggedProblemArray[] arrays {
-            get {
-                return this.arraysField;
-            }
-            set {
-                this.arraysField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TaggedMicrobiologyRptArrays : AbstractArrayTO {
-        
-        private TaggedMicrobiologyRptArray[] arraysField;
-        
-        /// <remarks/>
-        public TaggedMicrobiologyRptArray[] arrays {
-            get {
-                return this.arraysField;
-            }
-            set {
-                this.arraysField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TaggedChemHemRptArrays : AbstractArrayTO {
-        
-        private TaggedChemHemRptArray[] arraysField;
-        
-        /// <remarks/>
-        public TaggedChemHemRptArray[] arrays {
             get {
                 return this.arraysField;
             }
@@ -7136,15 +7674,110 @@ namespace MdwsDemo.mhv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class TeamTO : AbstractTO {
+    public partial class TaggedPatientArrays : AbstractArrayTO {
+        
+        private TaggedPatientArray[] arraysField;
+        
+        /// <remarks/>
+        public TaggedPatientArray[] arrays {
+            get {
+                return this.arraysField;
+            }
+            set {
+                this.arraysField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TaggedLabReportArrays : AbstractArrayTO {
+        
+        private TaggedLabReportArray[] arraysField;
+        
+        /// <remarks/>
+        public TaggedLabReportArray[] arrays {
+            get {
+                return this.arraysField;
+            }
+            set {
+                this.arraysField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TaggedMedicationArrays : AbstractArrayTO {
+        
+        private TaggedMedicationArray[] arraysField;
+        
+        /// <remarks/>
+        public TaggedMedicationArray[] arrays {
+            get {
+                return this.arraysField;
+            }
+            set {
+                this.arraysField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class OrderTO : AbstractTO {
         
         private string idField;
         
-        private string nameField;
+        private string timestampField;
         
-        private string pcpNameField;
+        private string orderingServiceNameField;
         
-        private string attendingNameField;
+        private string treatingSpecialtyField;
+        
+        private string startDateField;
+        
+        private string stopDateField;
+        
+        private string statusField;
+        
+        private string sigStatusField;
+        
+        private string dateSignedField;
+        
+        private string verifyingNurseField;
+        
+        private string dateVerifiedField;
+        
+        private string verifyingClerkField;
+        
+        private string chartReviewerField;
+        
+        private string dateReviewedField;
+        
+        private UserTO providerField;
+        
+        private string textField;
+        
+        private string detailField;
+        
+        private string errMsgField;
+        
+        private bool flagField;
+        
+        private OrderTypeTO typeField;
         
         /// <remarks/>
         public string id {
@@ -7157,174 +7790,588 @@ namespace MdwsDemo.mhv {
         }
         
         /// <remarks/>
-        public string name {
+        public string timestamp {
             get {
-                return this.nameField;
+                return this.timestampField;
             }
             set {
-                this.nameField = value;
+                this.timestampField = value;
             }
         }
         
         /// <remarks/>
-        public string pcpName {
+        public string orderingServiceName {
             get {
-                return this.pcpNameField;
+                return this.orderingServiceNameField;
             }
             set {
-                this.pcpNameField = value;
+                this.orderingServiceNameField = value;
             }
         }
         
         /// <remarks/>
-        public string attendingName {
+        public string treatingSpecialty {
             get {
-                return this.attendingNameField;
+                return this.treatingSpecialtyField;
             }
             set {
-                this.attendingNameField = value;
+                this.treatingSpecialtyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string startDate {
+            get {
+                return this.startDateField;
+            }
+            set {
+                this.startDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string stopDate {
+            get {
+                return this.stopDateField;
+            }
+            set {
+                this.stopDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string sigStatus {
+            get {
+                return this.sigStatusField;
+            }
+            set {
+                this.sigStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string dateSigned {
+            get {
+                return this.dateSignedField;
+            }
+            set {
+                this.dateSignedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string verifyingNurse {
+            get {
+                return this.verifyingNurseField;
+            }
+            set {
+                this.verifyingNurseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string dateVerified {
+            get {
+                return this.dateVerifiedField;
+            }
+            set {
+                this.dateVerifiedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string verifyingClerk {
+            get {
+                return this.verifyingClerkField;
+            }
+            set {
+                this.verifyingClerkField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string chartReviewer {
+            get {
+                return this.chartReviewerField;
+            }
+            set {
+                this.chartReviewerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string dateReviewed {
+            get {
+                return this.dateReviewedField;
+            }
+            set {
+                this.dateReviewedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public UserTO provider {
+            get {
+                return this.providerField;
+            }
+            set {
+                this.providerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string detail {
+            get {
+                return this.detailField;
+            }
+            set {
+                this.detailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string errMsg {
+            get {
+                return this.errMsgField;
+            }
+            set {
+                this.errMsgField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool flag {
+            get {
+                return this.flagField;
+            }
+            set {
+                this.flagField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public OrderTypeTO type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
             }
         }
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PatientTO))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
-    public partial class PersonTO : AbstractTO {
+    public partial class OrderTypeTO : AbstractTO {
         
-        private string nameField;
+        private string idField;
         
-        private string ssnField;
+        private string name1Field;
         
-        private string genderField;
-        
-        private string dobField;
-        
-        private string ethnicityField;
-        
-        private int ageField;
-        
-        private string maritalStatusField;
-        
-        private AddressTO homeAddressField;
-        
-        private PhoneNumTO homePhoneField;
-        
-        private PhoneNumTO cellPhoneField;
-        
-        private DemographicSetTO[] demographicsField;
+        private string name2Field;
         
         /// <remarks/>
-        public string name {
+        public string id {
             get {
-                return this.nameField;
+                return this.idField;
             }
             set {
-                this.nameField = value;
+                this.idField = value;
             }
         }
         
         /// <remarks/>
-        public string ssn {
+        public string name1 {
             get {
-                return this.ssnField;
+                return this.name1Field;
             }
             set {
-                this.ssnField = value;
+                this.name1Field = value;
             }
         }
         
         /// <remarks/>
-        public string gender {
+        public string name2 {
             get {
-                return this.genderField;
+                return this.name2Field;
             }
             set {
-                this.genderField = value;
+                this.name2Field = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class RadiologyReportTO : AbstractTO {
+        
+        private string accessionNumberField;
+        
+        private string caseNumberField;
+        
+        private string idField;
+        
+        private string titleField;
+        
+        private string timestampField;
+        
+        private AuthorTO authorField;
+        
+        private string textField;
+        
+        private TaggedText facilityField;
+        
+        private string statusField;
+        
+        private string cptCodeField;
+        
+        private string clinicalHxField;
+        
+        private string impressionField;
+        
+        /// <remarks/>
+        public string accessionNumber {
+            get {
+                return this.accessionNumberField;
+            }
+            set {
+                this.accessionNumberField = value;
             }
         }
         
         /// <remarks/>
-        public string dob {
+        public string caseNumber {
             get {
-                return this.dobField;
+                return this.caseNumberField;
             }
             set {
-                this.dobField = value;
+                this.caseNumberField = value;
             }
         }
         
         /// <remarks/>
-        public string ethnicity {
+        public string id {
             get {
-                return this.ethnicityField;
+                return this.idField;
             }
             set {
-                this.ethnicityField = value;
+                this.idField = value;
             }
         }
         
         /// <remarks/>
-        public int age {
+        public string title {
             get {
-                return this.ageField;
+                return this.titleField;
             }
             set {
-                this.ageField = value;
+                this.titleField = value;
             }
         }
         
         /// <remarks/>
-        public string maritalStatus {
+        public string timestamp {
             get {
-                return this.maritalStatusField;
+                return this.timestampField;
             }
             set {
-                this.maritalStatusField = value;
+                this.timestampField = value;
             }
         }
         
         /// <remarks/>
-        public AddressTO homeAddress {
+        public AuthorTO author {
             get {
-                return this.homeAddressField;
+                return this.authorField;
             }
             set {
-                this.homeAddressField = value;
+                this.authorField = value;
             }
         }
         
         /// <remarks/>
-        public PhoneNumTO homePhone {
+        public string text {
             get {
-                return this.homePhoneField;
+                return this.textField;
             }
             set {
-                this.homePhoneField = value;
+                this.textField = value;
             }
         }
         
         /// <remarks/>
-        public PhoneNumTO cellPhone {
+        public TaggedText facility {
             get {
-                return this.cellPhoneField;
+                return this.facilityField;
             }
             set {
-                this.cellPhoneField = value;
+                this.facilityField = value;
             }
         }
         
         /// <remarks/>
-        public DemographicSetTO[] demographics {
+        public string status {
             get {
-                return this.demographicsField;
+                return this.statusField;
             }
             set {
-                this.demographicsField = value;
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string cptCode {
+            get {
+                return this.cptCodeField;
+            }
+            set {
+                this.cptCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string clinicalHx {
+            get {
+                return this.clinicalHxField;
+            }
+            set {
+                this.clinicalHxField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string impression {
+            get {
+                return this.impressionField;
+            }
+            set {
+                this.impressionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class TextTO : AbstractTO {
+        
+        private string textField;
+        
+        /// <remarks/>
+        public string text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.med.va.gov/mhv/MhvService")]
+    public partial class PatientMedicalRecordTO : AbstractTO {
+        
+        private TaggedLabReportArrays labsField;
+        
+        private TaggedFaultArray faultArrayField;
+        
+        private TaggedPatientArrays patientField;
+        
+        private TaggedMedicationArrays medsField;
+        
+        private TaggedAllergyArrays allergiesField;
+        
+        private TaggedAppointmentArrays appointmentsField;
+        
+        private TaggedNoteArrays notesField;
+        
+        private TaggedNoteArrays dischargeSummariesField;
+        
+        private TaggedProblemArrays problemsField;
+        
+        private TaggedSurgeryReportArrays surgeryReportsField;
+        
+        private TaggedVitalSignArrays vitalsField;
+        
+        private TaggedImmunizationArrays immunizationsField;
+        
+        private TaggedImagingExamArrays imagingExamsField;
+        
+        private TaggedClinicalProcedureArrays eKGsField;
+        
+        /// <remarks/>
+        public TaggedLabReportArrays Labs {
+            get {
+                return this.labsField;
+            }
+            set {
+                this.labsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedFaultArray FaultArray {
+            get {
+                return this.faultArrayField;
+            }
+            set {
+                this.faultArrayField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedPatientArrays Patient {
+            get {
+                return this.patientField;
+            }
+            set {
+                this.patientField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedMedicationArrays Meds {
+            get {
+                return this.medsField;
+            }
+            set {
+                this.medsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedAllergyArrays Allergies {
+            get {
+                return this.allergiesField;
+            }
+            set {
+                this.allergiesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedAppointmentArrays Appointments {
+            get {
+                return this.appointmentsField;
+            }
+            set {
+                this.appointmentsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedNoteArrays Notes {
+            get {
+                return this.notesField;
+            }
+            set {
+                this.notesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedNoteArrays DischargeSummaries {
+            get {
+                return this.dischargeSummariesField;
+            }
+            set {
+                this.dischargeSummariesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedProblemArrays Problems {
+            get {
+                return this.problemsField;
+            }
+            set {
+                this.problemsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedSurgeryReportArrays SurgeryReports {
+            get {
+                return this.surgeryReportsField;
+            }
+            set {
+                this.surgeryReportsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedVitalSignArrays Vitals {
+            get {
+                return this.vitalsField;
+            }
+            set {
+                this.vitalsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedImmunizationArrays Immunizations {
+            get {
+                return this.immunizationsField;
+            }
+            set {
+                this.immunizationsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedImagingExamArrays ImagingExams {
+            get {
+                return this.imagingExamsField;
+            }
+            set {
+                this.imagingExamsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TaggedClinicalProcedureArrays EKGs {
+            get {
+                return this.eKGsField;
+            }
+            set {
+                this.eKGsField = value;
             }
         }
     }
@@ -8234,6 +9281,58 @@ namespace MdwsDemo.mhv {
             }
             set {
                 this.roleField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void getIdProofingStatusCompletedEventHandler(object sender, getIdProofingStatusCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getIdProofingStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getIdProofingStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public BoolTO Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((BoolTO)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void updateIdProofingStatusCompletedEventHandler(object sender, updateIdProofingStatusCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class updateIdProofingStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal updateIdProofingStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public TaggedTextArray Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((TaggedTextArray)(this.results[0]));
             }
         }
     }

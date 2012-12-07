@@ -16,6 +16,11 @@ namespace MdwsDemo.dao.soap
             _emrSvc.CookieContainer = new System.Net.CookieContainer();
         }
 
+        public System.Net.CookieContainer EmrSvcSession
+        {
+            get { return _emrSvc.CookieContainer; }
+        }
+
         public RegionArray getSitesFile()
         {
             RegionArray regions = _emrSvc.getVHA();
@@ -28,6 +33,16 @@ namespace MdwsDemo.dao.soap
                 visn.name = "VISN " + visn.id + " - " + visn.name; // makes for a user friendly dropdown
             }
             return regions;
+        }
+
+        public SiteTO addDataSource(string sitecode, string siteName, string hostname, string brokerPort, string visn)
+        {
+            SiteTO result = _emrSvc.addDataSource(sitecode, siteName, hostname, brokerPort, "HIS", "VISTA", visn);
+            if (result.fault != null)
+            {
+                throw new ApplicationException(result.fault.message);
+            }
+            return result;
         }
 
         public string connect(string sitecode)

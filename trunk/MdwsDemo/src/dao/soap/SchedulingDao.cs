@@ -6,7 +6,7 @@ using MdwsDemo.scheduling;
 
 namespace MdwsDemo.dao.soap
 {
-    public class SchedulingDao
+    public class SchedulingDao : ISchedulingDao
     {
         SchedulingSvc _svc;
 
@@ -14,6 +14,17 @@ namespace MdwsDemo.dao.soap
         {
             _svc = new SchedulingSvc();
             _svc.CookieContainer = new System.Net.CookieContainer();
+        }
+
+        /// <summary>
+        /// This constructor can be used when the need to share sessions among facades is enountered. For example, calling addDataSource
+        /// on EmrSvc and then switching to use calls on this facade.
+        /// </summary>
+        /// <param name="emrSvcCookieContainer">The CookieContainer from the EmrSvc facade (could be from other facades also)</param>
+        public SchedulingDao(System.Net.CookieContainer emrSvcCookieContainer)
+        {
+            _svc = new SchedulingSvc();
+            _svc.CookieContainer = emrSvcCookieContainer;
         }
 
         /// <summary>

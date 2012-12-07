@@ -993,6 +993,7 @@ namespace MdwsDemo.scheduling {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RegionArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TextArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedTextArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PersonArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PatientArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AppointmentTypeArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SiteArray))]
@@ -1190,6 +1191,8 @@ namespace MdwsDemo.scheduling {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.medora.va.gov/SchedulingSvc")]
     public partial class AddressTO : AbstractTO {
         
+        private string typeField;
+        
         private string streetAddress1Field;
         
         private string streetAddress2Field;
@@ -1203,6 +1206,18 @@ namespace MdwsDemo.scheduling {
         private string stateField;
         
         private string zipcodeField;
+        
+        private string countryField;
+        
+        /// <remarks/>
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
         
         /// <remarks/>
         public string streetAddress1 {
@@ -1273,6 +1288,16 @@ namespace MdwsDemo.scheduling {
                 this.zipcodeField = value;
             }
         }
+        
+        /// <remarks/>
+        public string country {
+            get {
+                return this.countryField;
+            }
+            set {
+                this.countryField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -1283,6 +1308,8 @@ namespace MdwsDemo.scheduling {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.medora.va.gov/SchedulingSvc")]
     public partial class PhoneNumTO : AbstractTO {
         
+        private string typeField;
+        
         private string areaCodeField;
         
         private string exchangeField;
@@ -1290,6 +1317,16 @@ namespace MdwsDemo.scheduling {
         private string numberField;
         
         private string descriptionField;
+        
+        /// <remarks/>
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
         
         /// <remarks/>
         public string areaCode {
@@ -1534,6 +1571,7 @@ namespace MdwsDemo.scheduling {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RegionArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TextArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaggedTextArray))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PersonArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PatientArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AppointmentTypeArray))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SiteArray))]
@@ -2074,17 +2112,195 @@ namespace MdwsDemo.scheduling {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.medora.va.gov/SchedulingSvc")]
-    public partial class PatientArray : AbstractArrayTO {
+    public partial class PersonArray : AbstractArrayTO {
         
-        private PatientTO[] patientsField;
+        private PersonTO[] personsField;
         
         /// <remarks/>
-        public PatientTO[] patients {
+        public PersonTO[] persons {
             get {
-                return this.patientsField;
+                return this.personsField;
             }
             set {
-                this.patientsField = value;
+                this.personsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PatientTO))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.medora.va.gov/SchedulingSvc")]
+    public partial class PersonTO : AbstractTO {
+        
+        private string typeField;
+        
+        private string birthPlaceField;
+        
+        private string religionField;
+        
+        private string nameField;
+        
+        private string ssnField;
+        
+        private string genderField;
+        
+        private string dobField;
+        
+        private string ethnicityField;
+        
+        private int ageField;
+        
+        private string maritalStatusField;
+        
+        private AddressTO homeAddressField;
+        
+        private PhoneNumTO homePhoneField;
+        
+        private PhoneNumTO cellPhoneField;
+        
+        private DemographicSetTO[] demographicsField;
+        
+        /// <remarks/>
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string birthPlace {
+            get {
+                return this.birthPlaceField;
+            }
+            set {
+                this.birthPlaceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string religion {
+            get {
+                return this.religionField;
+            }
+            set {
+                this.religionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ssn {
+            get {
+                return this.ssnField;
+            }
+            set {
+                this.ssnField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string gender {
+            get {
+                return this.genderField;
+            }
+            set {
+                this.genderField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string dob {
+            get {
+                return this.dobField;
+            }
+            set {
+                this.dobField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ethnicity {
+            get {
+                return this.ethnicityField;
+            }
+            set {
+                this.ethnicityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int age {
+            get {
+                return this.ageField;
+            }
+            set {
+                this.ageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string maritalStatus {
+            get {
+                return this.maritalStatusField;
+            }
+            set {
+                this.maritalStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public AddressTO homeAddress {
+            get {
+                return this.homeAddressField;
+            }
+            set {
+                this.homeAddressField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PhoneNumTO homePhone {
+            get {
+                return this.homePhoneField;
+            }
+            set {
+                this.homePhoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PhoneNumTO cellPhone {
+            get {
+                return this.cellPhoneField;
+            }
+            set {
+                this.cellPhoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public DemographicSetTO[] demographics {
+            get {
+                return this.demographicsField;
+            }
+            set {
+                this.demographicsField = value;
             }
         }
     }
@@ -2096,6 +2312,14 @@ namespace MdwsDemo.scheduling {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.medora.va.gov/SchedulingSvc")]
     public partial class PatientTO : PersonTO {
+        
+        private string occupationField;
+        
+        private string employmentStatusField;
+        
+        private string employerNameField;
+        
+        private PersonArray relationshipsField;
         
         private string patientNameField;
         
@@ -2152,6 +2376,46 @@ namespace MdwsDemo.scheduling {
         private SiteArray sitesField;
         
         private TeamTO teamField;
+        
+        /// <remarks/>
+        public string occupation {
+            get {
+                return this.occupationField;
+            }
+            set {
+                this.occupationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string employmentStatus {
+            get {
+                return this.employmentStatusField;
+            }
+            set {
+                this.employmentStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string employerName {
+            get {
+                return this.employerNameField;
+            }
+            set {
+                this.employerNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PersonArray relationships {
+            get {
+                return this.relationshipsField;
+            }
+            set {
+                this.relationshipsField = value;
+            }
+        }
         
         /// <remarks/>
         public string patientName {
@@ -2492,143 +2756,22 @@ namespace MdwsDemo.scheduling {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PatientTO))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://mdws.medora.va.gov/SchedulingSvc")]
-    public partial class PersonTO : AbstractTO {
+    public partial class PatientArray : AbstractArrayTO {
         
-        private string nameField;
-        
-        private string ssnField;
-        
-        private string genderField;
-        
-        private string dobField;
-        
-        private string ethnicityField;
-        
-        private int ageField;
-        
-        private string maritalStatusField;
-        
-        private AddressTO homeAddressField;
-        
-        private PhoneNumTO homePhoneField;
-        
-        private PhoneNumTO cellPhoneField;
-        
-        private DemographicSetTO[] demographicsField;
+        private PatientTO[] patientsField;
         
         /// <remarks/>
-        public string name {
+        public PatientTO[] patients {
             get {
-                return this.nameField;
+                return this.patientsField;
             }
             set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ssn {
-            get {
-                return this.ssnField;
-            }
-            set {
-                this.ssnField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string gender {
-            get {
-                return this.genderField;
-            }
-            set {
-                this.genderField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string dob {
-            get {
-                return this.dobField;
-            }
-            set {
-                this.dobField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ethnicity {
-            get {
-                return this.ethnicityField;
-            }
-            set {
-                this.ethnicityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int age {
-            get {
-                return this.ageField;
-            }
-            set {
-                this.ageField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string maritalStatus {
-            get {
-                return this.maritalStatusField;
-            }
-            set {
-                this.maritalStatusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public AddressTO homeAddress {
-            get {
-                return this.homeAddressField;
-            }
-            set {
-                this.homeAddressField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public PhoneNumTO homePhone {
-            get {
-                return this.homePhoneField;
-            }
-            set {
-                this.homePhoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public PhoneNumTO cellPhone {
-            get {
-                return this.cellPhoneField;
-            }
-            set {
-                this.cellPhoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public DemographicSetTO[] demographics {
-            get {
-                return this.demographicsField;
-            }
-            set {
-                this.demographicsField = value;
+                this.patientsField = value;
             }
         }
     }

@@ -2,6 +2,103 @@
 <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://mdws.med.va.gov/mhv/MhvService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://mdws.med.va.gov/mhv/MhvService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://mdws.med.va.gov/mhv/MhvService">
+      <s:element name="getIdProofingStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="patientId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="patientName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="patientDOB" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getIdProofingStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getIdProofingStatusResult" type="tns:BoolTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BoolTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="trueOrFalse" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AbstractTO" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="fault" type="tns:FaultTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FaultTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="stackTrace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="innerType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="innerMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="innerStackTrace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="suggestion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateIdProofingStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="patientId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="patientName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="patientDOB" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateIdProofingStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateIdProofingStatusResult" type="tns:TaggedTextArray" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TaggedTextArray">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="results" type="tns:ArrayOfTaggedText" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AbstractArrayTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfTaggedText">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedText" nillable="true" type="tns:TaggedText" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TaggedText">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="textArray" type="tns:ArrayOfString" />
+              <s:element minOccurs="0" maxOccurs="1" name="taggedResults" type="tns:ArrayOfTaggedText" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="getPrescriptionsHL7">
         <s:complexType>
           <s:sequence>
@@ -27,62 +124,32 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="AbstractArrayTO">
+      <s:complexType name="ArrayOfTaggedMedicationArray">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedMedicationArray" nillable="true" type="tns:TaggedMedicationArray" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TaggedMedicationArray">
         <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTO">
+          <s:extension base="tns:AbstractTaggedArrayTO">
             <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="meds" type="tns:ArrayOfMedicationTO" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="AbstractTO" abstract="true">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="fault" type="tns:FaultTO" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="FaultTO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="stackTrace" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="innerType" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="innerMessage" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="innerStackTrace" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="suggestion" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="AuthorTO">
+      <s:complexType name="AbstractTaggedArrayTO">
         <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="signature" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="TaggedText">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTO">
+          <s:extension base="tns:AbstractArrayTO">
             <s:sequence>
               <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="textArray" type="tns:ArrayOfString" />
-              <s:element minOccurs="0" maxOccurs="1" name="taggedResults" type="tns:ArrayOfTaggedText" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="ArrayOfString">
+      <s:complexType name="ArrayOfMedicationTO">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfTaggedText">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedText" nillable="true" type="tns:TaggedText" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MedicationTO" nillable="true" type="tns:MedicationTO" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="MedicationTO">
@@ -132,33 +199,16 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="AbstractTaggedArrayTO">
+      <s:complexType name="AuthorTO">
         <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractArrayTO">
+          <s:extension base="tns:AbstractTO">
             <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="signature" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
-      </s:complexType>
-      <s:complexType name="TaggedMedicationArray">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTaggedArrayTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="meds" type="tns:ArrayOfMedicationTO" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfMedicationTO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="MedicationTO" nillable="true" type="tns:MedicationTO" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfTaggedMedicationArray">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedMedicationArray" nillable="true" type="tns:TaggedMedicationArray" />
-        </s:sequence>
       </s:complexType>
       <s:element name="refillPrescription">
         <s:complexType>
@@ -653,178 +703,128 @@
         <s:complexContent mixed="false">
           <s:extension base="tns:AbstractTO">
             <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Labs" type="tns:TaggedLabReportArrays" />
               <s:element minOccurs="0" maxOccurs="1" name="FaultArray" type="tns:TaggedFaultArray" />
-              <s:element minOccurs="0" maxOccurs="1" name="Patient" type="tns:PatientTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="Patient" type="tns:TaggedPatientArrays" />
               <s:element minOccurs="0" maxOccurs="1" name="Meds" type="tns:TaggedMedicationArrays" />
               <s:element minOccurs="0" maxOccurs="1" name="Allergies" type="tns:TaggedAllergyArrays" />
               <s:element minOccurs="0" maxOccurs="1" name="Appointments" type="tns:TaggedAppointmentArrays" />
               <s:element minOccurs="0" maxOccurs="1" name="Notes" type="tns:TaggedNoteArrays" />
-              <s:element minOccurs="0" maxOccurs="1" name="ChemHemReports" type="tns:TaggedChemHemRptArrays" />
-              <s:element minOccurs="0" maxOccurs="1" name="MicroReports" type="tns:TaggedMicrobiologyRptArrays" />
+              <s:element minOccurs="0" maxOccurs="1" name="DischargeSummaries" type="tns:TaggedNoteArrays" />
               <s:element minOccurs="0" maxOccurs="1" name="Problems" type="tns:TaggedProblemArrays" />
-              <s:element minOccurs="0" maxOccurs="1" name="RadiologyReports" type="tns:TaggedRadiologyReportArrays" />
               <s:element minOccurs="0" maxOccurs="1" name="SurgeryReports" type="tns:TaggedSurgeryReportArrays" />
               <s:element minOccurs="0" maxOccurs="1" name="Vitals" type="tns:TaggedVitalSignArrays" />
               <s:element minOccurs="0" maxOccurs="1" name="Immunizations" type="tns:TaggedImmunizationArrays" />
+              <s:element minOccurs="0" maxOccurs="1" name="ImagingExams" type="tns:TaggedImagingExamArrays" />
+              <s:element minOccurs="0" maxOccurs="1" name="EKGs" type="tns:TaggedClinicalProcedureArrays" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="TaggedFaultArray">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="faults" type="tns:ArrayOfTaggedFault" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfTaggedFault">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedFault" nillable="true" type="tns:TaggedFault" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="TaggedFault">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="fault" type="tns:FaultTO" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="PatientTO">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:PersonTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="patientName" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="mpiPid" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="mpiChecksum" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="localPid" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="sitePids" type="tns:TaggedTextArray" />
-              <s:element minOccurs="0" maxOccurs="1" name="vendorPid" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="location" type="tns:HospitalLocationTO" />
-              <s:element minOccurs="0" maxOccurs="1" name="cwad" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="restricted" type="s:boolean" />
-              <s:element minOccurs="0" maxOccurs="1" name="admitTimestamp" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="serviceConnected" type="s:boolean" />
-              <s:element minOccurs="1" maxOccurs="1" name="scPercent" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="inpatient" type="s:boolean" />
-              <s:element minOccurs="0" maxOccurs="1" name="deceasedDate" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="confidentiality" type="tns:TaggedText" />
-              <s:element minOccurs="1" maxOccurs="1" name="needsMeansTest" type="s:boolean" />
-              <s:element minOccurs="0" maxOccurs="1" name="patientFlags" type="tns:TaggedTextArray" />
-              <s:element minOccurs="0" maxOccurs="1" name="cmorSiteId" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="activeInsurance" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="isTestPatient" type="s:boolean" />
-              <s:element minOccurs="0" maxOccurs="1" name="currentMeansStatus" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="hasInsurance" type="s:boolean" />
-              <s:element minOccurs="0" maxOccurs="1" name="preferredFacility" type="tns:TaggedText" />
-              <s:element minOccurs="0" maxOccurs="1" name="patientType" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="isVeteran" type="s:boolean" />
-              <s:element minOccurs="1" maxOccurs="1" name="isLocallyAssignedMpiPid" type="s:boolean" />
-              <s:element minOccurs="0" maxOccurs="1" name="sites" type="tns:SiteArray" />
-              <s:element minOccurs="0" maxOccurs="1" name="team" type="tns:TeamTO" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="PersonTO">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="ssn" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="gender" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="dob" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="ethnicity" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="age" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="maritalStatus" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="homeAddress" type="tns:AddressTO" />
-              <s:element minOccurs="0" maxOccurs="1" name="homePhone" type="tns:PhoneNumTO" />
-              <s:element minOccurs="0" maxOccurs="1" name="cellPhone" type="tns:PhoneNumTO" />
-              <s:element minOccurs="0" maxOccurs="1" name="demographics" type="tns:ArrayOfDemographicSetTO" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="AddressTO">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="streetAddress1" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="streetAddress2" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="streetAddress3" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="county" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="zipcode" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="PhoneNumTO">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="areaCode" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="exchange" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="number" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfDemographicSetTO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="DemographicSetTO" nillable="true" type="tns:DemographicSetTO" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="DemographicSetTO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="addresses" type="tns:ArrayOfAddressTO" />
-          <s:element minOccurs="0" maxOccurs="1" name="phones" type="tns:ArrayOfPhoneNumTO" />
-          <s:element minOccurs="0" maxOccurs="1" name="emailAddresses" type="tns:ArrayOfString" />
-          <s:element minOccurs="0" maxOccurs="1" name="names" type="tns:ArrayOfString" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfAddressTO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="AddressTO" nillable="true" type="tns:AddressTO" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfPhoneNumTO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="PhoneNumTO" nillable="true" type="tns:PhoneNumTO" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="TaggedTextArray">
+      <s:complexType name="TaggedLabReportArrays">
         <s:complexContent mixed="false">
           <s:extension base="tns:AbstractArrayTO">
             <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="results" type="tns:ArrayOfTaggedText" />
+              <s:element minOccurs="0" maxOccurs="1" name="arrays" type="tns:ArrayOfTaggedLabReportArray" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="HospitalLocationTO">
+      <s:complexType name="ArrayOfTaggedLabReportArray">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedLabReportArray" nillable="true" type="tns:TaggedLabReportArray" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TaggedLabReportArray">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTaggedArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="arrays" type="tns:ArrayOfLabReportTO" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfLabReportTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LabReportTO" nillable="true" type="tns:LabReportTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LabReportTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="tests" type="tns:LabTestArray" />
+              <s:element minOccurs="0" maxOccurs="1" name="author" type="tns:AuthorTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="caseNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:SiteTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="specimen" type="tns:LabSpecimenTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="timestamp" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LabTestArray">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="tests" type="tns:ArrayOfLabTestTO" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfLabTestTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LabTestTO" nillable="true" type="tns:LabTestTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LabTestTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="result" type="tns:LabResultTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="specimen" type="tns:LabSpecimenTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="category" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="units" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="lowRef" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="hiRef" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="refRange" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="loinc" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LabResultTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="timestamp" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="test" type="tns:LabTestTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="specimenType" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="boundaryStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="labSiteId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LabSpecimenTO">
         <s:complexContent mixed="false">
           <s:extension base="tns:AbstractTO">
             <s:sequence>
               <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="department" type="tns:TaggedText" />
-              <s:element minOccurs="0" maxOccurs="1" name="service" type="tns:TaggedText" />
-              <s:element minOccurs="0" maxOccurs="1" name="specialty" type="tns:TaggedText" />
-              <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:SiteTO" />
-              <s:element minOccurs="0" maxOccurs="1" name="building" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="floor" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="room" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="bed" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="appointmentTimestamp" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="physicalLocation" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="askForCheckIn" type="s:boolean" />
-              <s:element minOccurs="0" maxOccurs="1" name="appointmentLength" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="clinicDisplayStartTime" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="displayIncrements" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="availability" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="collectionDate" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="accessionNum" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="site" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:TaggedText" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -902,6 +902,208 @@
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="SiteTO" nillable="true" type="tns:SiteTO" />
         </s:sequence>
+      </s:complexType>
+      <s:complexType name="TaggedFaultArray">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="faults" type="tns:ArrayOfTaggedFault" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTaggedFault">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedFault" nillable="true" type="tns:TaggedFault" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TaggedFault">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fault" type="tns:FaultTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TaggedPatientArrays">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="arrays" type="tns:ArrayOfTaggedPatientArray" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfTaggedPatientArray">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedPatientArray" nillable="true" type="tns:TaggedPatientArray" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TaggedPatientArray">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTaggedArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="patients" type="tns:ArrayOfPatientTO" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfPatientTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PatientTO" nillable="true" type="tns:PatientTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PatientTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PersonTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="occupation" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="employmentStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="employerName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="relationships" type="tns:PersonArray" />
+              <s:element minOccurs="0" maxOccurs="1" name="patientName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="mpiPid" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="mpiChecksum" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="localPid" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="sitePids" type="tns:TaggedTextArray" />
+              <s:element minOccurs="0" maxOccurs="1" name="vendorPid" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="location" type="tns:HospitalLocationTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="cwad" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="restricted" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="admitTimestamp" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="serviceConnected" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="scPercent" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="inpatient" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="deceasedDate" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="confidentiality" type="tns:TaggedText" />
+              <s:element minOccurs="1" maxOccurs="1" name="needsMeansTest" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="patientFlags" type="tns:TaggedTextArray" />
+              <s:element minOccurs="0" maxOccurs="1" name="cmorSiteId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="activeInsurance" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="isTestPatient" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="currentMeansStatus" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="hasInsurance" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="preferredFacility" type="tns:TaggedText" />
+              <s:element minOccurs="0" maxOccurs="1" name="patientType" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="isVeteran" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="isLocallyAssignedMpiPid" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="sites" type="tns:SiteArray" />
+              <s:element minOccurs="0" maxOccurs="1" name="team" type="tns:TeamTO" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PersonTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="birthPlace" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="religion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ssn" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="gender" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="dob" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ethnicity" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="age" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="maritalStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="homeAddress" type="tns:AddressTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="homePhone" type="tns:PhoneNumTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="cellPhone" type="tns:PhoneNumTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="demographics" type="tns:ArrayOfDemographicSetTO" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AddressTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="streetAddress1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="streetAddress2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="streetAddress3" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="county" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="zipcode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PhoneNumTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="areaCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="exchange" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="number" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfDemographicSetTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DemographicSetTO" nillable="true" type="tns:DemographicSetTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DemographicSetTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="addresses" type="tns:ArrayOfAddressTO" />
+          <s:element minOccurs="0" maxOccurs="1" name="phones" type="tns:ArrayOfPhoneNumTO" />
+          <s:element minOccurs="0" maxOccurs="1" name="emailAddresses" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="names" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAddressTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AddressTO" nillable="true" type="tns:AddressTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPhoneNumTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PhoneNumTO" nillable="true" type="tns:PhoneNumTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PersonArray">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="persons" type="tns:ArrayOfPersonTO" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfPersonTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PersonTO" nillable="true" type="tns:PersonTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HospitalLocationTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="department" type="tns:TaggedText" />
+              <s:element minOccurs="0" maxOccurs="1" name="service" type="tns:TaggedText" />
+              <s:element minOccurs="0" maxOccurs="1" name="specialty" type="tns:TaggedText" />
+              <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:SiteTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="building" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="floor" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="room" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="bed" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="appointmentTimestamp" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="physicalLocation" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="askForCheckIn" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="appointmentLength" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="clinicDisplayStartTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="displayIncrements" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="availability" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
       </s:complexType>
       <s:complexType name="TeamTO">
         <s:complexContent mixed="false">
@@ -1100,145 +1302,8 @@
               <s:element minOccurs="0" maxOccurs="1" name="itemId" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="approvedBy" type="tns:AuthorTO" />
               <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="TaggedChemHemRptArrays">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractArrayTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="arrays" type="tns:ArrayOfTaggedChemHemRptArray" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfTaggedChemHemRptArray">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedChemHemRptArray" nillable="true" type="tns:TaggedChemHemRptArray" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="TaggedChemHemRptArray">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTaggedArrayTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="rpts" type="tns:ArrayOfChemHemRpt" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfChemHemRpt">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="ChemHemRpt" nillable="true" type="tns:ChemHemRpt" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ChemHemRpt">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="timestamp" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="author" type="tns:AuthorTO" />
-              <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:TaggedText" />
-              <s:element minOccurs="0" maxOccurs="1" name="specimen" type="tns:LabSpecimenTO" />
-              <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="results" type="tns:ArrayOfLabResultTO" />
-              <s:element minOccurs="0" maxOccurs="1" name="labSites" type="tns:ArrayOfSiteTO" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="LabSpecimenTO">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="collectionDate" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="accessionNum" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="site" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:TaggedText" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfLabResultTO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="LabResultTO" nillable="true" type="tns:LabResultTO" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="LabResultTO">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="test" type="tns:LabTestTO" />
-              <s:element minOccurs="0" maxOccurs="1" name="specimenType" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="boundaryStatus" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="labSiteId" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="LabTestTO">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="category" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="units" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="lowRef" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="hiRef" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="refRange" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="loinc" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="TaggedMicrobiologyRptArrays">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractArrayTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="arrays" type="tns:ArrayOfTaggedMicrobiologyRptArray" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfTaggedMicrobiologyRptArray">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedMicrobiologyRptArray" nillable="true" type="tns:TaggedMicrobiologyRptArray" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="TaggedMicrobiologyRptArray">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTaggedArrayTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="rpts" type="tns:ArrayOfMicrobiologyRpt" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfMicrobiologyRpt">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="MicrobiologyRpt" nillable="true" type="tns:MicrobiologyRpt" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="MicrobiologyRpt">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="timestamp" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="author" type="tns:AuthorTO" />
-              <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:TaggedText" />
-              <s:element minOccurs="0" maxOccurs="1" name="specimen" type="tns:LabSpecimenTO" />
-              <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="sample" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="signatureTimestamp" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -1275,7 +1340,6 @@
         <s:complexContent mixed="false">
           <s:extension base="tns:AbstractTO">
             <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="resolvedDate" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="removed" type="s:boolean" />
               <s:element minOccurs="1" maxOccurs="1" name="verified" type="s:boolean" />
               <s:element minOccurs="0" maxOccurs="1" name="comments" type="tns:TaggedNoteArray" />
@@ -1285,61 +1349,16 @@
               <s:element minOccurs="0" maxOccurs="1" name="providerNarrative" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="onsetDate" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="modifiedDate" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="resolvedDate" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="exposures" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="noteNarrative" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="priority" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="observer" type="tns:AuthorTO" />
               <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:TaggedText" />
               <s:element minOccurs="0" maxOccurs="1" name="type" type="tns:ObservationTypeTO" />
               <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="organizationalProperties" type="tns:TaggedTextArray" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="TaggedRadiologyReportArrays">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractArrayTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="arrays" type="tns:ArrayOfTaggedRadiologyReportArray" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfTaggedRadiologyReportArray">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedRadiologyReportArray" nillable="true" type="tns:TaggedRadiologyReportArray" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="TaggedRadiologyReportArray">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTaggedArrayTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="rpts" type="tns:ArrayOfRadiologyReportTO" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfRadiologyReportTO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="RadiologyReportTO" nillable="true" type="tns:RadiologyReportTO" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="RadiologyReportTO">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="accessionNumber" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="caseNumber" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="timestamp" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="author" type="tns:AuthorTO" />
-              <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:TaggedText" />
-              <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="cptCode" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="clinicalHx" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="impression" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -1425,6 +1444,7 @@
         <s:complexContent mixed="false">
           <s:extension base="tns:AbstractTO">
             <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="type" type="tns:ObservationTypeTO" />
               <s:element minOccurs="0" maxOccurs="1" name="value1" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="value2" type="s:string" />
@@ -1539,6 +1559,167 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
+      <s:complexType name="TaggedImagingExamArrays">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTaggedArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="arrays" type="tns:ArrayOfTaggedImagingExamArray" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfTaggedImagingExamArray">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedImagingExamArray" nillable="true" type="tns:TaggedImagingExamArray" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TaggedImagingExamArray">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTaggedArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="imagingExams" type="tns:ArrayOfImagingExamTO" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfImagingExamTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ImagingExamTO" nillable="true" type="tns:ImagingExamTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ImagingExamTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="accessionNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="casenum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="encounterId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:SiteTO" />
+          <s:element minOccurs="1" maxOccurs="1" name="hasImages" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="imagingType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="interpretation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="imagingLocation" type="tns:HospitalLocationTO" />
+          <s:element minOccurs="0" maxOccurs="1" name="modifiers" type="tns:ArrayOfCptCodeTO" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="order" type="tns:OrderTO" />
+          <s:element minOccurs="0" maxOccurs="1" name="provider" type="tns:UserTO" />
+          <s:element minOccurs="0" maxOccurs="1" name="reports" type="tns:ArrayOfRadiologyReportTO" />
+          <s:element minOccurs="0" maxOccurs="1" name="reportId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="timestamp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="type" type="tns:CptCodeTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCptCodeTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CptCodeTO" nillable="true" type="tns:CptCodeTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="timestamp" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="orderingServiceName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="treatingSpecialty" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="startDate" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="stopDate" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="sigStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="dateSigned" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="verifyingNurse" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="dateVerified" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="verifyingClerk" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="chartReviewer" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="dateReviewed" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="provider" type="tns:UserTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="detail" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="errMsg" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="flag" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="type" type="tns:OrderTypeTO" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OrderTypeTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="name1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="name2" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfRadiologyReportTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RadiologyReportTO" nillable="true" type="tns:RadiologyReportTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RadiologyReportTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="accessionNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="caseNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="timestamp" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="author" type="tns:AuthorTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:TaggedText" />
+              <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="cptCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="clinicalHx" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="impression" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TaggedClinicalProcedureArrays">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="arrays" type="tns:ArrayOfTaggedClinicalProcedureArray" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfTaggedClinicalProcedureArray">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedClinicalProcedureArray" nillable="true" type="tns:TaggedClinicalProcedureArray" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TaggedClinicalProcedureArray">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTaggedArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="array" type="tns:ArrayOfClinicalProcedureTO" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfClinicalProcedureTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClinicalProcedureTO" nillable="true" type="tns:ClinicalProcedureTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ClinicalProcedureTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:SiteTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="timestamp" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="note" type="tns:NoteTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="report" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
       <s:element name="getDataTypes">
         <s:complexType />
       </s:element>
@@ -1567,6 +1748,56 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="TaggedChemHemRptArrays">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="arrays" type="tns:ArrayOfTaggedChemHemRptArray" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfTaggedChemHemRptArray">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedChemHemRptArray" nillable="true" type="tns:TaggedChemHemRptArray" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TaggedChemHemRptArray">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTaggedArrayTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="rpts" type="tns:ArrayOfChemHemRpt" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfChemHemRpt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ChemHemRpt" nillable="true" type="tns:ChemHemRpt" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChemHemRpt">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="timestamp" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="author" type="tns:AuthorTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="facility" type="tns:TaggedText" />
+              <s:element minOccurs="0" maxOccurs="1" name="specimen" type="tns:LabSpecimenTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="results" type="tns:ArrayOfLabResultTO" />
+              <s:element minOccurs="0" maxOccurs="1" name="labSites" type="tns:ArrayOfSiteTO" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfLabResultTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LabResultTO" nillable="true" type="tns:LabResultTO" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="getChemHemReportsFromSite">
         <s:complexType>
           <s:sequence>
@@ -1771,34 +2002,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="TaggedPatientArrays">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractArrayTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="arrays" type="tns:ArrayOfTaggedPatientArray" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfTaggedPatientArray">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="TaggedPatientArray" nillable="true" type="tns:TaggedPatientArray" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="TaggedPatientArray">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:AbstractTaggedArrayTO">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="patients" type="tns:ArrayOfPatientTO" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="ArrayOfPatientTO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="PatientTO" nillable="true" type="tns:PatientTO" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="getPatientsWithUpdatedChemHemReports">
         <s:complexType>
           <s:sequence>
@@ -1978,6 +2181,8 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="BoolTO" nillable="true" type="tns:BoolTO" />
+      <s:element name="TaggedTextArray" nillable="true" type="tns:TaggedTextArray" />
       <s:element name="TaggedMedicationArrays" nillable="true" type="tns:TaggedMedicationArrays" />
       <s:element name="MedicationTO" nillable="true" type="tns:MedicationTO" />
       <s:element name="SmUserTO" nillable="true" type="tns:SmUserTO" />
@@ -2001,9 +2206,20 @@
       <s:element name="RegionArray" nillable="true" type="tns:RegionArray" />
       <s:element name="DataSourceArray" nillable="true" type="tns:DataSourceArray" />
       <s:element name="UserTO" nillable="true" type="tns:UserTO" />
-      <s:element name="TaggedTextArray" nillable="true" type="tns:TaggedTextArray" />
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="getIdProofingStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getIdProofingStatus" />
+  </wsdl:message>
+  <wsdl:message name="getIdProofingStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getIdProofingStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateIdProofingStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:updateIdProofingStatus" />
+  </wsdl:message>
+  <wsdl:message name="updateIdProofingStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:updateIdProofingStatusResponse" />
+  </wsdl:message>
   <wsdl:message name="getPrescriptionsHL7SoapIn">
     <wsdl:part name="parameters" element="tns:getPrescriptionsHL7" />
   </wsdl:message>
@@ -2255,6 +2471,22 @@
   </wsdl:message>
   <wsdl:message name="disconnectSoapOut">
     <wsdl:part name="parameters" element="tns:disconnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="getIdProofingStatusHttpGetIn">
+    <wsdl:part name="patientId" type="s:string" />
+    <wsdl:part name="patientName" type="s:string" />
+    <wsdl:part name="patientDOB" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getIdProofingStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:BoolTO" />
+  </wsdl:message>
+  <wsdl:message name="updateIdProofingStatusHttpGetIn">
+    <wsdl:part name="patientId" type="s:string" />
+    <wsdl:part name="patientName" type="s:string" />
+    <wsdl:part name="patientDOB" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="updateIdProofingStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:TaggedTextArray" />
   </wsdl:message>
   <wsdl:message name="getPrescriptionsHL7HttpGetIn">
     <wsdl:part name="pwd" type="s:string" />
@@ -2572,6 +2804,22 @@
   </wsdl:message>
   <wsdl:message name="disconnectHttpGetIn" />
   <wsdl:message name="disconnectHttpGetOut">
+    <wsdl:part name="Body" element="tns:TaggedTextArray" />
+  </wsdl:message>
+  <wsdl:message name="getIdProofingStatusHttpPostIn">
+    <wsdl:part name="patientId" type="s:string" />
+    <wsdl:part name="patientName" type="s:string" />
+    <wsdl:part name="patientDOB" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getIdProofingStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:BoolTO" />
+  </wsdl:message>
+  <wsdl:message name="updateIdProofingStatusHttpPostIn">
+    <wsdl:part name="patientId" type="s:string" />
+    <wsdl:part name="patientName" type="s:string" />
+    <wsdl:part name="patientDOB" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="updateIdProofingStatusHttpPostOut">
     <wsdl:part name="Body" element="tns:TaggedTextArray" />
   </wsdl:message>
   <wsdl:message name="getPrescriptionsHL7HttpPostIn">
@@ -2893,6 +3141,16 @@
     <wsdl:part name="Body" element="tns:TaggedTextArray" />
   </wsdl:message>
   <wsdl:portType name="MhvServiceSoap">
+    <wsdl:operation name="getIdProofingStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get patient's ROI status from all VistA sites</wsdl:documentation>
+      <wsdl:input message="tns:getIdProofingStatusSoapIn" />
+      <wsdl:output message="tns:getIdProofingStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateIdProofingStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update patient's ROI status</wsdl:documentation>
+      <wsdl:input message="tns:updateIdProofingStatusSoapIn" />
+      <wsdl:output message="tns:updateIdProofingStatusSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getPrescriptionsHL7">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get patient's prescriptions via MHV HL7 routine.</wsdl:documentation>
       <wsdl:input message="tns:getPrescriptionsHL7SoapIn" />
@@ -3105,6 +3363,16 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="MhvServiceHttpGet">
+    <wsdl:operation name="getIdProofingStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get patient's ROI status from all VistA sites</wsdl:documentation>
+      <wsdl:input message="tns:getIdProofingStatusHttpGetIn" />
+      <wsdl:output message="tns:getIdProofingStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateIdProofingStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update patient's ROI status</wsdl:documentation>
+      <wsdl:input message="tns:updateIdProofingStatusHttpGetIn" />
+      <wsdl:output message="tns:updateIdProofingStatusHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="getPrescriptionsHL7">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get patient's prescriptions via MHV HL7 routine.</wsdl:documentation>
       <wsdl:input message="tns:getPrescriptionsHL7HttpGetIn" />
@@ -3307,6 +3575,16 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="MhvServiceHttpPost">
+    <wsdl:operation name="getIdProofingStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get patient's ROI status from all VistA sites</wsdl:documentation>
+      <wsdl:input message="tns:getIdProofingStatusHttpPostIn" />
+      <wsdl:output message="tns:getIdProofingStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateIdProofingStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update patient's ROI status</wsdl:documentation>
+      <wsdl:input message="tns:updateIdProofingStatusHttpPostIn" />
+      <wsdl:output message="tns:updateIdProofingStatusHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="getPrescriptionsHL7">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get patient's prescriptions via MHV HL7 routine.</wsdl:documentation>
       <wsdl:input message="tns:getPrescriptionsHL7HttpPostIn" />
@@ -3510,6 +3788,24 @@
   </wsdl:portType>
   <wsdl:binding name="MhvServiceSoap" type="tns:MhvServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getIdProofingStatus">
+      <soap:operation soapAction="http://mdws.med.va.gov/mhv/MhvService/getIdProofingStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateIdProofingStatus">
+      <soap:operation soapAction="http://mdws.med.va.gov/mhv/MhvService/updateIdProofingStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getPrescriptionsHL7">
       <soap:operation soapAction="http://mdws.med.va.gov/mhv/MhvService/getPrescriptionsHL7" style="document" />
       <wsdl:input>
@@ -3891,6 +4187,24 @@
   </wsdl:binding>
   <wsdl:binding name="MhvServiceSoap12" type="tns:MhvServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getIdProofingStatus">
+      <soap12:operation soapAction="http://mdws.med.va.gov/mhv/MhvService/getIdProofingStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateIdProofingStatus">
+      <soap12:operation soapAction="http://mdws.med.va.gov/mhv/MhvService/updateIdProofingStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getPrescriptionsHL7">
       <soap12:operation soapAction="http://mdws.med.va.gov/mhv/MhvService/getPrescriptionsHL7" style="document" />
       <wsdl:input>
@@ -4272,6 +4586,24 @@
   </wsdl:binding>
   <wsdl:binding name="MhvServiceHttpGet" type="tns:MhvServiceHttpGet">
     <http:binding verb="GET" />
+    <wsdl:operation name="getIdProofingStatus">
+      <http:operation location="/getIdProofingStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateIdProofingStatus">
+      <http:operation location="/updateIdProofingStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getPrescriptionsHL7">
       <http:operation location="/getPrescriptionsHL7" />
       <wsdl:input>
@@ -4635,6 +4967,24 @@
   </wsdl:binding>
   <wsdl:binding name="MhvServiceHttpPost" type="tns:MhvServiceHttpPost">
     <http:binding verb="POST" />
+    <wsdl:operation name="getIdProofingStatus">
+      <http:operation location="/getIdProofingStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateIdProofingStatus">
+      <http:operation location="/updateIdProofingStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getPrescriptionsHL7">
       <http:operation location="/getPrescriptionsHL7" />
       <wsdl:input>
@@ -4998,16 +5348,16 @@
   </wsdl:binding>
   <wsdl:service name="MhvService">
     <wsdl:port name="MhvServiceSoap" binding="tns:MhvServiceSoap">
-      <soap:address location="http://mdws.vistaehr.com/mdws2/MhvService.asmx" />
+      <soap:address location="http://mdws.vainnovation.us/mdws2/MhvService.asmx" />
     </wsdl:port>
     <wsdl:port name="MhvServiceSoap12" binding="tns:MhvServiceSoap12">
-      <soap12:address location="http://mdws.vistaehr.com/mdws2/MhvService.asmx" />
+      <soap12:address location="http://mdws.vainnovation.us/mdws2/MhvService.asmx" />
     </wsdl:port>
     <wsdl:port name="MhvServiceHttpGet" binding="tns:MhvServiceHttpGet">
-      <http:address location="http://mdws.vistaehr.com/mdws2/MhvService.asmx" />
+      <http:address location="http://mdws.vainnovation.us/mdws2/MhvService.asmx" />
     </wsdl:port>
     <wsdl:port name="MhvServiceHttpPost" binding="tns:MhvServiceHttpPost">
-      <http:address location="http://mdws.vistaehr.com/mdws2/MhvService.asmx" />
+      <http:address location="http://mdws.vainnovation.us/mdws2/MhvService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
