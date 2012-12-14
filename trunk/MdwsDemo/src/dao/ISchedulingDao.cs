@@ -15,6 +15,8 @@ namespace MdwsDemo.dao
         HospitalLocationTO getClinicSchedulingDetails(string clinicId);
         IList<PatientTO> getPatientsByClinic(string clinicId, string startDate, string stopDate);
         RegionArray getSites();
-        AppointmentTO makeAppointment(string pid, string apptType, string clinicId, string apptTimestamp, string apptLength);
+        //AppointmentTO makeAppointment(string pid, string apptType, string clinicId, string apptTimestamp, string apptLength);
+        AppointmentTO makeAppointment(string pid, string clinicId, string apptTimestamp, string category, string subCategory, string apptLength, string apptType);
+
     }
 }

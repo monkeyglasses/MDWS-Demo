@@ -270,9 +270,11 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="clinicId" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="appointmentType" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="appointmentTimestamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="purpose" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="purposeSubcategory" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="appointmentLength" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="appointmentType" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -513,6 +515,20 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
+      <s:element name="select">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="selectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="selectResult" type="tns:PatientTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getVersion">
         <s:complexType />
       </s:element>
@@ -669,6 +685,8 @@
               <s:element minOccurs="0" maxOccurs="1" name="greeting" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="siteMessage" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="ids" type="tns:TaggedTextArray" />
+              <s:element minOccurs="0" maxOccurs="1" name="emailAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -690,6 +708,7 @@
       <s:element name="AppointmentTO" nillable="true" type="tns:AppointmentTO" />
       <s:element name="TaggedAppointmentArray" nillable="true" type="tns:TaggedAppointmentArray" />
       <s:element name="PatientArray" nillable="true" type="tns:PatientArray" />
+      <s:element name="PatientTO" nillable="true" type="tns:PatientTO" />
       <s:element name="string" nillable="true" type="s:string" />
       <s:element name="SiteTO" nillable="true" type="tns:SiteTO" />
       <s:element name="SiteArray" nillable="true" type="tns:SiteArray" />
@@ -741,6 +760,12 @@
   </wsdl:message>
   <wsdl:message name="getPatientsByClinicSoapOut">
     <wsdl:part name="parameters" element="tns:getPatientsByClinicResponse" />
+  </wsdl:message>
+  <wsdl:message name="selectSoapIn">
+    <wsdl:part name="parameters" element="tns:select" />
+  </wsdl:message>
+  <wsdl:message name="selectSoapOut">
+    <wsdl:part name="parameters" element="tns:selectResponse" />
   </wsdl:message>
   <wsdl:message name="getVersionSoapIn">
     <wsdl:part name="parameters" element="tns:getVersion" />
@@ -822,9 +847,11 @@
   </wsdl:message>
   <wsdl:message name="makeAppointmentHttpGetIn">
     <wsdl:part name="clinicId" type="s:string" />
-    <wsdl:part name="appointmentType" type="s:string" />
     <wsdl:part name="appointmentTimestamp" type="s:string" />
+    <wsdl:part name="purpose" type="s:string" />
+    <wsdl:part name="purposeSubcategory" type="s:string" />
     <wsdl:part name="appointmentLength" type="s:string" />
+    <wsdl:part name="appointmentType" type="s:string" />
   </wsdl:message>
   <wsdl:message name="makeAppointmentHttpGetOut">
     <wsdl:part name="Body" element="tns:AppointmentTO" />
@@ -842,6 +869,12 @@
   </wsdl:message>
   <wsdl:message name="getPatientsByClinicHttpGetOut">
     <wsdl:part name="Body" element="tns:PatientArray" />
+  </wsdl:message>
+  <wsdl:message name="selectHttpGetIn">
+    <wsdl:part name="pid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="selectHttpGetOut">
+    <wsdl:part name="Body" element="tns:PatientTO" />
   </wsdl:message>
   <wsdl:message name="getVersionHttpGetIn" />
   <wsdl:message name="getVersionHttpGetOut">
@@ -921,9 +954,11 @@
   </wsdl:message>
   <wsdl:message name="makeAppointmentHttpPostIn">
     <wsdl:part name="clinicId" type="s:string" />
-    <wsdl:part name="appointmentType" type="s:string" />
     <wsdl:part name="appointmentTimestamp" type="s:string" />
+    <wsdl:part name="purpose" type="s:string" />
+    <wsdl:part name="purposeSubcategory" type="s:string" />
     <wsdl:part name="appointmentLength" type="s:string" />
+    <wsdl:part name="appointmentType" type="s:string" />
   </wsdl:message>
   <wsdl:message name="makeAppointmentHttpPostOut">
     <wsdl:part name="Body" element="tns:AppointmentTO" />
@@ -941,6 +976,12 @@
   </wsdl:message>
   <wsdl:message name="getPatientsByClinicHttpPostOut">
     <wsdl:part name="Body" element="tns:PatientArray" />
+  </wsdl:message>
+  <wsdl:message name="selectHttpPostIn">
+    <wsdl:part name="pid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="selectHttpPostOut">
+    <wsdl:part name="Body" element="tns:PatientTO" />
   </wsdl:message>
   <wsdl:message name="getVersionHttpPostIn" />
   <wsdl:message name="getVersionHttpPostOut">
@@ -1030,6 +1071,11 @@
       <wsdl:input message="tns:getPatientsByClinicSoapIn" />
       <wsdl:output message="tns:getPatientsByClinicSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="select">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Select a patient</wsdl:documentation>
+      <wsdl:input message="tns:selectSoapIn" />
+      <wsdl:output message="tns:selectSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getVersion">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get MDWS Version</wsdl:documentation>
       <wsdl:input message="tns:getVersionSoapIn" />
@@ -1112,6 +1158,11 @@
       <wsdl:input message="tns:getPatientsByClinicHttpGetIn" />
       <wsdl:output message="tns:getPatientsByClinicHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="select">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Select a patient</wsdl:documentation>
+      <wsdl:input message="tns:selectHttpGetIn" />
+      <wsdl:output message="tns:selectHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="getVersion">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get MDWS Version</wsdl:documentation>
       <wsdl:input message="tns:getVersionHttpGetIn" />
@@ -1193,6 +1244,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a list of patients by clinic</wsdl:documentation>
       <wsdl:input message="tns:getPatientsByClinicHttpPostIn" />
       <wsdl:output message="tns:getPatientsByClinicHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="select">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Select a patient</wsdl:documentation>
+      <wsdl:input message="tns:selectHttpPostIn" />
+      <wsdl:output message="tns:selectHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="getVersion">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get MDWS Version</wsdl:documentation>
@@ -1298,6 +1354,15 @@
     </wsdl:operation>
     <wsdl:operation name="getPatientsByClinic">
       <soap:operation soapAction="http://mdws.medora.va.gov/SchedulingSvc/getPatientsByClinic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="select">
+      <soap:operation soapAction="http://mdws.medora.va.gov/SchedulingSvc/select" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1452,6 +1517,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="select">
+      <soap12:operation soapAction="http://mdws.medora.va.gov/SchedulingSvc/select" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getVersion">
       <soap12:operation soapAction="http://mdws.medora.va.gov/SchedulingSvc/getVersion" style="document" />
       <wsdl:input>
@@ -1592,6 +1666,15 @@
     </wsdl:operation>
     <wsdl:operation name="getPatientsByClinic">
       <http:operation location="/getPatientsByClinic" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="select">
+      <http:operation location="/select" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1746,6 +1829,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="select">
+      <http:operation location="/select" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getVersion">
       <http:operation location="/getVersion" />
       <wsdl:input>
@@ -1830,16 +1922,16 @@
   </wsdl:binding>
   <wsdl:service name="SchedulingSvc">
     <wsdl:port name="SchedulingSvcSoap" binding="tns:SchedulingSvcSoap">
-      <soap:address location="http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx" />
+      <soap:address location="http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx" />
     </wsdl:port>
     <wsdl:port name="SchedulingSvcSoap12" binding="tns:SchedulingSvcSoap12">
-      <soap12:address location="http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx" />
+      <soap12:address location="http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx" />
     </wsdl:port>
     <wsdl:port name="SchedulingSvcHttpGet" binding="tns:SchedulingSvcHttpGet">
-      <http:address location="http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx" />
+      <http:address location="http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx" />
     </wsdl:port>
     <wsdl:port name="SchedulingSvcHttpPost" binding="tns:SchedulingSvcHttpPost">
-      <http:address location="http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx" />
+      <http:address location="http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -46,7 +46,7 @@ namespace MdwsDemo.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx")]
         public string MdwsDemo_scheduling_SchedulingSvc {
             get {
                 return ((string)(this["MdwsDemo_scheduling_SchedulingSvc"]));

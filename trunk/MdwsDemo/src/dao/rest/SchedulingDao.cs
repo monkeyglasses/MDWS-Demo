@@ -85,7 +85,7 @@ namespace MdwsDemo.dao.rest
             throw new NotImplementedException();
         }
 
-        public AppointmentTO makeAppointment(string pid, string apptType, string clinicId, string apptTimestamp, string apptLength)
+        public AppointmentTO makeAppointment(string pid, string clinicId, string apptTimestamp, string category, string subCategory, string apptLength, string apptType)
         {
             selectPatient(pid); 
             // notice the POST!

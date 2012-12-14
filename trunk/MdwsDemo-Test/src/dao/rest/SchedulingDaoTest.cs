@@ -106,7 +106,7 @@ namespace MdwsDemo.dao.rest
 
             // now ready to make appt - we choose the first appt type and clinic in the returns from above - we also choose to make an appt as soon as the 
             // clinic opens - the appt length is the length specified for the clinic
-            AppointmentTO scheduledAppt = _dao.makeAppointment(pid, apptTypes[0].id, clinics[0].id, "3121206.080000", clinicWithDetails.appointmentLength);
+            AppointmentTO scheduledAppt = _dao.makeAppointment(pid, clinics[0].id, "3121206.080000", "N", "", clinicWithDetails.appointmentLength, apptTypes[0].id);
 
             Assert.IsNull(scheduledAppt.fault);
         }

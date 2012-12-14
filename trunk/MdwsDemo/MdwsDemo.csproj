@@ -62,6 +62,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Meds.aspx" />
     <Content Include="PatientSelection.aspx" />
+    <Content Include="Scheduling.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
@@ -74,6 +75,54 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="web\mhv\Calendar.aspx" />
+    <Content Include="web\mhv\My HealtheVet_files\body.css" />
+    <Content Include="web\mhv\My HealtheVet_files\book-leftnav.css" />
+    <Content Include="web\mhv\My HealtheVet_files\book-login.css" />
+    <Content Include="web\mhv\My HealtheVet_files\book-rightbar.css" />
+    <Content Include="web\mhv\My HealtheVet_files\button.css" />
+    <Content Include="web\mhv\My HealtheVet_files\custom-mhv-navigation.css" />
+    <Content Include="web\mhv\My HealtheVet_files\custom-mhv-tables.css" />
+    <Content Include="web\mhv\My HealtheVet_files\custom-mhv.css" />
+    <Content Include="web\mhv\My HealtheVet_files\delete.js" />
+    <Content Include="web\mhv\My HealtheVet_files\float.js" />
+    <Content Include="web\mhv\My HealtheVet_files\foresee-surveydef.js" />
+    <Content Include="web\mhv\My HealtheVet_files\foresee-trigger.js" />
+    <Content Include="web\mhv\My HealtheVet_files\form.css" />
+    <Content Include="web\mhv\My HealtheVet_files\header-banner-va760.jpg" />
+    <Content Include="web\mhv\My HealtheVet_files\header-link-vahome.gif" />
+    <Content Include="web\mhv\My HealtheVet_files\header_campaign.jpg" />
+    <Content Include="web\mhv\My HealtheVet_files\homeStyles2.css" />
+    <Content Include="web\mhv\My HealtheVet_files\icon_43_bluebutton.gif" />
+    <Content Include="web\mhv\My HealtheVet_files\icon_43_hearing_aid.gif" />
+    <Content Include="web\mhv\My HealtheVet_files\icon_43_pharmacy.gif" />
+    <Content Include="web\mhv\My HealtheVet_files\icon_43_vitals.gif" />
+    <Content Include="web\mhv\My HealtheVet_files\img_blueButton_165x64.jpg" />
+    <Content Include="web\mhv\My HealtheVet_files\img_welcome_580x250.jpg" />
+    <Content Include="web\mhv\My HealtheVet_files\layout.css" />
+    <Content Include="web\mhv\My HealtheVet_files\leftNav.js" />
+    <Content Include="web\mhv\My HealtheVet_files\mainStyles.css" />
+    <Content Include="web\mhv\My HealtheVet_files\menu.js" />
+    <Content Include="web\mhv\My HealtheVet_files\menufx.js" />
+    <Content Include="web\mhv\My HealtheVet_files\pageScripts%281%29.js" />
+    <Content Include="web\mhv\My HealtheVet_files\pageScripts.js" />
+    <Content Include="web\mhv\My HealtheVet_files\pane_calendar_mid.jpg" />
+    <Content Include="web\mhv\My HealtheVet_files\pane_messaging_mid.jpg" />
+    <Content Include="web\mhv\My HealtheVet_files\pane_rxrefill_mid.jpg" />
+    <Content Include="web\mhv\My HealtheVet_files\portlet.css" />
+    <Content Include="web\mhv\My HealtheVet_files\researchStyle.css" />
+    <Content Include="web\mhv\My HealtheVet_files\skin.js" />
+    <Content Include="web\mhv\My HealtheVet_files\spacer%281%29.gif" />
+    <Content Include="web\mhv\My HealtheVet_files\spacer.gif" />
+    <Content Include="web\mhv\My HealtheVet_files\util.js" />
+    <Content Include="web\mhv\My HealtheVet_files\webtrends.js" />
+    <Content Include="web\mhv\My HealtheVet_files\window-alert.css" />
+    <Content Include="web\mhv\My HealtheVet_files\window-leftnav.css" />
+    <Content Include="web\mhv\My HealtheVet_files\window-login.css" />
+    <Content Include="web\mhv\My HealtheVet_files\window-plain.css" />
+    <Content Include="web\mhv\My HealtheVet_files\window-rightbar.css" />
+    <Content Include="web\mhv\My HealtheVet_files\window.css" />
+    <Content Include="web\mhv\README.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -141,6 +190,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Scheduling.aspx.cs">
+      <DependentUpon>Scheduling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Scheduling.aspx.designer.cs">
+      <DependentUpon>Scheduling.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -153,7 +209,9 @@
     <Compile Include="src\dao\soap\ISchedulingDao.cs" />
     <Compile Include="src\dao\soap\SchedulingDao.cs" />
     <Compile Include="src\dao\soap\VistaDao.cs" />
+    <Compile Include="src\domain\TimeSlot.cs" />
     <Compile Include="src\MySession.cs" />
+    <Compile Include="src\utils\SchedulingUtils.cs" />
     <Compile Include="Web References\mdws\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -168,6 +226,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="web\mhv\Calendar.aspx.cs">
+      <DependentUpon>Calendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web\mhv\Calendar.aspx.designer.cs">
+      <DependentUpon>Calendar.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -203,10 +268,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>MdwsDemo_mdws_EmrSvc</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx%3fWSDL">
+    <WebReferenceUrl Include="http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx%3fWSDL">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\scheduling\</RelPath>
-      <UpdateFromURL>http://mdws.vainnovation.us/mdws2/SchedulingSvc.asmx%3fWSDL</UpdateFromURL>
+      <UpdateFromURL>http://mdws.vistaehr.com/mdws2/SchedulingSvc.asmx%3fWSDL</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -474,6 +539,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\scheduling\PatientArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\scheduling\PatientTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\scheduling\Reference.map">

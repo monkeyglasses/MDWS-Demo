@@ -75,8 +75,9 @@ namespace MdwsDemo_Test.dao.soap
         [Test]
         public void testGetAllMeds()
         {
-            _vistaDao.connect("901");
-            UserTO user = _vistaDao.login("04VEHU", "VEHU04");
+            //_vistaDao.connect("901");
+            //UserTO user = _vistaDao.login("04VEHU", "VEHU04");
+            _vistaDao.visit("Every good boy deserves fudge", "902", "901", "NEFARIOUS,USER", "2005", "123456789", "OR CPRS GUI CHART");
             PatientTO result = _vistaDao.select("3");
             _vistaDao.setupMultiSiteQuery("Every good boy deserves fudge");
 

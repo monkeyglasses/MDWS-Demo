@@ -11,8 +11,10 @@ namespace MdwsDemo.dao.soap
     public class SchedulingDaoTest
     {
         SchedulingDao _dao;
-        string _accessCode = "5821FOB";
-        string _verifyCode = "6446FDB~";
+        //string _accessCode = "5821FOB";
+        //string _verifyCode = "6446FDB~";
+        string _accessCode = "9952FRN";
+        string _verifyCode = "MQGS)874";
 
         [TestFixtureSetUp]
         public void testFixtureSetUp()
@@ -97,6 +99,10 @@ namespace MdwsDemo.dao.soap
             {
                 HospitalLocationTO clinicWithDetails = _dao.getClinicSchedulingDetails(clinic.id);
 
+                if (clinic.appointmentLength == "20")
+                {
+                    System.Console.WriteLine("{0}'s length is 20 mins", clinic.id);
+                }
                 Assert.IsNull(clinicWithDetails.fault);
                 Assert.IsFalse(String.IsNullOrEmpty(clinicWithDetails.appointmentLength), "Should receive appt length");
                 Assert.IsFalse(String.IsNullOrEmpty(clinicWithDetails.availability), "Should receive availability info");
@@ -123,6 +129,7 @@ namespace MdwsDemo.dao.soap
             }
         }
 
+        // The following test illustrates scheduling an appointment in Vista 
         [Test]
         public void testMakeAppointment()
         {
@@ -137,9 +144,8 @@ namespace MdwsDemo.dao.soap
             HospitalLocationTO clinicWithDetails = _dao.getClinicSchedulingDetails(clinics[0].id);
             // we now have the details for the selected clinic and can show those to the user so a timeslot can be selected and we can pass the correct params to makeAppointment
 
-            // now ready to make appt - we choose the first appt type and clinic in the returns from above - we also choose to make an appt as soon as the 
-            // clinic opens - the appt length is the length specified for the clinic
-            AppointmentTO scheduledAppt = _dao.makeAppointment(pid, apptTypes[0].id, clinics[0].id, clinicWithDetails.clinicDisplayStartTime, clinicWithDetails.appointmentLength);
+            // note we hard coded the vista format timestamp here, we also hard coded the category as a suitable call to retrieve the categories needs to be developed and exposed
+            AppointmentTO scheduledAppt = _dao.makeAppointment(pid, clinics[0].id, "3121210.10", "N", "", clinicWithDetails.appointmentLength, apptTypes[0].id);
 
             Assert.IsNull(scheduledAppt.fault);
         }

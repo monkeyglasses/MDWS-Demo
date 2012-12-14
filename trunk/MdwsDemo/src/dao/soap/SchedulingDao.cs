@@ -149,10 +149,10 @@ namespace MdwsDemo.dao.soap
             return patients;
         }
 
-        public AppointmentTO makeAppointment(string pid, string apptType, string clinicId, string apptTimestamp, string apptLength)
+        public AppointmentTO makeAppointment(string pid, string clinicId, string apptTimestamp, string category, string subCategory, string apptLength, string apptType)
         {
             selectPatient(pid);
-            AppointmentTO scheduledAppt = _svc.makeAppointment(clinicId, apptType, apptTimestamp, apptLength);
+            AppointmentTO scheduledAppt = _svc.makeAppointment(clinicId, apptTimestamp, category, subCategory, apptLength, apptType);
             if (scheduledAppt.fault != null)
             {
                 throw new ApplicationException("Unable to make appointment: " + scheduledAppt.fault.message);
@@ -160,12 +160,24 @@ namespace MdwsDemo.dao.soap
             return scheduledAppt;
         }
 
-        // we're going to use the EmrSvc facade to select our patient since the select function isn't exposed on SchedulingSvc
-        internal void selectPatient(string pid)
+        // This call was implemented as part of a demo - the service is not currently available on the internet
+        //public esb.appointmentResponse makeAppointmentEsb(string appointmentDate, string appointmentLength, string clinicIen, string patientIen, string patientSsn)
+        //{
+        //    esb.AppointmentWorkflowService svc = new esb.AppointmentWorkflowService();
+        //    esb.appointmentResponse response = svc.makeAppointmentWorkflow(new esb.appointment()
+        //    {
+        //        appointmentDate = appointmentDate,
+        //        appointmentLength = appointmentLength, 
+        //        clinicIen = clinicIen, 
+        //        patientIen = patientIen, 
+        //        patientSsn = patientSsn
+        //    });
+        //    return response;
+        //}
+
+        internal PatientTO selectPatient(string pid)
         {
-            MdwsDemo.mdws.EmrSvc emrSvc = new mdws.EmrSvc();
-            emrSvc.CookieContainer = _svc.CookieContainer; // share state
-            emrSvc.select(pid);
+            return _svc.select(pid);
         }
     }
 }

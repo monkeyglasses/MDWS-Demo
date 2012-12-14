@@ -44,6 +44,8 @@ namespace MdwsDemo.scheduling {
         
         private System.Threading.SendOrPostCallback getPatientsByClinicOperationCompleted;
         
+        private System.Threading.SendOrPostCallback selectOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getVersionOperationCompleted;
         
         private System.Threading.SendOrPostCallback addDataSourceOperationCompleted;
@@ -120,6 +122,9 @@ namespace MdwsDemo.scheduling {
         
         /// <remarks/>
         public event getPatientsByClinicCompletedEventHandler getPatientsByClinicCompleted;
+        
+        /// <remarks/>
+        public event selectCompletedEventHandler selectCompleted;
         
         /// <remarks/>
         public event getVersionCompletedEventHandler getVersionCompleted;
@@ -266,30 +271,34 @@ namespace MdwsDemo.scheduling {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://mdws.medora.va.gov/SchedulingSvc/makeAppointment", RequestNamespace="http://mdws.medora.va.gov/SchedulingSvc", ResponseNamespace="http://mdws.medora.va.gov/SchedulingSvc", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public AppointmentTO makeAppointment(string clinicId, string appointmentType, string appointmentTimestamp, string appointmentLength) {
+        public AppointmentTO makeAppointment(string clinicId, string appointmentTimestamp, string purpose, string purposeSubcategory, string appointmentLength, string appointmentType) {
             object[] results = this.Invoke("makeAppointment", new object[] {
                         clinicId,
-                        appointmentType,
                         appointmentTimestamp,
-                        appointmentLength});
+                        purpose,
+                        purposeSubcategory,
+                        appointmentLength,
+                        appointmentType});
             return ((AppointmentTO)(results[0]));
         }
         
         /// <remarks/>
-        public void makeAppointmentAsync(string clinicId, string appointmentType, string appointmentTimestamp, string appointmentLength) {
-            this.makeAppointmentAsync(clinicId, appointmentType, appointmentTimestamp, appointmentLength, null);
+        public void makeAppointmentAsync(string clinicId, string appointmentTimestamp, string purpose, string purposeSubcategory, string appointmentLength, string appointmentType) {
+            this.makeAppointmentAsync(clinicId, appointmentTimestamp, purpose, purposeSubcategory, appointmentLength, appointmentType, null);
         }
         
         /// <remarks/>
-        public void makeAppointmentAsync(string clinicId, string appointmentType, string appointmentTimestamp, string appointmentLength, object userState) {
+        public void makeAppointmentAsync(string clinicId, string appointmentTimestamp, string purpose, string purposeSubcategory, string appointmentLength, string appointmentType, object userState) {
             if ((this.makeAppointmentOperationCompleted == null)) {
                 this.makeAppointmentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmakeAppointmentOperationCompleted);
             }
             this.InvokeAsync("makeAppointment", new object[] {
                         clinicId,
-                        appointmentType,
                         appointmentTimestamp,
-                        appointmentLength}, this.makeAppointmentOperationCompleted, userState);
+                        purpose,
+                        purposeSubcategory,
+                        appointmentLength,
+                        appointmentType}, this.makeAppointmentOperationCompleted, userState);
         }
         
         private void OnmakeAppointmentOperationCompleted(object arg) {
@@ -358,6 +367,35 @@ namespace MdwsDemo.scheduling {
             if ((this.getPatientsByClinicCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getPatientsByClinicCompleted(this, new getPatientsByClinicCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://mdws.medora.va.gov/SchedulingSvc/select", RequestNamespace="http://mdws.medora.va.gov/SchedulingSvc", ResponseNamespace="http://mdws.medora.va.gov/SchedulingSvc", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public PatientTO select(string pid) {
+            object[] results = this.Invoke("select", new object[] {
+                        pid});
+            return ((PatientTO)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void selectAsync(string pid) {
+            this.selectAsync(pid, null);
+        }
+        
+        /// <remarks/>
+        public void selectAsync(string pid, object userState) {
+            if ((this.selectOperationCompleted == null)) {
+                this.selectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnselectOperationCompleted);
+            }
+            this.InvokeAsync("select", new object[] {
+                        pid}, this.selectOperationCompleted, userState);
+        }
+        
+        private void OnselectOperationCompleted(object arg) {
+            if ((this.selectCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.selectCompleted(this, new selectCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1405,6 +1443,10 @@ namespace MdwsDemo.scheduling {
         
         private TaggedTextArray idsField;
         
+        private string emailAddressField;
+        
+        private string usernameField;
+        
         /// <remarks/>
         public string name {
             get {
@@ -1542,6 +1584,26 @@ namespace MdwsDemo.scheduling {
             }
             set {
                 this.idsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string emailAddress {
+            get {
+                return this.emailAddressField;
+            }
+            set {
+                this.emailAddressField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string username {
+            get {
+                return this.usernameField;
+            }
+            set {
+                this.usernameField = value;
             }
         }
     }
@@ -3274,6 +3336,32 @@ namespace MdwsDemo.scheduling {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((PatientArray)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void selectCompletedEventHandler(object sender, selectCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class selectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal selectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public PatientTO Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((PatientTO)(this.results[0]));
             }
         }
     }
