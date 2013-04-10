@@ -115,7 +115,7 @@ namespace MdwsDemo.dao.soap
         [Test]
         public void testUpdate()
         {
-            String knownIens = "16";
+            String knownIens = "16,";
             // update works mostly the same way as create
             Dictionary<String, String> fieldsAndValues = new Dictionary<string, string>();
             fieldsAndValues.Add(".01", "CHANGING MY REMOTE APPLICATION NAME");

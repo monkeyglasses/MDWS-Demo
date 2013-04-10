@@ -49,7 +49,7 @@ namespace MdwsDemo.dao.soap
         {
             // sample serialized Dictionary<String, String>: [{\"Key\":\"Key01\",\"Value\":\"Value01\"},{\"Key\":\"Key02\",\"Value\":\"Value02\"},{\"Key\":\"Key03\",\"Value\":\"Value03\"}]
             string dictString = JsonUtils.Serialize<Dictionary<String, String>>(fieldsAndValues); // to make the API simple, we serialize our dictionary to a string. JSON serialization is widely available in all major programming languages. It would also be trivial to implement your own serializer that passed the format MDWS wants
-            TextTO result = _svc.update(dictString, vistaFile, iens);
+            TextTO result = _svc.update(dictString, iens, vistaFile);
             if (result.fault != null)
             {
                 throw new Exception(result.fault.message);
