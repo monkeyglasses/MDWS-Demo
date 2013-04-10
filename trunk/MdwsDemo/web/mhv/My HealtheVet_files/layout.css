@@ -1,0 +1,32 @@
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Layouts
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-layout, .bea-portal-layout-grid, .bea-portal-layout-border, .bea-portal-layout-flow
+{
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.bea-portal-layout-placeholder-container
+{
+    padding: 0px;
+    margin: 0px;
+    vertical-align: top;
+}
+
+.bea-portal-layout-placeholder
+{
+    padding: 0px;
+    margin: 0px;
+}
+.bea-portal-layout-placeholder-container-east, .bea-portal-layout-placeholder-container-west, .bea-portal-layout-placeholder-container-north, .bea-portal-layout-placeholder-container-south, .bea-portal-layout-placeholder-container-center
+{
+    padding: 0px;
+    margin: 0px;
+    vertical-align: top;
+}
+

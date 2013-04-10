@@ -1,0 +1,175 @@
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// W S R P   ( v 0 . 9 2 )   S T A N D A R D   P O R T L E T   C S S
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+
+/*   F O N T S   */
+
+
+.portlet-font, .portlet-font-dim
+{
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 1.0em;
+}
+
+.portlet-font
+{
+    color: #333333;
+}
+
+.portlet-font-dim
+{
+    color: #999999;
+}
+
+
+/*   M E S S A G E S   */
+
+
+.portlet-msg-status
+{
+    font-style: italic;
+}
+
+.portlet-msg-info
+{
+    font-weight: bold;
+}
+
+.portlet-msg-error
+{
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.portlet-msg-alert
+{
+    font-style: italic;
+    font-weight: bold;
+}
+
+.portlet-msg-success
+{
+    color: #007A00;
+    font-weight: bold;
+}
+
+
+/*   S E C T I O N S   */
+
+
+.portlet-section-header
+{
+    color: #041D9E;
+    font-size: 1.2em;
+    font-weight: bold;
+	margin: 3px 0px;
+    padding: 0px;
+}
+
+.portlet-section-body
+{
+    background-color: #FFFFFF;
+}
+
+.portlet-section-alternate
+{
+    background-color: #AEC2D8;
+}
+
+.portlet-section-selected
+{
+    background-color: #9999FF;
+    color: #FFFFFF;
+}
+
+.portlet-section-subheader
+{
+    color: #AEC2D8;
+    font-weight: bold;
+    padding: 2px 0px;
+}
+
+.portlet-section-footer
+{
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.portlet-section-text
+{
+}
+
+
+/*   F O R M S   */
+
+
+.portlet-form-label
+{
+}
+
+.portlet-form-input-field
+{
+}
+
+.portlet-form-button
+{
+}
+
+.portlet-icon-label
+{
+}
+
+.portlet-dlg-icon-label
+{
+}
+
+.portlet-form-field-label
+{
+}
+
+.portlet-form-field
+{
+}
+
+
+/*   M E N U S   */
+
+
+.portlet-menu
+{
+}
+
+.portlet-menu-item
+{
+}
+
+.portlet-menu-item-selected
+{
+}
+
+.portlet-menu-item-hover
+{
+}
+
+.portlet-menu-item-hover-selected
+{
+}
+
+.portlet-menu-cascade-item
+{
+}
+
+.portlet-menu-cascade-item-selected
+{
+}
+
+.portlet-menu-description
+{
+}
+
+.portlet-menu-caption
+{
+}

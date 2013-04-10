@@ -19,7 +19,11 @@ namespace MdwsDemo.web.mhv
         string _siteCode = "100";
         string _accessCode = "9952FRN";
         string _verifyCode = "MQGS)874";
-        string _patient = "51";
+        string _patient = "96";
+        // 91 - TINA FEY
+        // 24 - JOHN DEMO
+        // 51 - DANIEL REED
+        // 96 - JAMES BOND
         string _ssn = "222334444";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -43,6 +47,7 @@ namespace MdwsDemo.web.mhv
                 //_dao.login("1programmer", "programmer1", "");
                 HospitalLocationTO clinic = _dao.getClinicSchedulingDetails("12");
                 PatientTO selectedPatient =_dao.selectPatient(_patient);
+                _ssn = selectedPatient.ssn;
                 labelPatientName.Text = selectedPatient.name;
                 _dao.disconnect();
                 // just do this once at launch
@@ -77,6 +82,13 @@ namespace MdwsDemo.web.mhv
             try
             {
                 //esb.appointmentResponse response = new SchedulingDao().makeAppointmentEsb(dateString, "30", "12", _patient, _ssn);
+
+                //if (response != null)
+                //{
+                //    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Your appointment is set for " +
+                //        selectedSlot.Start.ToString("MM/dd") + " at " + selectedSlot.Start.ToString("HH:mm") +
+                //        ". Good job.');", true);
+                //}
 
                 _dao = new SchedulingDao();
                 UserTO user = _dao.connectAndLogin(_siteCode, _accessCode, _verifyCode);

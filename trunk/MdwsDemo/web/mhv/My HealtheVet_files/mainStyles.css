@@ -1,0 +1,231 @@
+	/* Airlock Specific Styles */
+	#prBanner {DISPLAY: none}
+	#content-main H1 {font-family:Arial, Verdana, Sans-Serif;font-size:16pt;font-weight:bold;color:#034c81;margin:15px 0px 0px 5px;}
+	#content-main H1 SUP {font-size:13pt;}
+	#content-main H2 {font-family:Arial, Verdana, Sans-Serif;font-size:13pt;font-weight:bold;color:#034c81;margin:10px 0px 5px 5px;}
+	#content-main H2 SUP {font-size:11pt;}
+	#content-main H2 A:LINK, #content-main H2 A:VISITED {color:#034c81;text-decoration:none;}
+	#content-main H3 {font-family:Arial, Verdana, Sans-Serif;font-size:12pt;font-weight:bold;color:#034c81;margin:10px 0px 5px 5px;}
+	#content-main H3 SUP {font-size:12pt;}
+	#content-main H3 A:LINK, #content-main H3 A:VISITED {color:#034c81;text-decoration:none;}
+	#content-main H3 A:HOVER, #content-main H3 A:ACTIVE {color:#034c81;text-decoration:underline;}
+	#content-main H4 {font-family:Arial, Verdana, Sans-Serif;font-size:12pt;font-weight:bold;color:#034c81;margin:10px 0px 5px 0px;}
+	#content-main H4 SUP {font-size:12pt;}
+	#content-main H4 A:LINK, #content-main H4 A:VISITED {color:#034c81;text-decoration:underline;}
+	#content-main H4 A:HOVER, #content-main H4 A:ACTIVE {color:#034c81;text-decoration:none;}
+	#content-main H5 {font-family:Arial, Verdana, Sans-Serif;font-size:10pt;font-weight:bold;color:#034c81;margin:0px 0px 5px 0px;}
+	#content-main H5 SUP {font-size:10pt;}
+	#content-main H5 A:LINK, #content-main H5 A:VISITED {color:#034c81;text-decoration:underline;}
+	#content-main H5 A:HOVER, #content-main H5 A:ACTIVE {color:#034c81;text-decoration:none;}
+	#content-main {margin:0px;padding:0px;}
+	.btmBorder {border-bottom:1px solid #757d84;}
+	.dropShadowBox {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/airlock/bg_helpBoxTop.jpg);background-repeat:repeat-x;background-color:#fff;}
+	.helpBox {padding:5px;min-height:150px;height:150px;background-color:#fff;}
+	.helpTable TD {padding-bottom:10px;padding-left:5px;}
+	.loginTable {border:1px solid #757d84;background-color:#AFC1d7;}
+	.loginTop {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/airlock/bg_login.jpg);background-repeat:repeat-x;background-color:#AFC1d7;}
+	.loginFormCell {padding:5px 10px 5px 10px;}
+	.loginFormCell FORM {margin-bottom:0px;}
+	.loginFormCell LABEL {font-weight:normal;}
+	.loginFormCell INPUT.mhv-input-button {background-color: #930303;border-top: 1px solid #FFFFFF;border-right: 1px solid #333333;border-bottom: 1px solid #333333;border-left: 1px solid #FFFFFF;color: #FFFFFF;cursor: hand;font-size: 1.0em;margin: 5px 10px 0px 0px;padding: 0px 3px;text-align: center;}
+	.mhv-button-container-align-right {text-align:right;}
+	.registerCell {margin-top:0px;padding:5px 10px 5px 10px;font-family:Arial,Verdana,sans-serif;font-size:.95em;color:#333;line-height:normal;}
+	.registerCell A {color:#333;}
+	.registerCell A:HOVER {text-decoration:none;color:#000;}
+	.registerCell LABEL {font-weight:normal;}
+	.registerCell INPUT.mhv-input-button {background-color: #930303;border-top: 1px solid #FFFFFF;border-right: 1px solid #333333;border-bottom: 1px solid #333333;border-left: 1px solid #FFFFFF;color: #FFFFFF;cursor: hand;font-size: 1.0em;margin: 10px 10px 0px 0px;padding: 0px 3px;text-align: center;}
+	.smaller {font-size:9pt;}
+	.squareCell {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/airlock/bg_titleBar.jpg);background-repeat:repeat-x;border:1px solid #757d84;padding:5px;}
+	.squareCell P {font-size:.9em;}
+	.squareCell UL {font-size:.9em;}
+	.tabCell {border-top:1px solid #757d84;border-right:1px solid #757d84;border-left:1px solid #757d84;height:36px;width:220px;background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/airlock/bg_tabTitle.jpg);background-repeat:no-repeat;margin:0px;padding:0px;}
+	.tabMainCell {border-bottom:1px solid #757d84;border-right:1px solid #757d84;border-left:1px solid #757d84;min-height:100px;height:100px;padding:10px 5px 10px 5px;font-size:.9em;}
+	.tabMainCell P {font-size:.9em;}
+	.tabMainCell UL {font-size:.9em;}
+	
+
+	/* Home Page Specific Styles */
+	P.dateLine {margin:0px;font-size:8pt;text-transform:uppercase;margin-bottom:5px;}
+	P.byLine {margin:0px;font-size:8pt;text-transform:capitalize;}
+	P {font-size:9pt;margin-top:5px;}
+	#home-leftColumn {}
+	#home-rightColumn {padding-left:3px;}
+	#home-features {margin-bottom:5px;border:1px solid #000;}
+	.home-box {margin-bottom:5px;}
+	.contentCell {background-color:#fff;border-left:1px solid #757C84;border-bottom:1px solid #757C84;border-right:1px solid #757C84;padding:5px;}
+	.titleTab {border-left:1px solid #757C84;border-top:1px solid #757C84;border-right:1px solid #757C84;padding:0px 5px 0px 5px;
+		background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/home/bg_cellGradient.jpg);background-position:top;background-repeat:repeat-x;background-color:#fff;}
+		
+	.titleTabLeft {border-left:1px solid #757C84;border-top:1px solid #757C84;padding:0px 5px 0px 5px;background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/home/bg_cellGradient.jpg);background-position:right top;background-repeat:no-repeat;background-color:#fff;}
+	
+	.titleTabRight {border-top:1px solid #757C84;border-right:1px solid #757C84;padding:0px 5px 0px 5px;background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/home/bg_cellGradient.jpg);background-position:right top;background-repeat:no-repeat;background-color:#fff;}
+	
+	.titleTab H1 {font-family:Arial, Verdana, Sans-Serif;font-size:16pt;font-weight:bold;color:#738aa5;margin:10px 0px 0px 0px;}
+	.titleTab H1 SUP {font-size:13pt;}
+	.titleTab H4 {font-family:Arial, Verdana, Sans-Serif;font-size:11pt;font-weight:bold;color:#738aa5;margin:10px 0px 0px 0px;}
+	.rightTab {border-bottom:1px solid #757C84;padding:5px;}
+	.featureTable TD {border:1px solid #efefef;background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/home/bg_greyCellGradient.jpg);background-repeat:repeat-x; background-position:top;}
+	.featureTable H2 {font-family:Arial, Verdana, Sans-Serif;font-size:14pt;font-weight:bold;color:#738aa5;margin:10px 0px 0px 5px;}
+	.featureTable H2 SUP {font-size:11pt;}
+	.featureTable H2 A:LINK, .featureTable H2 A:VISITED {color:#33688e;text-decoration:none;}
+	.featureTable H2 A:HOVER {color:#33688e;text-decoration:underline;}
+	.featureTable H3 {font-family:Arial, Verdana, Sans-Serif;font-size:13pt;font-weight:bold;color:#738aa5;margin:0px;}
+	.featureTable H3 SUP {font-size:11pt;}
+	.featureTable H3 A:LINK, .featureTable H3 A:VISITED {color:#33688e;text-decoration:none;}
+	.featureTable H3 A:HOVER {color:#33688e;text-decoration:underline;}
+	.featCell {padding:5px;}
+	.imgDivLeft {float:left;margin:0px 10px 0px 0px;}
+	.imgDivRight {float:right;margin:0px 0px 0px 10px;}
+	.featCell IMG {margin:5px 5px 0px 0px;padding:0px;border:1px solid #ccc;}
+	.moreLink {font-size:8pt;font-weight:bold;}
+	.moreLink:HOVER {color:#891228;}
+	.mainFeat P{margin-left:5px;margin-right:5px;}
+	.cPanelCell IMG {margin:0px 5px 0px 0px;}
+	.cPanelCell { vertical-align:middle;}
+	.cPanelCell P, .cPanelCell A {font-family:Arial, Verdana, Sans-Serif;font-size:9pt;font-weight:bold;color:#33688e;margin:0px 0px 0px 0px;}
+	.noPad {padding:0px;}
+	.pPad P{padding:5px 5px 0px 5px;margin:5px 5px 0px 0px;}
+	.gradBG {background-position:top;background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/home/bg_cellGradient.jpg);background-repeat:no-repeat;}
+	.topBrdr {border-top:1px solid #ccc;}
+	
+	/* Other Styles  (researchStyles.css) */
+		.bea-portal-rightbar-window-content UL {margin-left:20px;margin-top:5px;font-size:8pt;}
+	.bea-portal-rightbar-book {padding:0px;}
+	.bea-portal-rightbar-book-content {margin:0px;}
+	.bea-portal-rightbar-window {margin:5px;}
+	.bea-portal-leftnav-book {margin:5px 0px 5px 0px;border:none;}
+	.bea-portal-book-content {padding:5px;}
+	.bea-portal-book-content .bea-portal-book-content {margin:0px;padding:0px;}	
+	DIV.bea-portal-window-content-grey {min-height:40px;height:auto;padding:5px;}
+	DIV.bea-portal-window-content-grey {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/bg_headline_gradient.jpg);background-repeat:repeat-x;}
+	DIV.bea-portal-window-content-grey H1 {font-family:Arial, Verdana, Sans-Serif;font-size:16pt;font-weight:bold;color:#738aa5;margin:15px 0px 0px 0px;}
+	DIV.bea-portal-window-content-grey H1 SUP {font-size:13pt;}
+	DIV.bea-portal-window-content-grey H2 {font-family:Arial, Verdana, Sans-Serif;font-size:13pt;font-weight:bold;color:#738aa5;margin:10px 0px 5px 5px;}
+	DIV.bea-portal-window-content-grey H2 SUP {font-size:11pt;}
+	DIV.bea-portal-window-content-grey H2 A:LINK, DIV.bea-portal-window-content-grey H2 A:VISITED {color:#33688e;text-decoration:none;}
+	DIV.bea-portal-window-content-grey H3 {font-family:Arial, Verdana, Sans-Serif;font-size:11pt;font-weight:bold;color:#33688e;margin:10px 0px 5px 5px;}
+	DIV.bea-portal-window-content-grey H3 SUP {font-size:11pt;}
+	DIV.bea-portal-window-content-grey H3 A:LINK, DIV.bea-portal-window-content-grey H3 A:VISITED {color:#33688e;text-decoration:none;}
+	DIV.bea-portal-window-content-grey H3 A:HOVER, DIV.bea-portal-window-content-grey H3 A:ACTIVE {color:#738aa5;text-decoration:underline;}
+	DIV.bea-portal-window-content-grey .headlineRule {border:1px solid #e7e7e7;margin:0px 0px 10px 0px;}
+	DIV.bea-portal-window-content-grey .dashRule {border:1px dashed #e7e7e7;margin:5px 5px 10px 5px;}
+	DIV.bea-portal-window-content-grey .dashRule2 {border:1px dashed #e7e7e7;margin:0px 5px 0px 5px;}
+	DIV.bea-portal-window-content-grey .solidRule {border:1px solid #e7e7e7;margin:0px 0px 10px 0px;}
+	DIV.bea-portal-window-content-grey .solidRule2 {border:1px solid #e7e7e7;margin:0px 0px 0px 0px;}
+	.introText {margin:5px 8px 20px 8px;}
+	#paneTable {margin:auto;margin-bottom:20px;}
+	.pane_standard_top {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/pane_standard_top.jpg);background-repeat:no-repeat;height:59px;min-height:59px;}
+	#pane_healtyLivingCenters_top {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/pane_healthyLivingCenters_top.jpg);background-repeat:no-repeat;height:59px;min-height:59px;}
+	#pane_disAndCond_top {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/pane_disAndCond_top.jpg);background-repeat:no-repeat;height:59px;min-height:59px;}
+	#pane_medicalLibrary_top {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/pane_medicalLibrary_top.jpg);background-repeat:no-repeat;height:59px;min-height:59px;}
+	#pane_mentalHealth_top {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/pane_mentalHealth_top.jpg);background-repeat:no-repeat;height:59px;min-height:59px;}
+	TD#pane_healtyLivingCenters_btm {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/pane_bg_healthyLivingCentersText.jpg);background-repeat:no-repeat;}
+	TD#pane_disAndCond_btm {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/pane_bg_disAndCondText.jpg);background-repeat:no-repeat;}
+	TD#pane_medicalLibrary_btm {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/pane_bg_medicalLibraryText.jpg);background-repeat:no-repeat;}
+	TD#pane_mentalHealth_btm {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/pane_bg_mentalHealthText.jpg);background-repeat:no-repeat;}
+	TD.pane_bottom {font-size:8pt;background-color:#f5f4f9;margin:0px;padding:5px 5px 10px 5px;}
+
+	.content720 {width:720px;margin:auto;}
+	.content720 P {margin-bottom:5px;}
+	A.moreLink {font-family:arial,verdana,sans-serif;font-size:8pt;font-weight:bold;color:#648ebc;text-decoration:none;}
+	A.moreLink:HOVER {color:#33688e;text-decoration:underline;}
+	A.sectLink {font-family:arial black,verdana,sans-serif;font-size:9pt;color:#33688e;text-decoration:none;}
+	A.sectLink:HOVER {color:#648ebc;text-decoration:underline;}
+	.healthFactTable,.healthTipTable {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/bg_healthFact.jpg);background-repeat:repeat-x;padding:10px 10px 10px 10px;margin:auto;}
+	.healthTipTable{margin:auto; width:inherit;}
+	.healthFactTable H5,.healthTipTable H5 {font-family:arial,verdana,sans-serif;font-size:10pt;color:#f2994d; font-style:normal;font-weight:bold;text-transform:uppercase;margin:0px 0px 5px 0px;}
+	.healthFactTable P,.healthTipTable P {margin:5px 0px 10px 0px;}
+	.tipLinks A{font-family:Verdana, Arial, Helvetica, sans-serif;font-weight:bold;font-size:8pt;color:#4378AE;text-decoration:none;}
+	.tipLinks A:HOVER{color:#113366;text-decoration:underline;}
+
+	.dashTable {border-top:1px dashed #e7e7e7;border-bottom:1px dashed #e7e7e7;padding:5px;margin:auto;width:inherit;}
+	.iconTable {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/bg_healthFact.jpg);background-repeat:repeat-x;padding:5px;margin:auto;width:inherit;}
+	.iconTable P,.dashTable P {margin-bottom:5px;}
+	.iconTable2 P {margin:0px 0px 5px 5px;font-size:8.5pt;}
+	.iconTable IMG,.imgPad {margin-right:5px;}
+	.iconTable A,.dashTable A{font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:9pt;color:#4378AE;text-decoration:none;}
+	.iconTable A:HOVER,.dashTable A:HOVER{color:#113366;text-decoration:underline;}
+	.iconTable A IMG.iconLink {border:1px solid #fff;}
+	.iconTable A:HOVER IMG.iconLink {border:1px solid #000066;}
+	.iconTable H3,.dashTable H3, .tocBox H3 {font-family:Arial, Verdana, Sans-Serif;font-size:10pt;font-weight:bold;color:#33688e;margin:5px 0px 0px 5px;}
+	.iconTable H3 A,.dashTable H3 A{color:#33688e;text-decoration:none;}
+	.iconTable H3 A:HOVER,.dashTable H3 A:HOVER {color:#113366;text-decoration:underline;}
+	.iconTable H4,.iconTable2 H4,.dashTable H4 {font-family:Arial, Verdana, Sans-Serif;font-size:10pt;font-weight:bold;color:#33688e;margin:5px 0px 5px 5px;}
+	.iconTable H4 A,.iconTable2 H4 A,.dashTable H4 A, .conditionTable H4 A {color:#33688e;text-decoration:none;}
+	.iconTable H4 A:HOVER,.iconTable2 H4 A:HOVER,.dashTable H4 A:HOVER{color:#113366;text-decoration:underline;}
+	.conditionTable H4 A:HOVER {color:#113366;text-decoration:underline;}
+	.iconTable_dashed {padding:5px 0px 3px 0px;border-bottom:1px dashed #e7e7e7;}
+	.iconTable_rtBorder, .rtBorder {border-right:1px solid #e7e7e7;}
+	DIV.bea-portal-window-content-grey .iconTable H2 {font-family:Arial, Verdana, Sans-Serif;font-size:13pt;font-weight:bold;color:#33688e;margin:10px 0px 5px 10px;}
+	DIV.bea-portal-window-content-grey .dashTable H2 {font-family:Arial, Verdana, Sans-Serif;font-size:13pt;font-weight:bold;color:#33688e;margin:10px 0px 0px 10px;}
+	DIV.bea-portal-window-content-grey .iconTable H2 A:LINK, .iconTable H2 A:VISITED,	DIV.bea-portal-window-content-grey .dashTable H2 A:LINK, .dashTable H2 A:VISITED  {font-family:Arial, Verdana, Sans-Serif;font-size:13pt;color:#33688e;text-decoration:none;}
+	DIV.bea-portal-window-content-grey .iconTable H2 A:HOVER, .iconTable H2 A:ACTIVE,	DIV.bea-portal-window-content-grey .dashTable H2 A:HOVER, .dashTable H2 A:ACTIVE  {font-family:Arial, Verdana, Sans-Serif;font-size:13pt;color:#738aa5;text-decoration:underline;}
+	.smaller {font-size:.9em;}
+	.atoz, .atoz A {font-size:1.05em;}
+	.atoz A:HOVER {text-decoration:underline;}
+	.noTopMar5Left {margin-top:0px;margin-left:5px;}
+	.medlinePlusSubmit {background-color:#431175;border:1px solid #ffcc33;font-size:8pt;font-weight:bold;color:#fff;}
+	.medlineDisclaimer {padding:10px; font-size:.9em;}
+	.iconTable FORM {margin-bottom:0px;margin-top:5px;}
+	.mar5 {margin:5px;}
+	.noMar {margin:0px;}
+	.greyText {color:#848484;}
+	UL.triBullet {list-style-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/arrow_bullet.gif);margin-left:25px;margin-bottom:0px;line-height:12pt;}
+	UL.triBullet LI {margin-bottom:3px;font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:9pt;color:#848484;text-decoration:none;}
+	LI.triBulletOpen {list-style-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/arrow_bullet.gif);}
+	.triBullet_lvl2 {list-style-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/dash_bullet.gif);margin-left:10px;margin-top:5px;margin-bottom:5px;}
+	UL.triBullet LI A {font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:9pt;color:#4378AE;text-decoration:none;}
+	UL.triBullet LI A:HOVER {color:#33688e;text-decoration:underline;}
+	.subTitle{font-family:Arial, Verdana, Sans-Serif;font-size:12pt;font-weight:normal;font-style:italic;color:#33688e;margin:0px 0px 5px 0px;}
+	.conditionTabsUp {width:170px;background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/tab_bg_disandcond.jpg);background-repeat:repeat-x;padding:0px 10px 0px 10px;border-bottom:1px solid #848484;border-top:1px solid #fff;}
+	.conditionTabsActive {width:170px;padding:0px 10px 0px 10px;border-left:1px solid #848484;border-right:1px solid #848484;border-top:1px solid #848484;}
+	.conditionTabsEmpty {border-bottom:1px solid #848484;}
+	.conditionContent {border-left:1px solid #848484;border-right:1px solid #848484;border-bottom:1px solid #848484;}
+	.conditionContent2 {}
+	.conditionTable TABLE H3 {font-family:Arial, Verdana, Sans-Serif;font-size:10pt;font-weight:bold;color:#738aa5;margin:10px 0px 0px 10px;}
+	UL.conditionToc {margin-left:25px;margin-bottom:0px;line-height:10pt;}
+	UL.conditionToc LI {margin-bottom:0px;font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:8pt;color:#333;text-decoration:none;}
+	UL.conditionToc LI A {font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:8pt;color:#4378AE;text-decoration:none;}
+	UL.conditionToc LI A:HOVER {color:#33688e;text-decoration:underline;}
+	UL.conditionToc UL {margin-left:10px;margin-bottom:0px;line-height:10pt;list-style-type:none;font-weight:normal;margin-bottom:5px;}
+	UL.conditionToc UL LI,UL.conditionToc UL LI A {font-weight:normal;text-decoration:none;font-size:8pt;}
+	UL.conditionToc UL LI A:HOVER {font-weight:normal;text-decoration:underline;}
+	.externalLink {background:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/icon_externalLink.gif) center right no-repeat;padding-right:12px;text-decoration:none;}
+	.pdfLink {background:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/icon_pdf.gif) center center no-repeat;padding-right:15px;text-decoration:none;}
+	.wordLink {background:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/icon_word.gif) center center no-repeat;padding-right:15px;text-decoration:none;}
+	.pptLink {background:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/icon_ppt.gif) center center no-repeat;padding-right:15px;text-decoration:none;}
+	.credits {font-size:.9em;font-style:italic;color:#747474;}
+	.credits A {color:#33688e;}
+	.tocBox {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/bg_tocBox.jpg);background-repeat:repeat-x;padding:5px;margin:auto;width:inherit;border-left:1px dashed #C6CDD3;border-right:1px dashed #C6CDD3;border-top:1px solid #C6CDD3;border-bottom:1px solid #C6CDD3;}
+	A.moreLink2 {font-family:arial,verdana,sans-serif;font-size:8pt;font-weight:bold;color:#648ebc;text-decoration:none;}
+	A.moreLink2:HOVER {color:#33688e;text-decoration:underline;}
+	
+	/* Email Notifications Styles */
+	.noticeBox {border:1px solid #C1CEDF;}
+	.noticeTitle {background-image:url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/bg_tocBox.jpg);background-position:bottom;background-repeat:repeat-x;font-size:1.5em;color:#336699;font-weight:bold;padding:5px;}
+	.noticeText {padding:5px;font-size:1em;color:#000;}
+	
+	.mhv-banner-container
+{
+	background-image: url(/mhv-portal-web/ShowBinary/BEA%20Repository/images/header_bgimage.jpg);
+	background-repeat: no-repeat;
+	margin: 0px;
+	padding: 0px;
+}
+
+.mhv-e2 {
+	text-decoration:none;
+	font-style:italic;
+	font-weight:bold;
+}
+.mhv-e {
+	text-decoration:none;
+	font-style:italic;
+	font-weight:bold;
+}
+
+.letter 
+{
+color: #0257a8;
+font-weight: bold;
+}

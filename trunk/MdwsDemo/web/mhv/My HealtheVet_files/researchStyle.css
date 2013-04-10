@@ -1,0 +1,112 @@
+	@import "/mhv-portal-web/ShowBinary/BEA%20Repository/global/mhv_styles_80.css";
+/*	.bea-portal-rightbar-window-content UL {margin-left:20px;margin-top:5px;font-size:8pt;}
+	.bea-portal-rightbar-book {padding:0px;}
+	.bea-portal-rightbar-book-content {margin:0px;}
+	.bea-portal-rightbar-window {margin:5px;}
+	.bea-portal-leftnav-book {margin:5px 0px 5px 0px;border:none;}
+	.bea-portal-book-content {padding:5px;}
+	.bea-portal-book-content .bea-portal-book-content {margin:0px;padding:0px;}	
+	DIV.bea-portal-window-content-grey {min-height:40px;height:auto;padding:5px;}
+	DIV.bea-portal-window-content-grey {background-image:url(../images/bg_headline_gradient.jpg);background-repeat:repeat-x;}
+	DIV.bea-portal-window-content-grey H1 {font-family:Arial, Verdana, Sans-Serif;font-size:16pt;font-weight:bold;color:#738aa5;margin:15px 0px 0px 0px;}
+	DIV.bea-portal-window-content-grey H1 SUP {font-size:13pt;}
+	DIV.bea-portal-window-content-grey H2 {font-family:Arial, Verdana, Sans-Serif;font-size:13pt;font-weight:bold;color:#738aa5;margin:10px 0px 5px 10px;}
+	DIV.bea-portal-window-content-grey H2 SUP {font-size:11pt;}
+	DIV.bea-portal-window-content-grey H2 A:LINK, DIV.bea-portal-window-content-grey H2 A:VISITED {color:#33688e;text-decoration:none;}
+	DIV.bea-portal-window-content-grey H3 {font-family:Arial, Verdana, Sans-Serif;font-size:11pt;font-weight:bold;color:#33688e;margin:10px 0px 5px 5px;}
+	DIV.bea-portal-window-content-grey H3 SUP {font-size:11pt;}
+	DIV.bea-portal-window-content-grey H3 A:LINK, DIV.bea-portal-window-content-grey H3 A:VISITED {color:#33688e;text-decoration:none;}
+	DIV.bea-portal-window-content-grey H3 A:HOVER, DIV.bea-portal-window-content-grey H3 A:ACTIVE {color:#738aa5;text-decoration:underline;}
+	DIV.bea-portal-window-content-grey .headlineRule {border:1px solid #e7e7e7;margin:0px 0px 10px 0px;}
+	DIV.bea-portal-window-content-grey .dashRule {border:1px dashed #e7e7e7;margin:5px 5px 10px 5px;}
+	DIV.bea-portal-window-content-grey .dashRule2 {border:1px dashed #e7e7e7;margin:0px 5px 0px 5px;}
+	DIV.bea-portal-window-content-grey .solidRule {border:1px solid #e7e7e7;margin:0px 0px 10px 0px;}
+	DIV.bea-portal-window-content-grey .solidRule2 {border:1px solid #e7e7e7;margin:0px 0px 0px 0px;}
+	.introText {margin:5px 8px 20px 8px;}
+	#paneTable {margin:auto;margin-bottom:20px;}
+	.pane_standard_top {background-image:url(../images/pane_standard_top.jpg);background-repeat:no-repeat;height:59px;min-height:59px;}
+	#pane_healtyLivingCenters_top {background-image:url(../images/pane_healthyLivingCenters_top.jpg);background-repeat:no-repeat;height:59px;min-height:59px;}
+	#pane_disAndCond_top {background-image:url(../images/pane_disAndCond_top.jpg);background-repeat:no-repeat;height:59px;min-height:59px;}
+	#pane_medicalLibrary_top {background-image:url(../images/pane_medicalLibrary_top.jpg);background-repeat:no-repeat;height:59px;min-height:59px;}
+	#pane_mentalHealth_top {background-image:url(../images/pane_mentalHealth_top.jpg);background-repeat:no-repeat;height:59px;min-height:59px;}
+	TD#pane_healtyLivingCenters_btm {background-image:url(../images/pane_bg_healthyLivingCentersText.jpg);background-repeat:no-repeat;}
+	TD#pane_disAndCond_btm {background-image:url(../images/pane_bg_disAndCondText.jpg);background-repeat:no-repeat;}
+	TD#pane_medicalLibrary_btm {background-image:url(../images/pane_bg_medicalLibraryText.jpg);background-repeat:no-repeat;}
+	TD#pane_mentalHealth_btm {background-image:url(../images/pane_bg_mentalHealthText.jpg);background-repeat:no-repeat;}
+	TD.pane_bottom {font-size:8pt;background-color:#f5f4f9;margin:0px;padding:5px 7px 10px 7px;}
+
+	.content720 {width:720px;margin:auto;}
+	.content720 P {margin-bottom:5px;}
+	A.moreLink {font-family:arial,verdana,sans-serif;font-size:8pt;font-weight:bold;color:#648ebc;text-decoration:none;}
+	A.moreLink:HOVER {color:#33688e;text-decoration:underline;}
+	A.sectLink {font-family:arial black,verdana,sans-serif;font-size:9pt;color:#33688e;text-decoration:none;}
+	A.sectLink:HOVER {color:#648ebc;text-decoration:underline;}
+	.healthFactTable,.healthTipTable {background-image:url(../images/bg_healthFact.jpg);background-repeat:repeat-x;padding:10px 10px 10px 10px;margin:auto;}
+	.healthTipTable{margin:auto; width:inherit;}
+	.healthFactTable H5,.healthTipTable H5 {font-family:arial,verdana,sans-serif;font-size:10pt;color:#f2994d; font-style:normal;font-weight:bold;text-transform:uppercase;margin:0px 0px 5px 0px;}
+	.healthFactTable P,.healthTipTable P {margin:5px 0px 10px 0px;}
+	.tipLinks A{font-family:Verdana, Arial, Helvetica, sans-serif;font-weight:bold;font-size:8pt;color:#4378AE;text-decoration:none;}
+	.tipLinks A:HOVER{color:#113366;text-decoration:underline;}
+
+	.dashTable {border-top:1px dashed #e7e7e7;border-bottom:1px dashed #e7e7e7;padding:5px;margin:auto;width:inherit;}
+	.iconTable {background-image:url(../images/bg_healthFact.jpg);background-repeat:repeat-x;padding:5px;margin:auto;width:inherit;}
+	.iconTable P,.dashTable P {margin-bottom:5px;}
+	.iconTable2 P {margin:0px 0px 5px 5px;font-size:8.5pt;}
+	.iconTable IMG,.imgPad {margin-right:5px;}
+	.iconTable A,.dashTable A{font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:9pt;color:#4378AE;text-decoration:none;}
+	.iconTable A:HOVER,.dashTable A:HOVER{color:#113366;text-decoration:underline;}
+	.iconTable A IMG.iconLink {border:1px solid #fff;}
+	.iconTable A:HOVER IMG.iconLink {border:1px solid #000066;}
+	.iconTable H3,.dashTable H3, .tocBox H3 {font-family:Arial, Verdana, Sans-Serif;font-size:10pt;font-weight:bold;color:#33688e;margin:5px 0px 0px 5px;}
+	.iconTable H3 A,.dashTable H3 A{color:#33688e;text-decoration:none;}
+	.iconTable H3 A:HOVER,.dashTable H3 A:HOVER {color:#113366;text-decoration:underline;}
+	.iconTable H4,.iconTable2 H4,.dashTable H4 {font-family:Arial, Verdana, Sans-Serif;font-size:10pt;font-weight:bold;color:#33688e;margin:5px 0px 5px 5px;}
+	.iconTable H4 A,.iconTable2 H4 A,.dashTable H4 A, .conditionTable H4 A {color:#33688e;text-decoration:none;}
+	.iconTable H4 A:HOVER,.iconTable2 H4 A:HOVER,.dashTable H4 A:HOVER{color:#113366;text-decoration:underline;}
+	.conditionTable H4 A:HOVER {color:#113366;text-decoration:underline;}
+	.iconTable_dashed {padding:5px 0px 3px 0px;border-bottom:1px dashed #e7e7e7;}
+	.iconTable_rtBorder, .rtBorder {border-right:1px solid #e7e7e7;}
+	DIV.bea-portal-window-content-grey .iconTable H2 {font-family:Arial, Verdana, Sans-Serif;font-size:13pt;font-weight:bold;color:#33688e;margin:10px 0px 5px 10px;}
+	DIV.bea-portal-window-content-grey .dashTable H2 {font-family:Arial, Verdana, Sans-Serif;font-size:13pt;font-weight:bold;color:#33688e;margin:10px 0px 0px 10px;}
+	DIV.bea-portal-window-content-grey .iconTable H2 A:LINK, .iconTable H2 A:VISITED,	DIV.bea-portal-window-content-grey .dashTable H2 A:LINK, .dashTable H2 A:VISITED  {font-family:Arial, Verdana, Sans-Serif;font-size:13pt;color:#33688e;text-decoration:none;}
+	DIV.bea-portal-window-content-grey .iconTable H2 A:HOVER, .iconTable H2 A:ACTIVE,	DIV.bea-portal-window-content-grey .dashTable H2 A:HOVER, .dashTable H2 A:ACTIVE  {font-family:Arial, Verdana, Sans-Serif;font-size:13pt;color:#738aa5;text-decoration:underline;}
+	.smaller {font-size:.9em;}
+	.atoz, .atoz A {font-size:1.05em;}
+	.atoz A:HOVER {text-decoration:underline;}
+	.noTopMar5Left {margin-top:0px;margin-left:5px;}
+	.medlinePlusSubmit {background-color:#431175;border:1px solid #ffcc33;font-size:8pt;font-weight:bold;color:#fff;}
+	.medlineDisclaimer {padding:10px; font-size:.9em;}
+	.iconTable FORM {margin-bottom:0px;margin-top:5px;}
+	.mar5 {margin:5px;}
+	.noMar {margin:0px;}
+	.greyText {color:#848484;}
+	UL.triBullet {list-style-image:url(../images/arrow_bullet.gif);margin-left:25px;margin-bottom:0px;line-height:12pt;}
+	UL.triBullet LI {margin-bottom:3px;font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:9pt;color:#848484;text-decoration:none;}
+	LI.triBulletOpen {list-style-image:url(../images/arrow_bullet.gif);}
+	.triBullet_lvl2 {list-style-image:url(../images/dash_bullet.gif);margin-left:10px;margin-top:5px;margin-bottom:5px;}
+	UL.triBullet LI A {font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:9pt;color:#4378AE;text-decoration:none;}
+	UL.triBullet LI A:HOVER {color:#33688e;text-decoration:underline;}
+	.subTitle{font-family:Arial, Verdana, Sans-Serif;font-size:12pt;font-weight:normal;font-style:italic;color:#33688e;margin:0px 0px 5px 0px;}
+	.conditionTabsUp {width:170px;background-image:url(../images/tab_bg_disandcond.jpg);background-repeat:repeat-x;padding:0px 10px 0px 10px;border-bottom:1px solid #848484;border-top:1px solid #fff;}
+	.conditionTabsActive {width:170px;padding:0px 10px 0px 10px;border-left:1px solid #848484;border-right:1px solid #848484;border-top:1px solid #848484;}
+	.conditionTabsEmpty {border-bottom:1px solid #848484;}
+	.conditionContent {border-left:1px solid #848484;border-right:1px solid #848484;border-bottom:1px solid #848484;}
+	.conditionContent2 {}
+	.conditionTable TABLE H3 {font-family:Arial, Verdana, Sans-Serif;font-size:10pt;font-weight:bold;color:#738aa5;margin:10px 0px 0px 10px;}
+	UL.conditionToc {margin-left:25px;margin-bottom:0px;line-height:10pt;}
+	UL.conditionToc LI {margin-bottom:0px;font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:8pt;color:#333;text-decoration:none;}
+	UL.conditionToc LI A {font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:8pt;color:#4378AE;text-decoration:none;}
+	UL.conditionToc LI A:HOVER {color:#33688e;text-decoration:underline;}
+	UL.conditionToc UL {margin-left:10px;margin-bottom:0px;line-height:10pt;list-style-type:none;font-weight:normal;margin-bottom:5px;}
+	UL.conditionToc UL LI,UL.conditionToc UL LI A {font-weight:normal;text-decoration:none;font-size:8pt;}
+	UL.conditionToc UL LI A:HOVER {font-weight:normal;text-decoration:underline;}
+	.externalLink {background:url(../images/icon_externallink.gif) center center no-repeat;padding-right:12px;text-decoration:none;}
+	.pdfLink {background:url(../images/icon_pdf.gif) center center no-repeat;padding-right:15px;text-decoration:none;}
+	.wordLink {background:url(../images/icon_word.gif) center center no-repeat;padding-right:15px;text-decoration:none;}
+	.pptLink {background:url(../images/icon_ppt.gif) center center no-repeat;padding-right:15px;text-decoration:none;}
+	.credits {font-size:.9em;font-style:italic;color:#747474;}
+	.credits A {color:#33688e;}
+	.tocBox {background-image:url(../images/bg_tocBox.jpg);background-repeat:repeat-x;padding:5px;margin:auto;width:inherit;border-left:1px dashed #C6CDD3;border-right:1px dashed #C6CDD3;border-top:1px solid #C6CDD3;border-bottom:1px solid #C6CDD3;}
+	A.moreLink2 {font-family:arial,verdana,sans-serif;font-size:8pt;font-weight:bold;color:#648ebc;text-decoration:none;}
+	A.moreLink2:HOVER {color:#33688e;text-decoration:underline;}
+*/

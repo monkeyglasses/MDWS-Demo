@@ -1,0 +1,95 @@
+/* Homepage-specific Styles */
+
+/* ------ BEGIN FIXED-FLUID BOX MODEL ------ */
+
+#new-homeLeftColumn {
+margin-right:230px;
+margin-left:0px;
+overflow:hidden;
+}
+
+#new-homeLeftColumn-outer {
+float:left;
+width:100%;
+}
+
+/*
+#new-homeRightColumn-outer {
+float:left;
+width:100%;
+} */
+
+
+#new-homeRightColumn {
+float:left;
+width:220px;
+margin-left:-220px;
+} 
+
+/* ------ END FIXED-FLUID BOX MODEL ------ */
+
+/* ------ BEGIN SIDE-BY-SIDE BOX MODEL ------ */
+
+#new-homeSidebySide { /* width: 756px; */ margin: 0 0 0 0;
+ overflow: hidden;  position: relative;}
+ 
+ #new-homeArticle2 {
+position:relative;
+width: 50%;
+float: left;
+z-index:6;
+
+ }
+
+ #new-homeArticle3 {
+ position:relative;
+margin-left: 50%;
+z-index:5;
+ }
+
+
+/* ------ END SIDE-BY-SIDE BOX MODEL ------ */
+
+.new-skip
+{
+position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;
+}
+
+#new-alertBox {
+margin-bottom: 5px;
+border-top: 1px;
+border-top-style:solid;
+}
+
+#new-3articleContainer, #new-rightNavigation, #new-rightBox1, #new-rightBox2 {
+margin-bottom: 5px;
+}
+
+
+
+#new-homeArticle1, #new-homeArticle2, #new-homeArticle3 {
+background-image:url("/mhv-portal-web/ShowBinary/BEA%20Repository/images/home/bg_greyCellGradient.jpg");
+background-position:center top;
+background-repeat:no-repeat;
+border:0px solid #EFEFEF;
+padding: 7px;
+}
+
+#new-rightNavigation p, #new-rightNavigation a {
+color:#33688E;
+font-family:Arial,Verdana,Sans-Serif;
+font-size:9pt;
+font-weight:bold;
+margin:0;
+}
+
+.new-textMiddle
+{
+vertical-align:middle;
+}
+
+.featureTable img
+
+{margin: 5px 5px 0 0;
+}
+

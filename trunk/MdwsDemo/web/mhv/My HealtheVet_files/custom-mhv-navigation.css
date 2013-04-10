@@ -1,0 +1,671 @@
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// CUSTOM STYLES FOR MHV PORTAL
+// Created by Melissa C. Wood, Number Six Software, Inc. -- November 2005
+// This stylesheet is organized by the following sections:
+// -- Globalnav
+// -- Leftnav
+// -- Subnavigation
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// GLOBALNAV -- Global Navigation
+// The global navigation is contained within the header.jsp file
+// Globalnav includes top-most links to site-wide utilities, help, and search
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* style sets <td> element containing corner image + global navigation links */
+.mhv-globalnav-menu-container
+{
+	margin: 0px;
+	padding: 0px 0px 0px 0px;
+	text-align: right;
+}
+
+/* style sets <span> element containing global navigation bg image + nav links + search elements */
+.mhv-globalnav-menu-bg
+{
+	background-image: url(../../../../resources/images/header-corner-globalnav2.gif);
+	background-position: 0px 0px;
+	background-repeat : no-repeat;
+	margin: 0px;
+	padding: 1px 0px 1px 50px;
+}
+
+/* TEST */
+.mhv-globalnav-menu-bg-test
+{
+	background-image: url(../../../../resources/images/header-corner-globalnav2.gif);
+	background-position: 10px 0px;
+	background-repeat : no-repeat;
+	width: 50px;
+}
+
+/* style sets <span> element containing global single-level navigation */
+.mhv-globalnav-menu-single
+{
+	font-size: 0.9em;
+	margin: 0px;
+	padding: 2px 0px;
+}
+
+/* style sets individual global single-level navigational items */
+.mhv-globalnav-menu-single, .mhv-globalnav-menu-single a
+{
+}
+
+/* style sets NON-ACTIVE + LINKED global single-level navigation link via <a> element */
+.mhv-globalnav-menu-single a
+{
+	background-color: #FFFFFF;
+	border-right: 1px solid #336699;
+	border-left: 1px solid #DDE6EE;
+	border-top: 1px solid #2E3A3F;
+	color: #003366;
+	font-weight: normal;
+	margin: 0px -2px;
+	padding: 4px 6px;
+	text-decoration: none;
+}
+
+/* style sets NON-ACTIVE + LINKED global single-level navigation link -- rollover */
+.mhv-globalnav-menu-single a:hover
+{
+	background-color: #003366;
+	border-right: 1px solid #336699;
+	border-left: 1px solid #DDE6EE;
+	border-top: 1px solid #2E3A3F;
+	color: #FFFFFF;
+	font-weight: normal;
+	margin: 0px -2px;
+	padding: 4px 6px;
+	text-decoration: none;
+}
+
+/* style sets ACTIVE + LINKED global single-level individual navigation items via <a> element */
+.mhv-globalnav-menu-single-item-active, a.mhv-globalnav-menu-single-item-active
+{
+	background-color: #BECEE0;
+	border-right: 1px solid #336699;
+	border-left: 1px solid #DDE6EE;
+	border-top: 1px solid #2E3A3F;
+	color: #003366;
+	font-weight: normal;
+	margin: 0px -2px;
+	padding: 4px 6px;
+	text-decoration: none;
+}
+
+/* style sets NON-ACTIVE + LINKED <a> element containing search text + form fields */
+a.mhv-globalnav-search, span.mhv-globalnav-search
+{
+	background-color: #FFFFFF;
+	border-right: 1px solid #336699;
+	border-left: 1px solid #DDE6EE;
+	border-top: 1px solid #2E3A3F;
+	color: #003366;
+	cursor: default;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+/* see custom-mhv-ie.css for IE-specific settings */
+a.mhv-globalnav-search, span.mhv-globalnav-search
+{
+	margin: 0px -2px;
+	padding: 4px 12px 4px 6px;
+}
+
+/* style sets NON-ACTIVE + LINKED and ACTIVE + LINKED <a> element containing search text + form fields  -- hover */
+a.mhv-globalnav-search:hover, a.mhv-globalnav-search-active:hover, span.mhv-globalnav-search-hover
+{
+	background-color: #003366;
+	border-right: 1px solid #336699;
+	border-left: 1px solid #DDE6EE;
+	border-top: 1px solid #2E3A3F;
+	color: #FFFFFF;
+	cursor: default;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+/* see custom-mhv-ie.css for IE-specific settings */
+a.mhv-globalnav-search:hover, a.mhv-globalnav-search-active:hover, span.mhv-globalnav-search-hover
+{
+	margin: 0px -2px;
+	padding: 4px 12px 4px 6px;
+}
+
+/* style sets <a> element containing search text + form elements */
+a.mhv-globalnav-search-active, span.mhv-globalnav-search-active
+{
+	background-color: #BECEE0;
+	border-right: 1px solid #336699;
+	border-left: 1px solid #DDE6EE;
+	border-top: 1px solid #2E3A3F;
+	color: #003366;
+	cursor: default;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+/* see custom-mhv-ie.css for IE-specific settings */
+a.mhv-globalnav-search-active, span.mhv-globalnav-search-active
+{
+	margin: 0px -2px;
+	padding: 4px 12px 4px 6px;
+}
+
+/* style sets search form elements within global navigation */
+.mhv-globalnav-menu-single input, .mhv-globalnav-seach input
+{
+}
+
+/* style sets search form field <input> element within global navigation */
+input.mhv-globalnav-search-field
+{
+	font-size: 1.0em;
+	margin: 0px;
+	padding: 0px;
+}
+
+/* style sets positioning for search form field <input> element within global navigation */
+/* see custom-mhv-ie.css for IE-specific settings */
+input.mhv-globalnav-search-field
+{
+	vertical-align: top;
+}
+
+/* style sets input button for search within global navigation via <input> element */
+input.mhv-globalnav-search-button
+{
+	background-color: #930303;
+	border-top: 1px solid #FFFFFF;
+	border-right: 1px solid #333333;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #FFFFFF;
+	color: #FFFFFF;
+	cursor: hand;
+	font-size: 1.0em;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px 3px;
+	text-align: center;
+}
+
+/* style sets positioning input button for search within global navigation via <input> element */
+/* see custom-mhv-ie.css for IE-specific settings */
+input.mhv-globalnav-search-button
+{
+	vertical-align: top;
+}
+
+/*  style sets text links used as input buttons --- NOT USED IN MHV */
+a.mhv-globalnav-search-button:link,  a.mhv-globalnav-search-button:visited, a.mhv-globalnav-search-button:hover, a.mhv-globalnav-search-button:active
+{
+	background-color: #930303;
+	border-top: 1px solid #FFFFFF;
+	border-right: 1px solid #333333;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #FFFFFF;
+	color: #FFFFFF;
+	cursor: hand;
+	font-size: 0.9em;
+	font-weight: bold;
+	margin: 0px;
+	padding: 2px 12px;
+	text-align: center;
+	text-decoration:  none;
+}
+
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// LEFTNAV -- Left Sidebar Navigation
+// The left sidebar navigation is contained within it's own book, page, and portal window
+// Leftnav includes both tertiary-level and fourth-level navigation
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* style sets <div> element containing all left navigation elements */
+.mhv-leftnav-menu-container
+{
+    padding: 5px 0px;
+    margin: 0px;
+	text-align: left;
+	vertical-align: top;
+	width: auto;
+}
+
+/* style sets >h3> element within mhv-leftnav-menu-container */
+/* same as <ul> element style listed below */
+.mhv-leftnav-menu-container h3 
+{
+	font-size: 1.0em;
+	font-weight: normal;
+	list-style-type: none;
+	margin: 10px 0px 2px 0px;
+	padding: 0px;
+	text-align: left;
+	text-decoration: none;	
+}
+
+/* style sets link and span for NON-ACTIVE items within <h3> element within mhv-leftnav-menu-container */
+/* same as style class .mhv-leftnav-menu-container li a  */
+.mhv-leftnav-menu-container h3 a, .mhv-leftnav-menu-container h3 span
+{
+	background-color: #EFEFEF;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+	color: #1156A1;
+	display: block;
+	margin: 0px;
+	padding: 3px;
+	text-decoration: none;
+}
+
+/* style sets NON-ACTIVE left navigation rollovers within <h3> element */
+/* same as style class .mhv-leftnav-menu-container li a:hover, .mhv-leftnav-menu-container li:active */
+.mhv-leftnav-menu-container h3 a:hover, .mhv-leftnav-menu-container h3 a:active 
+{
+	background-color: #9ABDDC;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+/* style sets font for message indicator -- mainly used in MESSAGE CENTER left navigation */
+.mhv-leftnav-menu-container .mhv-leftnav-message-indicator
+{
+	background-color: #FFFFCC;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+	color: #1156A1;
+	display: block;
+	font-size: 1.0em;
+	font-weight: bold;
+	margin: 0px;
+	padding: 5px 3px 5px 18px;
+	text-decoration: none;
+}
+
+/* style sets text link within message indicator */
+.mhv-leftnav-message-indicator a
+{
+	color: #1156A1;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+/* ---------- TERTIARY + FOURTH LEVEL NAVIGATION ----------*/
+
+/* style sets <ul> element containing all left navigation items -- sets basic text styles */
+.mhv-leftnav-menu-container ul, .mhv-leftnav-menu, .mhv-leftnav-menu3, .mhv-leftnav-menu4
+{
+	font-size: 1.0em;
+	font-weight: normal;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+}
+
+/* style sets <ul> element containing 3RD LEVEL left navigation items -- sets margins */
+.mhv-leftnav-menu3
+{
+	margin: 0px;
+}
+
+/* style sets <ul> element containing 4TH LEVEL  left navigation items -- sets basic text styles */
+.mhv-leftnav-menu3 ul, .mhv-leftnav-menu4
+{
+	margin: 0px 0px 6px 0px;
+}
+
+/* style sets <li> element for individual ACTIVE and NON-ACTIVE menu items */
+.mhv-leftnav-menu-container li
+{
+	display: block;
+	margin: 0px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+/* style sets indent on 4TH LEVEL left navigation items */
+.mhv-leftnav-menu4 li
+{
+    margin: 0px 0px 0px 20px;
+}
+
+/* style sets individual NON-ACTIVE left navigation a elements */
+.mhv-leftnav-menu-container li a
+{
+	background-color: #EFEFEF;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+	color: #1156A1;
+	display: block;
+	/*margin: 0px;*/
+	padding: 3px;
+	text-decoration: none;
+}
+
+/* style sets individual NON-ACTIVE left navigation rollovers */
+.mhv-leftnav-menu-container li a:hover, .mhv-leftnav-menu-container li a:active 
+{
+	background-color: #9ABDDC;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+/* style sets individual 3RD LEVEL ACTIVE left navigation item via <a> element */
+a.mhv-leftnav-menu3-item-active:link, a.mhv-leftnav-menu3-item-active:visited
+{
+	background-color: #FFFFFF; 
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #909FA6;
+	border-left: 1px solid #FFFFFF;
+	display: block;
+	color: #1156A1;
+	font-weight: bold;
+	/*margin: 0px;*/
+	padding: 3px;
+	text-decoration: none;
+}
+
+/* style sets individual 3RD LEVEL ACTIVE left navigation rollovers */
+a.mhv-leftnav-menu3-item-active:hover, a.mhv-leftnav-menu3-item-active:active
+{
+	background-color: #9ABDDC;
+	color: #FFFFFF;
+	display: block;
+	text-decoration: none;
+}
+
+/* style sets individual 3RD LEVEL DISABLED left navigation items via <span>  element */
+span.mhv-leftnav-menu3-item-disabled
+{
+	background-color: #EFEFEF;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+	color: #A9A9A9;
+	display: block;
+	/*margin: 0px;*/
+	padding: 3px;
+	text-decoration: none;
+}
+
+
+/* 
+// --------------------------------------------------------------------------------------------------------------------
+// RIGHTBAR -- Right Sidebar Navigation
+// The right sidebar navigation is contained within it's own portal window
+// --------------------------------------------------------------------------------------------------------------------
+*/
+/* style sets <div> or <td> element containing all RIGHTBAR subnavigation elements */
+.mhv-subnav-menu-container, .mhv-subnav-menu-container-rightbar
+{
+    background-color: #FFFFFF;
+    padding: 0px;
+    margin: 0px;
+	text-align: left;
+	vertical-align: top;
+	width: 96%;
+}
+
+/* style sets first-level heading via <h2> above subnavigation menu listing */
+.mhv-subnav-menu-container h2 
+{
+	border-bottom: 2px solid #041D9E;
+	color: #990000;
+	font-family: Arial Narrow, Arial, Helvetica, sans-serif;
+	font-size: 1.3em;
+	font-style:normal;
+	font-weight: bold;
+	margin: 3px 0px;
+	padding: 3px 0px;
+	text-align: center;
+	vertical-align: bottom;
+}
+
+/* style sets link for <h2> within mhv-subnav-menu-container  -- link and visited */
+.mhv-subnav-menu-container a h2, .mhv-subnav-menu-container a:visited h2
+{
+	color: #990000;
+	margin: 3px 0px;
+	padding: 3px;
+	text-decoration: none;
+}
+
+/* style sets link for <h2> within mhv-subnav-menu-container  -- hover and active */
+.mhv-subnav-menu-container a:hover h2, .mhv-subnav-menu-container a:active h2
+{
+	background-color: #990000; /*#7AADE4*/ 
+	color: #FFFFFF;  /*#5D6873*/
+	margin: 3px 0px;
+	padding: 3px;
+	text-decoration: none;
+}
+
+/* style sets first-level heading via <h2> above subnavigation menu listing -- RIGHTBAR ONLY */
+.mhv-subnav-menu-container-rightbar h2 
+{
+	border-bottom: 2px solid #041D9E;
+	color: #990000;
+	font-family: Arial Narrow, Arial, Helvetica, sans-serif;
+	font-size: 1.3em;
+	font-style:normal;
+	font-weight: bold;
+	margin: 3px 0px;
+	padding: 3px 0px;
+	text-align: center;
+	vertical-align: bottom;
+	
+	/*color: #1156A1;
+	font-family: Arial Narrow, Arial, Helvetica, sans-serif;
+	font-size: 1.3em;
+	font-style:normal;
+	font-weight: bold;
+	line-height: 98%;
+	margin: 3px 0px 9px 0px;
+	padding: 3px 0px;
+	text-align: left;
+	vertical-align: middle;*/
+}
+
+/* style sets second-level heading via <h3> above subnavigation menu listing */
+.mhv-subnav-menu-container h3
+{
+	border-bottom: 1px dashed #333333;
+	color: #1156A1;
+	font-size: 1.2em;
+	background-image: url('../resources/images/navigation/subnav-arrow.gif');
+	background-repeat: no-repeat;
+	background-position: 5px 50%;
+	margin: 0px;
+	padding: 6px 3px 6px 18px;
+}
+
+/* style sets link for <h3> within mhv-subnav-menu-container  -- link and visited */
+.mhv-subnav-menu-container a h3, .mhv-subnav-menu-container a:visited h3
+{
+	color: #1156A1;
+	margin: 0px;
+	padding: 6px 3px 6px 18px;
+	text-decoration: none;
+}
+
+/* style sets link for <h3> within mhv-subnav-menu-container  -- hover and active */
+.mhv-subnav-menu-container a:hover h3, .mhv-subnav-menu-container a:active h3
+{
+	background-image: url('../resources/images/navigation/subnav-arrow-active.gif');
+	background-color: #7AADE4; /*#CBDFF5*/ 
+	color: #FFFFFF;  /*#5D6873*/
+	margin: 0px;
+	padding: 6px 3px 6px 18px;
+	text-decoration: none;
+}
+
+/* style sets <ul> element containing all subnavigation items -- sets basic text styles */
+.mhv-subnav-menu-container ul, .mhv-subnav-menu-container-rightbar ul, .mhv-subnav-menu
+{
+	font-size: 1.0em;
+	font-weight: bold;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+}
+
+/* style sets <li> element for individual ACTIVE and NON-ACTIVE menu items */
+ /*.mhv-subnav-menu-item, .mhv-subnav-menu-item-active*/
+.mhv-subnav-menu-container li
+{
+	margin: 0px;
+	text-align: left;
+	vertical-align: middle;
+	width: 100%;
+}
+
+/* style sets <li> element for individual ACTIVE and NON-ACTIVE menu items -- RIGHT SIDEBAR ONLY */
+.mhv-subnav-menu-container-rightbar li 
+{
+	background-image: url('../resources/images/navigation/subnav-arrow.gif');
+	background-repeat: no-repeat;
+	background-position: 5px 50%;
+	margin: 0px 0px 0px 3px;
+	text-align: left;
+	vertical-align: middle;
+	width: 100%;
+}
+
+/* style sets individual NON-ACTIVE subnavigation <a> elements */
+/*.mhv-subnav-menu-item, .mhv-subnav-menu-container li a:visited, .mhv-subnav-menu-container-rightbar li a:visited */
+.mhv-subnav-menu-container li a, .mhv-subnav-menu-container-rightbar li a
+{
+	border-bottom: 1px dashed #333333;
+	color: #5D6873;
+	display: block;
+	margin: 0px;
+	padding: 3px 3px 3px 24px;
+	text-decoration: none;
+}
+
+/* style sets individual NON-ACTIVE subnavigation <a> elements -- RIGHT SIDEBAR ONLY  */
+/*.mhv-subnav-menu-item*/
+.mhv-subnav-menu-container-rightbar li a, .mhv-subnav-menu-container-rightbar li a:visited
+{
+	background-image: url('../resources/images/navigation/subnav-arrow.gif');
+	background-repeat: no-repeat;
+	background-position: 5px 50%;
+	border-bottom: 1px dashed #333333;
+	color: #1156A1;
+	display: block;
+	margin: 0px;
+	padding: 3px 3px 3px 24px;
+	text-decoration: none;
+}
+
+/* style sets individual NON-ACTIVE subnavigation rollovers */
+/*.mhv-subnav-menu-item:hover, .mvh-subnav-menu-item:active*/
+.mhv-subnav-menu-container li a:hover, .mhv-subnav-menu-container li a:active 
+{
+	background-color: #7AADE4; /*#CBDFF5*/ 
+	color: #FFFFFF;  /*#5D6873*/
+	text-decoration: none;
+}
+
+/* style sets individual NON-ACTIVE subnavigation rollovers -- RIGHT SIDEBAR ONLY  */
+/*.mhv-subnav-menu-item:hover, .mvh-subnav-menu-item:active*/
+.mhv-subnav-menu-container-rightbar li a:hover, .mhv-subnav-menu-container-rightbar li a:active 
+{
+	background-image: url('../resources/images/navigation/subnav-arrow-active.gif');
+	background-repeat: no-repeat;
+	background-position: 5px 50%;
+	background-color: #7AADE4; /*#CBDFF5*/ 
+	color: #FFFFFF;  /*#5D6873*/
+	text-decoration: none;
+}
+
+/* style sets individual ACTIVE subnavigation items via <span> element */
+span.mhv-subnav-menu-item-active
+{
+	background-color: #1156A1;
+	border-bottom: 1px dashed #333333;
+	color: #FFFFFF;
+	display: block;
+	margin: 0px;
+	padding: 3px 3px 3px 24px;
+	text-decoration: none;
+}
+
+/* style sets individual ACTIVE left navigation items via <a> element */
+/*a.mhv-subnav-menu-item-active */ 
+a.mhv-subnav-menu-item-active:link, a.mhv-subnav-menu-item-active:visited
+{
+	background-color: #1156A1;
+	border-bottom: 1px dashed #333333;
+	color: #FFFFFF;
+	display: block;
+	margin: 0px;
+	padding: 3px 3px 3px 24px;
+	text-decoration: none;
+}
+
+/* style sets individual ACTIVE left navigation rollovers */
+a.mhv-subnav-menu-item-active:hover, a.mhv-subnav-menu-item-active:active
+{
+	background-color: #7AADE4; /*#CBDFF5;*/
+	color: #FFFFFF;  /*#5D6873*/
+	text-decoration: none;
+}
+
+/* style sets individual DISABLED left navigation items via <span>  elements */
+span.mhv-subnav-menu-item-disabled
+{
+	background-color: #EFEFEF;
+	border-bottom: 1px dashed #333333;
+	color: #A9A9A9;
+	display: block;
+	margin: 0px;
+	padding: 4px 4px 4px 24px;
+	text-decoration: none;
+}
+
+
+
+/* style sets text link within Rightbar Theme portal book and portal window -- link and visited */
+.bea-portal-rightbar-book a, .bea-portal-rightbar-book a:visited, .bea-portal-rightbar-window a, .bea-portal-rightbar-window a:visited
+{
+	color: #333333;
+	text-decoration: underline;
+}
+
+/* style sets text link within Rightbar Theme portal book and portal window -- hover and active */
+.bea-portal-rightbar-book a:hover, .bea-portal-rightbar-book a:active, .bea-portal-rightbar-window a:hover, .bea-portal-rightbar-window a:active
+{
+	color: #333333;
+	text-decoration: none;
+}
+
+/* style sets text link within Login Theme portal book and portal window -- link and visited */
+.bea-portal-login-book a, .bea-portal-login-book a:visited, .bea-portal-login-window a, .bea-portal-login-window a:visited
+{
+	/*color: #333333;*/
+	text-decoration: underline;
+}
+
+/* style sets text link within Login Theme portal book and portal window -- hover and active */
+.bea-portal-login-book a:hover, .bea-portal-login-book a:active, .bea-portal-login-window a:hover, .bea-portal-login-window a:active
+{
+	/*color: #333333;*/
+	text-decoration: none;
+}
+

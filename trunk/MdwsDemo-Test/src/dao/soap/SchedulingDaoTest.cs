@@ -149,5 +149,12 @@ namespace MdwsDemo.dao.soap
 
             Assert.IsNull(scheduledAppt.fault);
         }
+
+        [Test]
+        public void testMakeApptEsb()
+        {
+            esb.appointmentResponse response = new SchedulingDao().makeAppointmentEsb("3130104.10", "30", "12", "51", "222334444");
+            System.Console.WriteLine(response.patientEmail);
+        }
     }
 }

@@ -1,0 +1,85 @@
+/* THEME:  LEFTNAV --------------------------------------------------------------------------------------------------- */
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Window
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* style for <div> element leftnav portal window container -- sets grey background w/ no border */
+.bea-portal-leftnav-window
+{
+	background-color: #DCDCDC;
+	margin: 0px;
+	min-height: 200px;
+	padding: 0px;
+    /* Fix for IE height problem; uses Mozilla's recognition of and IE's ignorance of C-style line comment... */
+    //height: 100%;
+}
+
+/* style for <div> element main portal window content container */
+/* if no titlebar is present bea-portal-window-content div comes directly after bea-portal-window */
+/* else after bea-portal-window-titlebar div */
+.bea-portal-leftnav-window-content
+{
+    margin: 0px;
+    padding: 0px;
+    scrollbar-base-color: #D8D8E5;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Window Titlebar
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* style for <div> element containing titlebar within bea-portal-leftnav-window -- same as custom style .mhv-leftnav-menu-container h3 */
+.bea-portal-leftnav-window-titlebar
+{
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+    font-size: 1.0em; 
+    font-weight: bold;
+    margin: 5px 0px 0px 0px;
+    padding: 3px;
+	text-align: left;
+}
+
+/* style for <table> element containing titlebar within bea-portal-window-titlebar */
+.bea-portal-leftnav-window-titlebar-container
+{
+    padding: 0px;
+    width: 100%;
+}
+
+.bea-portal-leftnav-window-icon
+{
+    text-align: right;
+    padding: 0px 4px 0px 0px;
+    margin: 0px;
+    width: 1%;
+}
+
+.bea-portal-leftnav-window-icon img
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+/* style for <td> element containing the actual title text */
+.bea-portal-leftnav-window-titlebar-title
+{
+    color: #1156A1;
+	text-decoration: none;
+    text-align: left;
+}
+
+/* style for <td> element containing any titlebar icons */
+.bea-portal-leftnav-window-titlebar-buttons
+{
+    text-align: right;
+    padding: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+}

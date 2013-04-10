@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\dao\rest\SchedulingDaoTest.cs" />
+    <Compile Include="src\dao\soap\CrudDaoTest.cs" />
+    <Compile Include="src\dao\soap\MhvDaoTest.cs" />
     <Compile Include="src\dao\soap\SchedulingDaoTest.cs" />
     <Compile Include="src\dao\soap\VistaDaoTest.cs" />
   </ItemGroup>

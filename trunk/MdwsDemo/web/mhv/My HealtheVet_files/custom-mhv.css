@@ -1,0 +1,955 @@
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// CUSTOM STYLES FOR MHV PORTAL
+// Last updated May 3, 2006, 9:12AM EST
+// This stylesheet is organized by the following sections:
+// -- Header
+// -- Footer
+// -- Basic Text and Layout
+// -- Images
+// -- Lists
+// -- Forms
+// -- Error Messaging
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// HEADER -- Global Navigation and Banner containers and text styles
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* style for VA Banner container via <div> element */
+.va-banner-container
+{
+	background-color:  #72071E;
+	border-bottom: 2px solid #000000;
+	height: 55px;
+	margin: 0px;
+	padding: 0px;
+	vertical-align: bottom;
+}
+
+/* style sets container for repeated lined background image of MHV banner via <div> element */
+.mhv-banner-container-bg
+{
+	background-image: url(../../../../resources/images/header-banner-mhv-bg5.gif);
+	background-repeat: repeat-x;
+	margin-bottom: 2px;
+}
+
+/* style sets container for main background image with logo of MHV banner via <div> element */
+.mhv-banner-container
+{
+	background-image: url(../../../../resources/images/header-banner-mhv760.jpg);
+	background-repeat: no-repeat;
+	margin: 0px;
+	padding: 0px;
+}
+
+/* style sets <table> containing VA HOME link, campaign image, and global navigation */
+.mhv-banner-layout, .mhv-banner-layout td
+{
+	margin: 0px 0px;
+}
+
+/* style sets container for VA HOME link and corner image via <div> element */
+.va-link-container
+{
+	text-align: left;
+	vertical-align: top;
+}
+
+/* style sets container for VA HOME link */
+.va-link-home
+{
+	background-color: #2E3A3F;
+	border-right: 1px solid #6F7DA1;
+	margin: 0px;
+	padding: 20px 10px 5px 10px;
+}
+
+/* style sets link for VA HOME in banner area via <span> element */
+.va-link-home a, .va-link-home a:hover, .va-link-home a:active, .va-link-home a:visited
+{
+	color: #FFFFFF;
+	font-size: 0.9em;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* style set <td> alignment containing monthly campaign image */
+.mhv-campaign-container
+{
+	text-align: right;
+	vertical-align: top;
+}
+
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// FOOTER -- Official Seals and Footer containers and text styles
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/*  Style sets container for Official Seals on the  Homepage above the footer */
+div.mhv-officialseals-container 
+{
+	margin: 5px 0px;
+	padding: 5px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/*  Style sets container for Footer elements and content  */
+div.mhv-footer-container 
+{
+	border-top: 3px solid #999999;
+	margin: 0px;
+	padding: 5px;
+	text-align: center;
+	vertical-align: top;
+}
+
+div.mhv-footer 
+{
+	margin: 5px 0px;
+	padding: 0px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/*  Style for blue text and links used in <div class="mhv-footer">  */
+.mhv-footer-text-blue a, mhv-footer-text-blue span 
+{
+	color: #314AC9;
+	text-decoration: none;
+}
+
+.mhv-footer-text-blue a:link, .mhv-footer-text-blue a:visited
+/* a.mhv-footer-text-blue-link:link,  a.mhv-footer-text-blue-link:visited */
+{
+	color: #314AC9;
+	text-decoration: none;
+}
+
+.mhv-footer-text-blue a:hover, .mhv-footer-text-blue a:active
+/* a.mhv-footer-text-blue-link:hover, a.mhv-footer-text-blue-link:active */
+{
+	color: #314AC9;
+	text-decoration: underline;
+}
+
+/* Style for grey text and links used in <div class="mhv-footer"> */
+.mhv-footer-text-grey a, .mhv-footer-text-grey span 
+{
+	color: #666666;
+	text-decoration: none;
+}
+
+.mhv-footer-text-grey a:link, .mhv-footer-text-grey a:visited
+ /* a.mhv-footer-text-grey-link:link, a.mhv-footer-text-grey-link:visited */
+{
+	color: #666666;
+	text-decoration: none;
+}
+
+
+.mhv-footer-text-grey a:hover, .mhv-footer-text-grey a:active
+ /* a.mhv-footer-text-grey-link:hover, a.mhv-footer-text-grey-link:active */
+{
+	color: #666666;
+	text-decoration: underline;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// BASIC TEXT AND LAYOUT -- Basic text and layout styles used within portlet content areas
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* ---------- BASIC TEXT  STYLES ---------- */
+
+/* Style for horizontal rule <hr /> elements */
+hr 
+{
+	border-top: 1px dashed #666666;
+	clear: all;
+	color: #FFFFFF;
+	display: block;
+	height: 0px;
+	margin: 10px 0px;
+}
+
+/*  Style sets HEADER elements */
+h1 
+{ 
+	color: #041D9E;	
+	font-size: 1.4em;
+	font-style: normal;
+	font-weight: bold;
+	margin: 5px 0px 15px 0px;
+}
+
+h2 
+{
+	color: #041D9E;
+	font-size: 1.2em; 
+	font-style: normal;
+	font-weight: bold;
+	margin: 15px 0px 5px 0px;
+}
+
+h3 
+{
+	color: #041D9E;
+	font-size: 1.0em;
+	font-weight: bold;
+	margin: 15px 0px 5px 0px;
+}
+
+h4 
+{ 
+	color: #333333; 
+	font-size: 1.0em;
+	font-style: normal;
+	font-weight: bold;
+	margin: 15px 0px 5px 0px;
+}
+
+h5
+{
+	color: #333333;
+	font-size: 1.0em;
+	font-style: italic;
+	font-weight: bold;
+	/*margin: 15px 0px 5px 0px;*/
+}
+
+/* HEADER style used for Confidential Personal Medical Summary title */
+
+div.mhv-head-conf-med {
+	background-color: #2E3A3F;
+	color: #FFFFFF;
+	font-size: 1.1em;
+	font-weight: bold;
+	padding: 5px;
+	text-align: right;
+}
+
+div.mhv-head-conf-med h3{
+	float: left;
+	color: #FFFFFF;
+	margin-top: 0px;
+}
+
+/*  Style sets Subhead applied via span <span> element to keep leading tight between Head and Subhead  */
+/*  Example:  <h1>Main Title Here<br /><span class="sh1">Subtitle Here</span></h1>  */
+.sh1, .sh2, .sh3 
+{
+	color: #041D9E;
+	font-size: 0.9em;
+	font-style: italic;
+	font-weight: normal;
+}
+
+.sh4 
+{ 
+	color: #333333;
+	font-size: 0.9em;
+	font-style: italic;
+	font-weight: normal;
+}
+
+/* styles for login required promo pages */
+h1.mhv_promo {
+	color: #000000;
+	font-size: 1.6em;
+}
+
+div.mhv_promo_box {
+	border: 1px solid #002768;
+	padding: 10px;
+	width: 210px;
+	text-align: left;
+}
+
+.mhv_promo_blue_text {
+	font-size: 0.9em;
+	color: #002768;
+}
+
+/* bottom border style for portlet titles */
+div.mhv-portlet-title 
+{
+	padding: 3px 0px;
+	border-bottom: 2px solid #041D9E;
+}
+
+/* style used for creating small text. */
+.mhv-small-text
+{
+	font-size: 0.8em;
+}
+
+/* style for last updated date on portlet pages, next to titles */
+.mhv-last-updated 
+{
+	color: #666666;
+	font-size: 0.9em;
+	font-weight: bold;
+	text-align: right;
+	margin-top: -8px;
+}
+
+/* style sets text to be bold italic underline for "e" of MyHealtheVet -- applied via span <span> element */
+.mhv-e
+{
+    /*
+	font-style: italic;
+	font-weight: bold;
+	text-decoration: underline;
+    */
+}
+
+/* style sets text to be formatted as blockquote */
+.mhv-blockquote
+{
+	margin: 0px 0px 1em 25px;
+}
+
+/* style sets font to normal -- applied via span <span> element contained within other styles */
+.mhv-text-normal
+{
+	color: #333333;
+	font-size: 1.0em;
+}
+
+/* style sets font to mimic that of a basic text link */
+.mhv-text-link
+{
+	color: #FF0000;
+	text-decoration: underline;
+}
+
+/* style sets text to be underlined -- applied via span <span> element */
+.mhv-text-underline 
+{
+	text-decoration: underline;
+}
+
+/* style sets font to be red --  this is not for use in Error Messaging -- see Error Messaging at bottom of stylesheet for error styles */
+.mhv-text-red
+{
+	color: #CC0000;
+}
+
+/* style sets color and weight for text and links to be Bold Blue-- mainly used for content detail pages */
+.mhv-text-bold-blue 
+{
+	color: #041D9E;
+	font-weight: bold;
+}
+
+a.mhv-text-bold-blue:link 
+{
+	color: #041D9E;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a.mhv-text-bold-blue:hover, a.mhv-text-bold-blue:active 
+{
+	color: #0628D9;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a.mhv-text-bold-blue:visited 
+{
+	color: #800080;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+/* style sets color for text and links to be Blue -- mainly used for Welcome portlet on homepage */
+.mhv-text-blue
+{
+	color: #041D9E;
+    font-weight: normal;
+}
+
+/* style sets spacing for "More Info" - "Read More" - "View Archives" text at bottom of portlets */
+.mhv-more-info
+{
+	margin: 25px 0px 10px 0px;
+}
+
+/* style sets background and text for PHR and SEI "This is your personal health information" disclaimer -- applied to either <div> or <span> elements */
+.mhv-personal-info-disclaimer
+{
+	background-color: #FFFF99;
+	border: 1px solid #FFCC33;
+	font-weight: bold;
+	font-size: 0.9em;
+	font-style: italic;
+	margin: 20px 7px 10px 0px;
+	padding: 2px;
+}
+
+/* style used for the nutrition/move links used in the journal seis */
+.mhv-nutrition-move
+{
+	float: right;
+	display: inline;
+	text-align: center;
+	font-size: 0.8em;
+	margin: 8px 0px 8px 12px;
+	border: 1px solid #CCCCCC;
+	padding: 5px;
+	width: 145px;
+}
+
+/*style used for hidden labels for 508 compliance */
+.mhv-hidden-label 
+{
+	display: none;
+}
+
+
+
+/* ---------- BASIC LAYOUT STYLES ---------- */
+
+/* style sets container box via <div> element for portlet toolbar -- contains printer friendly and help links */
+.mhv-portlet-toolbar
+{
+	background-color: #EFEFEF;
+	border-top: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	margin: 5px 0px;
+	padding: 2px 8px;
+	text-align: right;
+}
+
+/* style sets text-alignment to right for various container <div> elements */
+.mhv-align-right 
+{
+	text-align: right;
+}
+
+/* style sets text-alignment to center for various container <div> elements -- mainly used for images and graphing charts */
+.mhv-align-center
+{
+	text-align: center;
+}
+
+/* style floats text to the right -- mainly used for the Track Health last updated date next to the page header. */
+.mhv-float-right
+{
+	float: right;
+}
+
+/* style sets <span> and/or <div> containers used within MHV Dashboards */
+/* the main purpose of this style is to allow for easy modification of styles embedded w/in the dashboard */
+div.mhv-dashboard, span.mhv-dashboard 
+{	
+}
+
+/* style sets container for Printer Friendly link and icon */
+div.mhv-printer-friendly-container
+{
+	margin: 5px 0px;
+	text-align: right;
+	vertical-align: middle;
+}
+
+/* ---------- HOMEPAGE LAYOUT STYLES ----------*/
+/* The homepage includes Features, Plugs, and Promos for top, middle, and bottom rows respectively */
+
+/* style sets layout table for MHV HOMEPAGE */
+.mhv-home-layout
+{
+	border-spacing: 3px;
+}
+
+/* style sets border on <td> containing content pieces in MHV HOMEPAGE */
+.mhv-home-td
+{
+	border: 1px solid #6D8B9F;
+	padding: 2px;
+}
+
+/* style sets <td> containing for Main Feature in MHV HOMEPAGE */
+.mhv-home-feature-td
+{
+	border: 1px solid #6D8B9F;
+	margin: 0px;
+	padding: 0px;
+}
+
+/* style sets <td> containing second row PLUGS on MHV HOMEPAGE */
+.mhv-home-plug-td
+{
+	border: 1px solid #6D8B9F;
+	padding: 2px;
+	text-align: center;
+	vertical-align: top;
+}
+
+/* style sets <td> containing third row PROMOS on MHV HOMEPAGE */
+.mhv-home-promo-td
+{
+	border: 1px solid #6D8B9F;
+	padding: 2px 2px 10px 2px;
+	text-align: center;
+}
+
+/* style sets <h4> element on MHV HOMEPAGE */
+.mhv-home-td h4, .mhv-home-plug-td h4, 
+{
+	color: #333333;
+	font-size: 1.0em;
+	font-weight: bold;
+	margin: 0px 0px 5px 0px;
+	padding: 0px;
+}
+
+/* style sets links within <h4> element on MHV HOMEPAGE -- LINK + VISITED */
+.mhv-home-td h4 a, .mhv-home-td h4 a:link, .mhv-home-td h4 a:visited, .mhv-home-plug-td h4 a, .mhv-home-plug-td h4a:link, .mhv-home-plug-td h4 a:visited
+{
+	text-decoration: none
+}
+
+/* style sets <h4> element on MHV HOMEPAGE -- HOVER + ACTIVE */
+.mhv-home-td h4 a, .mhv-home-td h4 a:hover, .mhv-home-td h4 a:active, .mhv-home-plug-td h4 a, .mhv-home-plug-td h4a:hover, .mhv-home-plug-td h4 a:active
+{
+	text-decoration: underline
+}
+
+/* style sets <img> alignment within PLUGS on MHV HOMEPAGE */
+.mhv-home-plug-img
+{
+	vertical-align: bottom;
+}
+
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// IMAGES -- Basic image layout styles used within portlet content areas
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* styles sets right-aligned container for images and photo credit within basic content pages */
+div.mhv-img-container-float-right
+{
+	color: #999999;
+	display: inline;
+	float: right;
+	font-size: 0.8em;
+	margin: 12px;
+	text-align: right;
+}
+
+/* styles sets left-aligned container for images and photo credit for basic content pages */
+div.mhv-img-container-float-left
+{
+	color: #999999;
+	display: inline;
+	float: left;
+	font-size: 0.8em;
+	margin: 12px;
+	text-align: right;
+}
+
+mhv-dashboard .mhv-img-container-float-right
+{
+	display: block;
+}
+
+/* styles sets default border for images within basic content pages */
+.mhv-img-container img, .mhv-img-container-float-right img, .mhv-img-container-float-left img
+{
+	border: 1px solid #333333;
+}
+
+/* styles sets removes border from images within basic content pages */
+img.mhv-img-no-border
+{
+	border: 0px;
+}
+
+
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// LISTS -- Various list styles
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* style sets padding on basic list elements */
+li
+{
+	padding: 2px 0px;
+}
+
+/* style adds extra spacing between list items so breaks aren't needed to double-space. */
+ul.mhv-double-space li, ol.mhv-double-space li
+{
+	padding: 6px 0px;
+}
+
+/* style removes indentation on unorderd list items */
+ul.mhv-ul-no-indent
+{
+	list-style-position : outside;
+	margin: 0px 0px 0px 18px;
+	padding: 0px;
+}
+
+/* style sets padding on unordered list items with no indent */
+.mhv-ul-no-indent li
+{
+	padding: 2px 0px;
+}
+
+/* style removes bullet from unordered list items */
+ul.mhv-ul-no-bullet
+{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+/* style sets padding on unordered list items with no bullet */
+.mhv-ul-no-bullet li
+{
+	padding: 2px 0px;
+}
+
+/* style sets li element to red square for bulleted lists -- mainly used on detail pages */
+li.mhv-li-square-red, li.mhv-li-red-square
+{
+	color: #CC0000;
+	list-style : square;
+}
+
+/* style sets basic definition lists via <dl> element */
+dl
+{
+	margin: 20px 0px;
+}
+
+/* style sets definition term items via <dt> element within definition lists */
+dt
+{
+	font-weight: normal;
+}
+
+/* style sets basic definition description items via <dd> element within definition lists */
+dd
+{
+	margin: 3px 0px 17px 0px;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// FORMS -- Form input styles
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* style sets margin + padding for <fieldset> element */
+fieldset
+{
+  	margin: 3px;
+  	padding: 15px 5px 5px 5px;
+}
+
+legend
+{
+	color: #041D9E;
+	font-size: 1.0em;
+	font-weight: bold;
+}
+
+/* style sets font for asterick indicating required information */
+.mhv-required 
+{
+	color: #CC0000;
+	font-weight: bold;
+}
+
+/* style sets container for help content contained within app portlets to the right of the form fieldset */
+div.mhv-form-help-container
+{
+	background-color: #EFEFEF;
+	margin: 10px 0px 5px 5px;
+	padding: 2px;
+}
+
+/* style sets text alignment for input button container -- align right */
+div.mhv-button-container-align-right
+{
+	margin: 10px 5px;
+	text-align: right;
+}
+
+/* style sets default font size for all <input> elements */
+input, select, option, text, textarea
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 0.9em;
+}
+
+/* style sets background color to highligh form input fields -- text, textarea, select, option, etc. */
+.mhv-highlighted-field
+{
+	background-color: #FFFFCC;
+}
+
+/*  style sets form <input  type=button /> elements */
+input.mhv-input-button
+{
+	background-color: #930303;
+	border-top: 1px solid #FFFFFF;
+	border-right: 1px solid #333333;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #FFFFFF;
+	color: #FFFFFF;
+	cursor: hand;
+	font-size: 1.0em;
+	font-weight: normal;
+	padding: 0px 3px;
+	text-align: center;
+}
+
+/*  style sets text links used as input buttons */
+a.mhv-input-button:link,  a.mhv-input-button:visited, a.mhv-input-button:hover, a.mhv-input-button:active
+{
+	background-color: #930303;
+	border-top: 1px solid #FFFFFF;
+	border-right: 1px solid #333333;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #FFFFFF;
+	color: #FFFFFF;
+	cursor: hand;
+	font-size: 1.0em;
+	font-weight: normal;
+	margin: 5px 0px;
+	padding: 2px 12px;
+	text-align: center;
+	text-decoration:  none;
+}
+
+/*  style sets form <input type=image /> elements  */
+input.mhv-input-image 
+{
+	border: 0px none #FFFFFF;
+	margin: 0px 5px;
+}
+
+/*  style intended to set form <input type=text /> elements */
+input.mhv-input-readonly 
+{
+	background-color: #CCCCCC;
+}
+
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// ERROR MESSAGING -- Error and informational messaging containers and text styles
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* ---------- STYLES HIGHLIGHTING ERRORS IN THE FORM  ---------- */
+
+/* style sets basic text for error messages in forms */
+.mhv-error-msg, a.mhv-error-msg:link, a.mhv-error-msg:hover, a.mhv-error-msg:active, a.mhv-error-msg:visited 
+{
+	color: #CC0000;
+	font-size: 1.0em;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-style: italic;
+}
+
+/* style sets spacing around error message in forms */
+.mhv-error-msg-td 
+{
+	padding-top: 2px;
+}
+
+.mhv-error-msg ul 
+{
+	margin-top: 0px;
+	padding-top:0px;
+}
+
+.mhv-error-msg li 
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+/* style sets background color on form input field that needs correction */
+.mhv-error-field 
+{
+	background-color: #FFFFCC;
+}
+
+/* ---------- STYLES IN ERROR MESSAGE BOX ---------- */
+
+/* containerStyle -- style sets container for error messages */
+#mhv-error-box 
+{
+	background-color: #FFFFCC;
+	border-top: 1px solid #FF0000;
+	border-bottom: 1px solid #660000;
+	border-left: 1px solid #CC0000;
+	border-right: 1px solid #990000;
+	margin: 5px;
+	min-height: 60px;
+	padding: 2px;
+}
+
+/* containerStyle -- style sets container for informational messages */
+#mhv-informational-box 
+{
+	background-color: #FFFFCC;
+	border-top: 1px solid #00FF00;
+	border-bottom: 1px solid #006600;
+	border-left: 1px solid #00CC00;
+	border-right: 1px solid #009900;
+	margin: 5px;
+	min-height: 60px;
+	padding: 2px;
+}
+
+/* containerStyle -- style sets container for conditional messages */
+#mhv-conditional-box 
+{
+	background-color: #FFFFCC;
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #999999;
+	margin: 5px;
+	min-height: 60px;
+	padding: 2px;
+}
+
+/* style sets horizontal rule within error message container */
+#mhv-error-box hr 
+{
+	margin: 0px 10px;
+}
+
+/* imageStyle -- style sets placement and sizing of error message icons */
+.mhv-error-icon 
+{
+	float: left;
+	width: 30px;
+	height: 30px;
+	margin:10px;
+}
+
+/* notificationStyle -- style sets boundary for notification types */ 
+#mhv-error-message-critical, #mhv-error-message-conditional, #mhv-error-message-informational 
+{
+	margin:10px 10px 10px 54px;
+}
+
+/* notificationStyle -- Hack for IE 6.0. Second line for other IE versions -- */
+* html #mhv-error-message-critical 
+{ 
+	margin:10px 10px 10px 54px;
+	m\argin:10px 10px 10px 54px;
+}
+
+/* notificationStyle -- Hack for IE 6.0. Second line for other IE versions */
+* html #mhv-error-message-conditional
+{ 
+	margin:10px 10px 10px 54px;
+	m\argin:10px 10px 10px 54px;
+}
+
+/* notificationStyle -- Hack for IE 6.0. Second line for other IE versions */
+* html #mhv-error-message-informational
+{ 
+	margin:10px 10px 10px 54px;
+	m\argin:10px 10px 10px 54px;
+}
+
+/* notificationStyle -- style sets basic font for critical error messages */
+#mhv-error-message-critical 
+{
+	color: #000000;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+/* notificationStyle -- style sets basic font for critical error messages */
+#mhv-error-message-informational
+{
+	color: #007A00;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+/* notificationStyle -- style sets basic font for non-critical error messages */
+#mhv-error-message-conditional
+{
+	color: #000000;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+/* headerStyle -- style sets error message header */
+.mhv-error-message-header 
+{
+	font-size: 1.1em;
+	font-weight: bold;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+
+/* subheaderStyle -- style sets text for subheader and following list of errors */
+.mhv-error-text 
+{
+	font-size:1.0em;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-style: normal;
+}
+
+/* style sets unordered bullet list within subheaderStyle */
+.mhv-error-text ul 
+{
+	font-style: normal;
+	margin: 8px 8px 8px 30px;
+}
+
+/* style sets spacing around error message list items within subheaderStyle */
+.mhv-error-text li
+{
+	margin: 1px 0px;
+	padding: 0px;
+}
+
+/* style sets text link within notificationStyle for critical error messages */
+#mhv-error-message-critical a 
+{
+	color: #CC0000;
+}
+
+/* Style for errors displayed above fields */
+.mhv-field-level-message-critical
+{
+	color: #FF0000;
+}
+
+.mhv-error-text ul ol 
+{
+	list-style-type: lower-roman;	
+}
+
+/* notificationStyle -- style sets basic font for record update messages */
+#mhv-phr-update-message-informational
+{
+	color: #000000;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}

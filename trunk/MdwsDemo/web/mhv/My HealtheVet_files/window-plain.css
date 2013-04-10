@@ -1,0 +1,82 @@
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Window
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-theme-plain .bea-portal-window
+{
+    margin: 5px;
+    padding: 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #666666;
+    background-color: #f0f0f0;
+    /* Fix for IE height problem; uses Mozilla's recognition of and IE's ignorance of C-style line comment... */
+    //height: 100%;
+}
+
+.bea-portal-theme-plain .bea-portal-window-content
+{
+    margin: 4px;
+    padding: 0px;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Window Titlebar
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-theme-plain .bea-portal-window-titlebar
+{
+    background-color: #e5e5e5;
+    padding: 2px;
+    margin: 0px;
+    font-size: small;
+    font-weight: bold;
+}
+
+.bea-portal-theme-plain .bea-portal-window-titlebar-container
+{
+    padding: 0px;
+    width: 100%;
+}
+
+.bea-portal-theme-plain .bea-portal-window-icon
+{
+    text-align: center;
+    margin: 0px;
+}
+
+.bea-portal-theme-plain .bea-portal-window-titlebar-title
+{
+    color: #666666;
+    text-align: left;
+    padding: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.bea-portal-theme-plain .bea-portal-window-titlebar-buttons
+{
+    white-space: normal;
+    padding: 0px;
+    margin: 0px;
+    font-size: x-small;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.bea-portal-theme-plain a
+{
+    display: inline;
+    color: #666666;
+    text-decoration: none;
+}
+
+.bea-portal-theme-plain a:hover
+{
+    color: #000000;
+    text-decoration: underline;
+}

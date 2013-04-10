@@ -1,0 +1,68 @@
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Window
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-alert-window
+{
+    margin: 5px;
+    padding: 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ff3333;
+    background-color: #ffe5e5;
+    /* Fix for IE height problem; uses Mozilla's recognition of and IE's ignorance of C-style line comment... */
+    //height: 100%;
+}
+
+.bea-portal-alert-window-content
+{
+    margin: 4px;
+    padding: 0px;
+    background-color: #ff9999;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Window Titlebar
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-alert-window-titlebar
+{
+    background-color: #ff9999;
+    padding: 2px;
+    margin: 0px;
+    font-size: small;
+    font-weight: bold;
+}
+
+.bea-portal-alert-window-titlebar-container
+{
+    padding: 0px;
+    width: 100%;
+}
+
+.bea-portal-alert-window-icon
+{
+    text-align: center;
+    margin: 0px;
+}
+
+.bea-portal-alert-window-titlebar-title
+{
+    color: #663333;
+    text-align: left;
+    padding: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.bea-portal-alert-window-titlebar-buttons
+{
+    text-align: right;
+    padding: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+}

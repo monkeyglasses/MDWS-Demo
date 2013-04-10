@@ -161,19 +161,19 @@ namespace MdwsDemo.dao.soap
         }
 
         // This call was implemented as part of a demo - the service is not currently available on the internet
-        //public esb.appointmentResponse makeAppointmentEsb(string appointmentDate, string appointmentLength, string clinicIen, string patientIen, string patientSsn)
-        //{
-        //    esb.AppointmentWorkflowService svc = new esb.AppointmentWorkflowService();
-        //    esb.appointmentResponse response = svc.makeAppointmentWorkflow(new esb.appointment()
-        //    {
-        //        appointmentDate = appointmentDate,
-        //        appointmentLength = appointmentLength, 
-        //        clinicIen = clinicIen, 
-        //        patientIen = patientIen, 
-        //        patientSsn = patientSsn
-        //    });
-        //    return response;
-        //}
+        public esb.appointmentResponse makeAppointmentEsb(string appointmentDate, string appointmentLength, string clinicIen, string patientIen, string patientSsn)
+        {
+            esb.AppointmentWorkflowService svc = new esb.AppointmentWorkflowService();
+            esb.appointmentResponse response = svc.makeAppointmentWorkflow(new esb.appointment()
+            {
+                appointmentDate = appointmentDate,
+                appointmentLength = appointmentLength,
+                clinicIen = clinicIen,
+                patientIen = patientIen,
+                patientSsn = patientSsn
+            });
+            return response;
+        }
 
         internal PatientTO selectPatient(string pid)
         {

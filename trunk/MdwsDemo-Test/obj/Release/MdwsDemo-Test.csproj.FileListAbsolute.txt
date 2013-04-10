@@ -8,5 +8,3 @@ C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\obj\Release\ResolveAssembl
 C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\obj\Release\MdwsDemo-Test.dll
 C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\obj\Release\MdwsDemo-Test.pdb
 C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\bin\Release\Newtonsoft.Json.dll
-C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\bin\Release\Newtonsoft.Json.pdb
-C:\workspace\github.com\MDWS-Demo\trunk\MdwsDemo-Test\bin\Release\Newtonsoft.Json.xml

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://webservice.mock.talend.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="AppointmentWorkflowService" targetNamespace="http://webservice.mock.talend.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://webservice.mock.talend.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="makeAppointmentWorkflow" type="tns:makeAppointmentWorkflow" />
+      <xs:element name="makeAppointmentWorkflowResponse" type="tns:makeAppointmentWorkflowResponse" />
+      <xs:complexType name="makeAppointmentWorkflow">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:appointment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="appointment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="appointmentDate" type="xs:string" />
+          <xs:element minOccurs="0" name="appointmentLength" type="xs:string" />
+          <xs:element minOccurs="0" name="clinicIen" type="xs:string" />
+          <xs:element minOccurs="0" name="patientIen" type="xs:string" />
+          <xs:element minOccurs="0" name="patientSsn" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="appointmentResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:appointment">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="patientAddress" type="xs:string" />
+              <xs:element minOccurs="0" name="patientEmail" type="xs:string" />
+              <xs:element minOccurs="0" name="patientPhoneNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="makeAppointmentWorkflowResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:appointmentResponse" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="makeAppointmentWorkflowResponse">
+    <wsdl:part name="parameters" element="tns:makeAppointmentWorkflowResponse" />
+  </wsdl:message>
+  <wsdl:message name="makeAppointmentWorkflow">
+    <wsdl:part name="parameters" element="tns:makeAppointmentWorkflow" />
+  </wsdl:message>
+  <wsdl:portType name="AppointmentWorkflow">
+    <wsdl:operation name="makeAppointmentWorkflow">
+      <wsdl:input wsam:Action="http://webservice.mock.talend.com/AppointmentWorkflow/makeAppointmentWorkflowRequest" wsaw:Action="http://webservice.mock.talend.com/AppointmentWorkflow/makeAppointmentWorkflowRequest" name="makeAppointmentWorkflow" message="tns:makeAppointmentWorkflow" />
+      <wsdl:output wsam:Action="http://webservice.mock.talend.com/AppointmentWorkflow/makeAppointmentWorkflowResponse" wsaw:Action="http://webservice.mock.talend.com/AppointmentWorkflow/makeAppointmentWorkflowResponse" name="makeAppointmentWorkflowResponse" message="tns:makeAppointmentWorkflowResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AppointmentWorkflowServiceSoapBinding" type="tns:AppointmentWorkflow">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="makeAppointmentWorkflow">
+      <soap:operation soapAction="http://webservice.mock.talend.com/AppointmentWorkflow/makeAppointmentWorkflowRequest" style="document" />
+      <wsdl:input name="makeAppointmentWorkflow">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="makeAppointmentWorkflowResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AppointmentWorkflowService">
+    <wsdl:port name="AppointmentWorkflowPort" binding="tns:AppointmentWorkflowServiceSoapBinding">
+      <soap:address location="http://127.0.0.1/AppointmentWorkflowService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

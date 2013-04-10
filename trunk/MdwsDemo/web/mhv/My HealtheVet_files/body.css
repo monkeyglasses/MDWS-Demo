@@ -1,0 +1,79 @@
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Desktop-Level Definitions
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* style sets outter-most <body> element */
+.bea-portal-body
+{
+    background-color: #FFFFFF;
+    color: #333333;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 75%;  /* 75 percent of browser text size -- same as in VA templates */
+    /*line-height: 120%; Comment out as jumbles the words up when using Shift + Left Alt + Print Screen. Accessibility issue. */
+    margin: 0px;
+    padding: 0px;
+}
+
+/* style sets all text  links via <a> element */
+.bea-portal-body a
+{
+    display: inline;
+    text-decoration: underline;
+}
+
+/* style sets hover attribute on all text links via <a> element */
+.bea-portal-body a:hover
+{
+    text-decoration: none;
+}
+
+/* style sets content via <div> element */
+.bea-portal-body-content
+{
+}
+
+/* style sets generic portal header + footer via <div> element */
+.bea-portal-body-header, .bea-portal-body-footer
+{
+}
+
+/* style sets portal header via <div> element */
+.bea-portal-body-header
+{
+    font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+}
+
+/* style set portal footer via <div> element */
+.bea-portal-body-footer
+{
+	background-color: #FFFFFF;
+	color: #666666;
+	margin: 5px 0px;
+	padding: 0px;
+	text-align: center;
+	vertical-align: top;
+}
+
+.bea-portal-body-header a
+{
+}
+
+.bea-portal-body-header a:hover
+{
+}
+
+.bea-portal-body-footer a 
+{
+	color: #666666;
+	font-size: 0.9em;
+	text-decoration: none;
+}
+
+.bea-portal-body-footer a:hover
+{
+	text-decoration: underline;
+}

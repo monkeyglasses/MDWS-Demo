@@ -41,6 +41,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -68,6 +69,13 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <None Include="Web References\crud\DataSourceArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\PatientTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\QuerySvc.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -206,12 +214,25 @@
     </Compile>
     <Compile Include="src\dao\ISchedulingDao.cs" />
     <Compile Include="src\dao\rest\SchedulingDao.cs" />
+    <Compile Include="src\dao\soap\CrudDao.cs" />
     <Compile Include="src\dao\soap\ISchedulingDao.cs" />
+    <Compile Include="src\dao\soap\MhvDao.cs" />
     <Compile Include="src\dao\soap\SchedulingDao.cs" />
     <Compile Include="src\dao\soap\VistaDao.cs" />
     <Compile Include="src\domain\TimeSlot.cs" />
     <Compile Include="src\MySession.cs" />
+    <Compile Include="src\utils\JsonUtils.cs" />
     <Compile Include="src\utils\SchedulingUtils.cs" />
+    <Compile Include="Web References\crud\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\esb\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\mdws\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -246,16 +267,38 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://mdws.vainnovation.us/mdws2/MhvService.asmx%3fWSDL">
+    <WebReferenceUrl Include="http://127.0.0.1:8090/AppointmentWorkflowService%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\esb\</RelPath>
+      <UpdateFromURL>http://127.0.0.1:8090/AppointmentWorkflowService%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>MdwsDemo_esb_AppointmentWorkflowService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:8734/MhvService.asmx%3fWSDL">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\mhv\</RelPath>
-      <UpdateFromURL>http://mdws.vainnovation.us/mdws2/MhvService.asmx%3fWSDL</UpdateFromURL>
+      <UpdateFromURL>http://localhost:8734/MhvService.asmx%3fWSDL</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>MdwsDemo_mhv_MhvService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:8734/QuerySvc.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\crud\</RelPath>
+      <UpdateFromURL>http://localhost:8734/QuerySvc.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>MdwsDemo_crud_QuerySvc</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://mdws.vainnovation.us/mdws2/EmrSvc.asmx%3fWSDL">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -284,6 +327,58 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\crud\QuerySvc.wsdl" />
+    <None Include="Web References\crud\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\crud\RegionArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\SiteArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\SiteTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\StringDictionaryTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\TaggedPatientArrays.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\TaggedText.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\TaggedTextArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\TextArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\TextTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\UserArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\UserTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\VistaFileTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\crud\XRefArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\esb\appointmentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\esb\AppointmentWorkflowService.wsdl" />
+    <None Include="Web References\esb\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\mdws\BoolTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -462,6 +557,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mhv\MhvService.wsdl" />
+    <None Include="Web References\mhv\PatientArray.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\mhv\PatientMedicalRecordTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

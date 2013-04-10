@@ -36,7 +36,7 @@ namespace MdwsDemo.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://mdws.vainnovation.us/mdws2/MhvService.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8734/MhvService.asmx")]
         public string MdwsDemo_mhv_MhvService {
             get {
                 return ((string)(this["MdwsDemo_mhv_MhvService"]));
@@ -50,6 +50,26 @@ namespace MdwsDemo.Properties {
         public string MdwsDemo_scheduling_SchedulingSvc {
             get {
                 return ((string)(this["MdwsDemo_scheduling_SchedulingSvc"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://127.0.0.1/AppointmentWorkflowService")]
+        public string MdwsDemo_esb_AppointmentWorkflowService {
+            get {
+                return ((string)(this["MdwsDemo_esb_AppointmentWorkflowService"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8734/QuerySvc.asmx")]
+        public string MdwsDemo_crud_QuerySvc {
+            get {
+                return ((string)(this["MdwsDemo_crud_QuerySvc"]));
             }
         }
     }

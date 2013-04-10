@@ -1,0 +1,76 @@
+/* THEME:  RIGHT SIDEBAR ---------------------------------------------------------------------------- */
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Window
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* style for div element rightside portal window container -- sets white background w/ raised border */
+.bea-portal-rightbar-window
+{
+    background-color: #FFFFFF;
+	border-top: 1px solid #EFEFEF;
+	border-right: 1px solid #9C9B9B;
+	border-bottom: 1px solid #9C9B9B;
+	border-left: 1px solid #EFEFEF;
+	margin: 10px;
+	padding: 1px;
+    /* Fix for IE height problem; uses Mozilla's recognition of and IE's ignorance of C-style line comment... */
+    //height: 100%;
+}
+
+/* style for div element rightside portal window content container */
+/* if no titlebar is present bea-portal-rightbar-window-content div comes directly after bea-portal-rightbar-window */
+/* else after bea-portal-rightbar-window-titlebar div */
+.bea-portal-rightbar-window-content
+{
+    margin: 5px;
+    padding: 0px;
+    scrollbar-base-color: #D8D8E5;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Window Titlebar
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-rightbar-window-titlebar
+{
+    background-color: #314AC9;
+    font-size: 1.0em;
+    font-weight: bold;
+    margin: 0px;
+    padding: 5px;
+}
+
+.bea-portal-rightbar-window-titlebar-container
+{
+    padding: 0px;
+    width: 100%;
+}
+
+.bea-portal-rightbar-window-icon
+{
+    margin: 0px;
+    text-align: center;
+}
+
+/* style for td element containing the actual title text */
+.bea-portal-rightbar-window-titlebar-title
+{
+    color: #FFFFFF;
+    overflow: hidden;
+    padding: 0px;
+    text-align: left;
+}
+
+/* style for td element containing any titlebar buttons -- minimize, maximize, etc. */
+.bea-portal-rightbar-window-titlebar-buttons
+{
+    overflow: hidden;
+    padding: 0px;
+    text-align: right;
+    white-space: nowrap;
+}

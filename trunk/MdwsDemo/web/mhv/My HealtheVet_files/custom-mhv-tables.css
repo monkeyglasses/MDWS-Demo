@@ -1,0 +1,648 @@
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// CUSTOM STYLES FOR MHV PORTAL
+// Created by Melissa C. Wood, Number Six Software, Inc. -- August 2005
+// This stylesheet is organized by the following sections:
+// -- Layout Tables: layout tables for portlet content sections
+// -- Standard Data Listings: summary listing of all items in record set
+// -- Detail Data Listings: detail listing of specific item in record
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// LAYOUT TABLES -- Layout tables for portlet content sections
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* styles set basic <th> element */
+th.mhv-th-align-right
+{
+	font-weight: bold;
+	padding: 3px 5px;
+	text-align: right;
+}
+
+th, th.mhv-th-align-left
+{
+	font-weight: bold;
+	padding: 3px 5px;
+	text-align: left;
+}
+
+
+/* style sets portlet heading for portlets with no titlebar  -- font size + color same as <h2> style class */
+/* do NOT use an <h2> element for the title within the <td> as it will create too much spacing above & below the title */
+/* Typically used for portlets within main content layout column */
+td.mhv-portlet-title-td 
+{
+	border-bottom: 2px solid #041D9E;
+	color: #041D9E;
+	font-size: 1.3em;
+	font-style: normal;
+	font-weight: bold;
+	margin: 3px 0px;
+	padding: 5px 0px;
+	text-align: left;
+	vertical-align: bottom;
+	width: 65%;
+}
+
+/* style sets portlet heading username and last updated date text for portlets with no titlebar */
+td.mhv-username-date-td, td.mhv-welcome-username-td, td.mhv-last-updated-td 
+{
+	border-bottom: 2px solid #AEC2D8;
+	color: #666666;
+	font-size: 0.9em;
+	font-weight: bold;
+	margin: 3px 0px;
+	padding: 5px 0px;
+	text-align: right;
+	vertical-align: bottom;
+	width: 35%;
+}
+
+/* style sets padding on <td> element within layout table for homepage portlet content with pic */
+.mhv-home-pic-layout td
+{
+	padding: 2px;
+}
+
+/* style sets width for column containing image on MHV homepage */
+td.mhv-home-pic-td 
+{
+	padding: 2px;
+	text-align: center;
+	vertical-align: top;
+	width: 130px;
+}
+
+/* style sets text alignment for image within layout for homepage left sidebar portlet content with pic */
+.mhv-home-pic-layout-left img
+{
+	text-align: center;
+}
+
+/* style sets margin for <hr> element within layout for homepage left sidebar portlet content with pic */
+.mhv-home-pic-layout-left hr
+{
+	margin: 0px;
+}
+
+/* Used when the Track Health intro page requires two columns. Also used for standard 2 column tables. */
+table.mhv-layout-two-column-intro, table.mhv-layout-two-column
+{
+	border: 0px;
+	border-collapse: collapse;
+	padding: 0px;
+	width: 100%;
+	color: #000000;
+}
+
+table.mhv-layout-two-column-intro td, table.mhv-layout-two-column td 
+{
+	border: 0px;
+	border-spacing: 0px;
+	padding: 0px;
+	width: 50%;
+	vertical-align: top;
+	color: #000000;
+}
+
+/* Track Health intro page tables within framesets */
+
+table.mhv-layout-two-column-intro-fs, table.mhv-layout-three-column-intro-fs, table.mhv-layout-four-column-intro-fs, table.mhv-layout-five-column-intro-fs 
+{
+	border: 3px solid #FFFFFF;
+	border-collapse: collapse;
+	padding: 0px;
+	width: 100%;
+}
+
+table.mhv-layout-two-column-intro-fs td, table.mhv-layout-three-column-intro-fs td, table.mhv-layout-four-column-intro-fs td, table.mhv-layout-five-column-intro-fs td 
+{
+	border: 3px solid #FFFFFF;
+	border-top: 0px;
+	border-bottom: 0px;
+	border-spacing: 0px;
+	padding: 0px;
+	font-family: "Courier New", Courier, mono;
+	vertical-align: top;
+}
+
+/* Track Health intro page two column tables within framesets widths - used on Labs & Tests Intro and Medical History Intro */
+
+table.mhv-layout-two-column-intro-fs td 
+{
+	width: 50%;
+}
+
+/* Track Health intro page three column tables within framesets widths - placeholder, not currently being used */
+
+table.mhv-layout-three-column-intro-fs td 
+{
+}
+
+/* Intro page four column tables within framesets widths - used on Vitals Intro */
+
+table.mhv-layout-four-column-intro-fs td /* default column, only used in second column */
+{ 
+	width: 20%;
+	text-align: right;
+}
+
+table.mhv-layout-four-column-intro-fs td.color-column  /* first column, used when color-coding is available. empty for now. */
+{ 
+	width: 3%;
+}
+
+table.mhv-layout-four-column-intro-fs td.mhv-vital-unit  /* third column, displays units */
+{ 
+	text-align: left;
+	color: #666666;
+	font-size: 0.9em;
+	width: 17%;
+}
+
+table.mhv-layout-four-column-intro-fs td.right-column  /* last column, for dates */
+{ 
+	width: 60%;
+}
+
+/* Track Health intro page five column tables within framesets widths - used on Vitals Intro (body temperature) */
+
+table.mhv-layout-five-column-intro-fs td  /* default column, only used in second column */
+{ 
+	width: 20%;
+	text-align: right;
+}
+
+table.mhv-layout-five-column-intro-fs td.color-column  /* first column, used when color-coding is available. empty for now. */
+{ 
+	width: 3%;
+}
+
+table.mhv-layout-five-column-intro-fs td.mhv-vital-unit  /* third column, displays units */
+{ 
+	text-align: left;
+	color: #666666;
+	font-size: 0.9em;
+	width: 17%;
+}
+
+table.mhv-layout-five-column-intro-fs td.fourth-column  /* fourth column */
+{ 
+	width: 20%;
+	text-align: left;
+}
+
+table.mhv-layout-five-column-intro-fs td.right-column  /* last column, for dates */
+{ 
+	width: 40%;
+}
+
+/* style sets weather layout tables */
+table.mhv-weather-layout
+{
+	border: 0px;
+	border-collapse: collapse;
+	padding: 0px;
+	width: 100%;
+}
+
+table.mhv-weather-layout td 
+{
+	border: 0px;
+	border-spacing: 0px;
+	padding: 2px;
+	width: 50%;
+	vertical-align: top;
+	text-align: center;
+}
+
+/*style sets the health history layout & data tables */
+table.mhv-layout-health-history, table.mhv-blue-table
+{
+	border: 10px solid #FFFFFF;
+	border-collapse: collapse;
+	padding: 0px;
+	width: 100%;
+	background-color: #FFFFFF;
+	color: #000000;	
+}
+
+table.mhv-layout-health-history td 
+{
+	border: 0px;
+	border-spacing: 0px;
+	padding: 3px;
+	width: 50%;
+	vertical-align: top;
+	background-color: #FFFFFF;
+	color: #000000;	
+}
+
+table.mhv-blue-table th, table.mhv-blue-table td.sectionheader 
+{
+	border: 2px solid #FFFFFF;
+	border-spacing: 0px;
+	padding: 5px;
+	vertical-align: top;
+	text-align: left;
+	background-color: #D0DEEE;
+	color: #000000;	
+}
+
+table.mhv-blue-table td  
+{
+	border: 2px solid #FFFFFF;
+	border-spacing: 0px;
+	padding: 3px 7px;
+	vertical-align: top;
+	background-color: #E3E8EE;
+	color: #000000;	
+}
+
+table.mhv-layout-health-history td.section 
+{
+	border: 0px;
+	border-spacing: 0px;
+	padding: 3px;
+	vertical-align: top;
+	background-color: #EFEFEF;
+	color: #000000;
+	text-align: left;
+	font-weight: bold;
+}
+
+/* layout tables for login required promo pages */
+table.mhv_promo_layout {
+	width: 100%;
+	border: 0px;
+	border-collapse: collapse;
+}
+
+table.mhv_promo_layout td {
+	padding: 5px;
+	border: 0px;
+	vertical-align: top;
+	width: 60%;
+}
+
+table.mhv_promo_layout td.left_col {
+	width: 40%;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// STANDARD DATA LISTINGS -- Data table containers and text styles
+// For summary data listings of all items in a record set
+// Standard data listings use scope=col and alternating table row colors
+// Styles for column sorting and pagination are included
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* style sets basic data table listings. */
+/* Style must be applied to <table> element */
+table.mhv-data-listing 
+{
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #CCCCCC;
+    color: #303030;
+    font-size: 1.0em;
+	margin: 5px 0px;
+	text-align: left;
+	vertical-align: top;
+	width: 100%;
+}
+
+/* style sets basic text links contained within data listing tables -- link and visited */
+.mhv-data-listing a, .mhv-data-listing a:list, .mhv-data-listing a:visited
+{
+	text-decoration: underline;
+}
+
+/* style sets basic text links contained within data listing tables -- hover and active */
+.mhv-data-listing a, .mhv-data-listing a:hover, .mhv-data-listing a:active
+{
+	text-decoration: none;
+}
+
+/* style sets default horizontally displayed table head row via <th scope="col"> element */
+.mhv-data-listing th, th.mhv-list-head, th.mhv-list-head-scope-col
+{
+	background-color: #041D9E;  /*#314AC9*/
+	border-right: 1px solid #FFFFFF;
+	border-bottom: 1px solid #000000;
+	color: #FFFFFF;
+	font-weight: bold;
+	padding: 2px 5px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* style sets vertically displayed table head column via <th scope="row"> element */
+th.mhv-list-head-scope-row 
+{
+	padding: 2px 10px 2px 5px;
+	text-align: left;
+	vertical-align: top;
+}
+
+/* style sets background color for data group heading row */
+.mhv-data-listing .mhv-group-row-head
+{
+	background-color: #D0DEEE;
+	color: #303030;
+	font-weight: bold;
+}
+
+/* style sets default background color to white for alternating table rows  */
+.mhv-data-listing tr, .mhv-data-listing-rightbar tr, tr.mhv-list-row-odd, tr.mhv-list-row-white 
+{
+	background-color: #FFFFFF;
+}
+
+/* style sets background color to light grey for alternating table rows  */
+tr.mhv-list-row-even, tr.mhv-list-row-grey 
+{
+	background-color: #EFEFEF;
+}
+
+/* style used to highlight special rows in a table */
+tr.mhv-highlighted-table-row
+{
+    background-color: #FFFF99;
+    font-weight: bold;
+}
+
+/* style sets odd row data listing cells via <td> element */
+.mhv-data-listing td, td.mhv-list-cell 
+{
+	color: #303030;
+	padding: 5px 3px;
+	text-align: left;
+	vertical-align: top;
+}
+
+/* style sets table cell text link */
+.mhv-data-listing td a, a.mhv-list-cell-link 
+{
+	text-decoration: underline;
+}
+
+/* style sets table cell text link -- link and visited state */
+.mhv-data-listing td a:link, .mhv-data-listing td a:visited, a.mhv-list-head-link:link, a.mhv-list-head-link:visited 
+{
+	text-decoration: underline;
+}
+
+/* style sets table cell text link -- hover and active state */
+.mhv-data-listing td a:hover, .mhv-data-listing td a:active, a.mhv-list-head-link:hover, a.mhv-list-head-link:active 
+{
+	text-decoration: none;
+}
+
+/*  Style increases padding for when results = null in data listing  */
+/*  <td class="mhv-list-cell-no-results" colspan="n">There were no results found. Please revise your search.</td>  */
+td.mhv-list-cell-no-results 
+{
+	font-weight: bold;
+	padding: 5px 6px;
+}
+
+/* style sets list cell font-weight to bold */
+td.mhv-list-cell-bold {
+	font-weight: bold;
+}
+
+/* style sets list cell text-alignment to center */
+td.mhv-list-cell-center 
+{
+	text-align: center;
+}
+
+/* style sets list cell font-weight and text-alignment */
+td.mhv-list-cell-bold-center 
+{
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* ----- DATA LISTING SORTING ----- */
+
+/* style sets sortable horizontally displayed table head row via <th scope="col"> element */
+th.mhv-list-col-sortable, th.mhv-list-col-sorted, th.mhv-list-col-sorted-asc, th.mhv-list-col-sorted-des 
+{
+	background-color: #041D9E;  /*#314AC9*/
+	border-right: 1px solid #FFFFFF;
+	border-bottom: 1px solid #000000;
+	color: #FFFFFF;
+	font-weight: bold;
+	padding: 2px 5px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* style sets table head text link -- mainly used for data sorting */
+.mhv-data-listing th a, th.mhv-list-col-sortable a, th.mhv-list-col-sorted a, a.mhv-list-head-link 
+{
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* style sets table head text link -- link and visited state */
+.mhv-data-listing th a:link, .mhv-data-listing th a:visited, th.mhv-list-col-sortable a:link, th.mhv-list-col-sortable a:visited, th.mhv-list-col-sorted a:link, th.mhv-list-col-sorted a:visited, a.mhv-list-head-link:link, a.mhv-list-head-link:visited 
+{
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* style sets table head text link -- hover and active state */
+.mhv-data-listing th a:hover, .mhv-data-listing th a:active, th.mhv-list-col-sortable a:hover, th.mhv-list-col-sortable a:active, th.mhv-list-col-sorted a:hover, th.mhv-list-col-sorted a:active, a.mhv-list-head-link:hover, a.mhv-list-head-link:active 
+{
+	color: #EAECF9;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+/* style sets background position for arrow icons for column sorting */
+th.mhv-list-col-sorted a, th.mhv-list-col-sorted-asc a, th.mhv-list-col-sorted-des a, th.mhv-list-col-sortable a 
+{
+	background-position: right;
+	display: block;
+	width: 100%;
+}
+
+/* style sets background image for sortable data columns */
+th.mhv-list-col-sortable a 
+{
+	background-image: url(../../../../resources/images/datasorting/arrow_off.gif);
+	background-repeat : no-repeat;
+}
+
+/* style sets background image for sorted data columns -- ascending */
+th.mhv-list-col-sorted-asc a 
+{
+	background-image: url(../../../../resources/images/datasorting/arrow_up.gif);
+	background-repeat : no-repeat;
+}
+
+/* style sets background image for sorted data columns -- descending */
+th.mhv-list-col-sorted-des a 
+{
+	background-image: url(../../../../resources/images/datasorting/arrow_down.gif);
+	background-repeat : no-repeat;
+}
+
+
+/* ----- DATA LISTING PAGINATION ----- */
+
+/* style sets margin + text-alignment for pagination container */
+.mhv-paging-container-align-right 
+{
+	margin: 5px 0px;
+	text-align: right;
+}
+
+
+/* ----- RIGHT SIDEBAR STANDARD DATA LISTINGS ----- */
+
+/* style sets basic data table listings in right sidebar. */
+table.mhv-data-listing-rightbar 
+{
+	background-color: #FFFFFF;
+	border-top: 1px solid #DCDCDC;
+	border-right: 1px solid #DCDCDC;
+	border-bottom: 1px solid #DCDCDC;
+	border-left: 1px solid #DCDCDC;
+	color: #3030303;
+	font-size: 0.9em;  
+	text-align: left;
+	vertical-align: top;
+	width: 100%;
+}
+
+
+/* style sets data listing horizontal heading row via <th> element in .mhv-rightbar-data-listing */
+.mhv-data-listing-rightbar th, th.mhv-list-head-rightbar, th.mhv-list-head-rightbar-scope-col 
+{
+	background-color: #EFEFEF;
+	border-right: 1px solid #FFFFFF;
+	border-bottom: 1px solid #000000;
+	font-weight : bold;
+	padding: 1px 2px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* style sets odd row data listing cells via <td> element in mhv-data-listing-rightbar */
+.mhv-data-listing-rightbar td, td.mhv-list-cell-rightbar 
+{
+	border-top: 0px none #D3D3D3;
+	border-right: 1px solid #EFEFEF;
+	padding: 3px 1px;
+	text-align: left;
+	vertical-align: top;
+}
+
+
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// DETAIL DATA LISTINGS -- Data table containers and text styles
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* style sets detailed information table. */
+/* Style must be applied to <table> element */
+table.mhv-detail-listing, table.mhv-detail-listing2  
+{
+	background-color: #FFFFFF;
+	border-top: 0px none #EFEFEF;
+	border-right: 0px none  #EFEFEF;
+	border-bottom: 0px none #EFEFEF;
+	border-left: 0px none #EFEFEF;
+	font-size: 1.0em; 
+	text-align: left;
+	vertical-align: top;
+	width: 100%;
+}
+
+/* style sets data listing vertical heading row via <th> element. also used for same design look for layout tables that should not use th markup (td class="left-layout-cell") */
+.mhv-detail-listing th, th.mhv-detail-head-scope-row, .mhv-detail-listing td.left-layout-cell 
+{
+	background-color: #D0DEEE;
+	border: 1px solid #FFFFFF;
+	color: #000000;
+	font-weight: bold;
+	padding: 5px;
+	text-align: left;
+	vertical-align: top;
+	width: 30%;
+}
+
+/* same style but without the width declaration for the journal seis */
+.mhv-detail-listing2 th
+{
+	background-color: #D0DEEE;
+	border: 1px;
+	color: #000000;
+	font-weight: bold;
+	padding: 5px;
+	vertical-align: top;
+}
+
+/* style sets detailed data listing cells via <td> element */
+.mhv-detail-listing td, td.mhv-detail-cell 
+{
+	background-color: #E3E8EE;
+	border: 1px solid #FFFFFF;
+	color: #000000;
+	padding: 5px;
+	text-align: left;
+	vertical-align: top;
+	width: 70%;
+}
+
+/* same style but without the width declaration for the journal seis */
+.mhv-detail-listing2 td
+{
+	background-color: #E3E8EE;
+	color: #000000;
+	padding: 5px;
+	vertical-align: top;
+}
+
+/* style used to highlight special rows in a table */
+.mhv-detail-listing tr.mhv-highlighted-table-row, .mhv-detail-listing .mhv-highlighted-table-row td, .mhv-detail-listing .mhv-highlighted-table-row .mhv-detail-cell
+{
+    background-color: #FFFF99;
+	border: 1px solid #FFFFFF;
+	color: #000000;
+    font-weight: bold;
+	padding: 5px;
+	text-align: left;
+	vertical-align: top;
+	width: 70%;
+}
+
+/* same style but without the width declaration for the journal seis */
+.mhv-detail-listing2 tr.mhv-highlighted-table-row, .mhv-detail-listing2 .mhv-highlighted-table-row td, .mhv-detail-listing2 .mhv-highlighted-table-row .mhv-detail-cell
+{
+    background-color: #FFFF99;
+    border: 1px solid #FFFFFF;
+    color: #000000;
+    font-weight: bold;
+    padding: 5px;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* style for INR SEI table */
+TABLE.left-inr TD {
+ border:0px;
+ vertical-align:middle;
+}

@@ -1,0 +1,74 @@
+/* THEME:  LOGIN --------------------------------------------------------------------------------------------------- */
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Window
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+/* style for div element login portal window container -- sets blue background w/ blue border */
+.bea-portal-login-window
+{
+    background-color: #AEC2D8;
+	border: 1px solid #AEC2D8;
+	margin: 10px;
+	padding: 1px;
+    /* Fix for IE height problem; uses Mozilla's recognition of and IE's ignorance of C-style line comment... */
+    //height: 100%;
+}
+
+/* style for div element login portal window content container */
+/* if no titlebar is present bea-portal-login-window-content div comes directly after bea-portal-login-window */
+/* else after bea-portal-login-window-titlebar div */
+.bea-portal-login-window-content
+{
+    margin: 5px;
+    padding: 0px;
+    scrollbar-base-color: #D8D8E5;
+}
+
+/*
+// --------------------------------------------------------------------------------------------------------------------
+// Window Titlebar
+// --------------------------------------------------------------------------------------------------------------------
+*/
+
+.bea-portal-login-window-titlebar
+{
+    background-color: #AEC2D8;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0px;
+    padding: 5px;
+}
+
+.bea-portal-login-window-titlebar-container
+{
+    padding: 0px;
+    width: 100%;
+}
+
+.bea-portal-login-window-icon
+{
+    margin: 0px;
+    text-align: center;
+}
+
+/* style for td element containing the actual title text */
+.bea-portal-login-window-titlebar-title
+{
+    color: #041D9E;
+    overflow: hidden;
+    padding: 0px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* style for td element containing any titlebar buttons -- minimize, maximize, etc. */
+.bea-portal-login-window-titlebar-buttons
+{
+    overflow: hidden;
+    padding: 0px;
+    text-align: right;
+    white-space: nowrap;
+}
