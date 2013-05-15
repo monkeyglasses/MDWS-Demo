@@ -213,13 +213,24 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="src\dao\ISchedulingDao.cs" />
+    <Compile Include="src\dao\rest\CrudDao.cs" />
+    <Compile Include="src\dao\rest\HttpClient.cs" />
     <Compile Include="src\dao\rest\SchedulingDao.cs" />
     <Compile Include="src\dao\soap\CrudDao.cs" />
     <Compile Include="src\dao\soap\ISchedulingDao.cs" />
     <Compile Include="src\dao\soap\MhvDao.cs" />
     <Compile Include="src\dao\soap\SchedulingDao.cs" />
     <Compile Include="src\dao\soap\VistaDao.cs" />
+    <Compile Include="src\domain\AbstractArrayTO.cs" />
+    <Compile Include="src\domain\AbstractTO.cs" />
+    <Compile Include="src\domain\FaultTO.cs" />
+    <Compile Include="src\domain\TextTO.cs" />
     <Compile Include="src\domain\TimeSlot.cs" />
+    <Compile Include="src\domain\VistaFieldTO.cs" />
+    <Compile Include="src\domain\VistaFileTO.cs" />
+    <Compile Include="src\domain\VistaRecordTO.cs" />
+    <Compile Include="src\domain\XRefArray.cs" />
+    <Compile Include="src\domain\XRefTO.cs" />
     <Compile Include="src\MySession.cs" />
     <Compile Include="src\utils\JsonUtils.cs" />
     <Compile Include="src\utils\SchedulingUtils.cs" />

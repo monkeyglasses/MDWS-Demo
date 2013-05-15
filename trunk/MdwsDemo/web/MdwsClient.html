@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+
+
+function mdwsCannedRead() {
+	$.getJSON('http://localhost:8734/CrudSvc/901/8994.51/1,13,?callback=?', function(data) {
+		//alert("Callback success!");
+		document.getElementById("jsDiv").innerHTML = "<h3>This is some data from MDWS via jQuery!</h3>" ;
+
+		document.getElementById("jsDiv").innerHTML += "<strong>Vista File #" 
+			+ data.file.number + ", IEN #" + data.ien + "</strong><br />";
+		$.each(data.fields, function(i, item ) {
+			document.getElementById("jsDiv").innerHTML += item.number + " - " + item.value + "<br />";
+		});
+	});
+}
+
+function showExample() {
+	myNewObj = new VistaRecordTO();
+	myNewObj.file = new VistaFileTO();
+	myNewObj.file.number = "8994.5";
+	myNewObj.file.name = "REMOTE APPLICATION";
+	myNewObj.fields = new Array();
+	myNewObj.fields[0] = new VistaFieldTO();
+	myNewObj.fields[0].number = ".01";
+	myNewObj.fields[0].value = "I'M SO 2013";
+	myNewObj.fields[1] = new VistaFieldTO();
+	myNewObj.fields[1].number = ".02";
+	myNewObj.fields[1].value = "Adding fields is fun!";
+	myNewObj.fields[2] = new VistaFieldTO();
+	myNewObj.fields[2].number = ".03";
+	myNewObj.fields[2].value = "My password is a secret";
+	myNewObj.fields[3] = new VistaFieldTO();
+	myNewObj.fields[3].number = ".04";
+	myNewObj.fields[3].value = "H";
+	
+	// stringify!!!
+	jsonString = JSON.stringify(myNewObj);
+	
+	document.getElementById("jsDiv").innerHTML = "<h3>This is a pure javascript object represented in a serialized JSON string:</h3><p>" + jsonString + "</p>" ;
+	
+	// now parse the string we just created to get object back!
+	newObjReference = JSON.parse(jsonString);
+	
+	document.getElementById("jsDiv").innerHTML += "File numbers equal? " + (newObjReference.file.number == myNewObj.file.number) + "<br />";
+	document.getElementById("jsDiv").innerHTML += "File names equal? " + (newObjReference.file.name == myNewObj.file.name) + "<br />";
+	document.getElementById("jsDiv").innerHTML += "Field 0 numbers equal? " + (newObjReference.fields[0].number == myNewObj.fields[0].number) + "<br />";
+	document.getElementById("jsDiv").innerHTML += "Field 0 values equal? " + (newObjReference.fields[0].value == myNewObj.fields[0].value) + "<br />";
+	document.getElementById("jsDiv").innerHTML += "Field 1 numbers equal? " + (newObjReference.fields[1].number == myNewObj.fields[1].number) + "<br />";
+	document.getElementById("jsDiv").innerHTML += "Field 1 values equal? " + (newObjReference.fields[1].value == myNewObj.fields[1].value) + "<br />";
+	document.getElementById("jsDiv").innerHTML += "Field 2 numbers equal? " + (newObjReference.fields[2].number == myNewObj.fields[2].number) + "<br />";
+	document.getElementById("jsDiv").innerHTML += "Field 2 values equal? " + (newObjReference.fields[2].value == myNewObj.fields[2].value) + "<br />";
+	document.getElementById("jsDiv").innerHTML += "Field 3 numbers equal? " + (newObjReference.fields[3].number == myNewObj.fields[3].number) + "<br />";
+	document.getElementById("jsDiv").innerHTML += "Field 3 values equal? " + (newObjReference.fields[3].value == myNewObj.fields[3].value) + "<br />";
+}
+
+// begin js object model
+function AbstractTO() {
+	this.fault;
+}
+
+function AbstractArrayTO() {
+	AbstractTO.call(this);
+	this.count;
+}
+
+function FaultTO() {
+	this.type;
+	this.message;
+	this.stackTrace;
+	this.innerType;
+	this.innerMessage;
+	this.innerStackTrace;
+	this.suggestion;
+}
+
+function VistaFieldTO() {
+	AbstractTO.call(this);
+	this.isMultiple; // boolean
+	this.isPointer; // boolean
+	this.isWordProc; // boolean
+	this.name;
+	this.nodePiece;
+	this.number;
+	this.pointsTo; // VistaFileTO
+	this.transform;
+	this.type;
+	this.value;
+}
+
+function VistaFileTO() { 
+	AbstractTO.call(this);
+	this.fields; // instantiate like: VistaFileTO.fields = new Array(); VistaFileTO.fields[0] = new VistaFieldTO(); 
+	this.global;
+	this.lastIenAssigned;
+	this.name;
+	this.number;
+	this.numberOfRecords;
+	this.xrefs; // XrefArray
+}
+
+function VistaRecordTO() {
+	AbstractTO.call(this);
+	this.file; // VistaFileTO
+	this.fields; // instantiate like: VistaRecordTO.fields = new Array(); VistaRecordTO.fields[0] = new VistaFieldTO(); 
+	this.ien;
+	this.iens;
+	this.siteId;
+}
+
+function XRefTO() { 
+	AbstractTO.call(this);
+    this.dd;
+    this.fieldName;
+    this.fieldNumber;
+    this.file; // VistaFileTO
+    this.name;
+}
+
+function XRefArray() { 
+	AbstractArrayTO.call(this);
+	xrefs; // instantiate like: XRefArray.xrefs = new Array(); XRefArray.xrefs[0] = new XRefTO (); 
+}
+</script>
+</head>
+<body>
+	<button type="button" onclick="showExample()" >Show canned example</button>
+	<button type="button" onclick="mdwsCannedRead()" >Get file 8994.5, IEN 13 from 901</button>
+	
+	<div id="jsDiv" />
+</body>
+</html>
